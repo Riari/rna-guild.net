@@ -12,5 +12,36 @@
 */
 
 $r->group(['prefix' => 'auth'], function ($r) {
-    $r->auth();
+    // Registration
+    $r->get('register', 'Auth\AuthController@getRegister');
+    $r->post('register', 'Auth\AuthController@postRegister');
+
+    // Activation
+    $r->get(
+        'activate/{token}',
+        ['as' => 'auth.get.activation', 'uses' => 'Auth\AuthController@getActivation']
+    );
+    $r->post(
+        'activate',
+        ['as' => 'auth.post.activation', 'uses' => 'Auth\AuthController@postActivation']
+    );
+
+    // Login
+    $r->get('login', 'Auth\AuthController@getLogin');
+    $r->post('login', 'Auth\AuthController@postLogin');
+    $r->get('logout', 'Auth\AuthController@getLogout');
+
+    // Password reset
+    $r->get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
+    $r->post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
+    $r->post('password/reset', 'Auth\PasswordController@reset');
+
+    // Socialite
+    $r->get('{provider}', 'Auth\AuthController@redirectToProvider');
+    $r->get('{provider}/callback', 'Auth\AuthController@handleProviderCallback');
 });
+
+$r->get(
+    '/',
+    ['as' => 'home', 'uses' => 'HomeController@show']
+);

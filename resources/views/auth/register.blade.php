@@ -1,82 +1,64 @@
-@extends('layouts.app')
+@extends('app')
+
+@section('title', 'Register')
+@section('subtitle', "If you don't, you're a BUTT")
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('auth/register') }}">
-                        {!! csrf_field() !!}
+<div class="row">
+    <div class="col s12 {{ session('pending_user_auth') ? 'm12 l8' : 'm6 l4' }} offset-l2">
+        <form  role="form" method="POST" action="{{ url('auth/register') }}">
+            {!! csrf_field() !!}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Name</label>
+            @if (Session::has('pending_user_auth'))
+                <div class="alert success">
+                    Almost done! Just finish registration below, or if you want to associate
+                </div>
+            @endif
 
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password_confirmation">
-
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i>Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="name" name="name" type="text" value="{{ (is_null(old('name')) && session('pending_user_auth')) ? session('pending_user_auth')->nickname : old('name') }}">
+                    <label for="name">Name</label>
                 </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" name="email" type="email" value="{{ (is_null(old('email')) && session('pending_user_auth')) ? session('pending_user_auth')->email : old('email') }}" class="validate">
+                    <label for="email" data-error="Please enter a valid email address">Email address</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" name="password" type="password">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password_confirmation" name="password_confirmation" type="password">
+                    <label for="password_confirmation">Password (confirm)</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12 right-align">
+                    <button type="submit" class="waves-effect waves-light btn-large">
+                        Proceed
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
+    @if (!session('pending_user_auth'))
+        <div class="col s12 m6 l4">
+                <p><strong>Alternatively, sign up via...</strong></p>
+
+                <hr>
+
+                <p><a href="{{ url('auth/facebook') }}" class="waves-effect waves-light btn-large block brand-facebook">Facebook :D</a></p>
+                <p><a href="{{ url('auth/twitter') }}" class="waves-effect waves-light btn-large block brand-twitter">Twitter :D</a></p>
+                <p><a href="{{ url('auth/google') }}" class="waves-effect waves-light btn-large block brand-google">Google :D</a></p>
+        </div>
+    @endif
 </div>
 @endsection

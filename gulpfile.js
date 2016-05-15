@@ -1,16 +1,38 @@
+function path(path, source) {
+    if (typeof(source) === 'undefined') {
+        path = './bower_components/' + path;
+    }
+    if (source == 'assets') {
+        path = './resources/assets/' + path;
+    }
+    return path;
+}
+
 var elixir = require('laravel-elixir');
 
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Sass
- | file for our application, as well as publishing vendor resources.
- |
- */
+elixir.config.sourcemaps = false;
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+    mix
+        // Stylesheets
+        .sass('trn.scss', 'public/css/', {
+            includePaths: [
+                path('font-awesome/scss'),
+                path('Materialize/sass'),
+                path('simplemde/src/css'),
+                path('css/vendor', 'assets')
+            ]
+        })
+
+        // Scripts
+        .scripts([
+            path('jquery/dist/jquery.js'),
+            path('Materialize/dist/js/materialize.js'),
+            path('vue/dist/vue.js'),
+            path('js/vendor/editor.js', 'assets'),
+            path('js/vendor/marked.js', 'assets')
+        ], 'public/js/trn.js', './')
+
+        // Versioning
+        .version(['js/trn.js', 'css/trn.css']);
 });

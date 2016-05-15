@@ -6,7 +6,10 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*"
+        "laravel/framework": "5.2.*",
+        "msurguy/honeypot": "dev-master",
+        "laravel/socialite": "^2.0",
+        "edvinaskrucas/notification": "^5.1"
     },
     "require-dev": {
     },

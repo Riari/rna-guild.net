@@ -1,0 +1,133 @@
+html, body {
+    height: 100%;
+    margin: 0
+}
+
+nav {
+    position: relative;
+    z-index: 1000;
+    background: transparentize($primary-color, 0.1);
+
+    .nav-wrapper > ul > li.active {
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            display: block;
+            height: 3px;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+            background: $link-color;
+        }
+    }
+}
+
+hr {
+    height: 1px;
+    margin: 30px 0;
+    border: 0;
+    background: color('blue-grey', 'lighten-4');
+}
+
+.block {
+    display: block;
+}
+
+.brand-facebook {
+    background: #3b5998;
+}
+
+.brand-twitter {
+    background: #55acee;
+}
+
+.brand-google {
+    background: #dc4e41;
+}
+
+#main {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    margin-top: -64px;
+
+    #splash {
+        flex: 0 0 auto;
+        padding: 80px 0 140px 0;
+        background: url('http://images9.gry-online.pl/galeria/galeria_duze3/1120484671.jpg') no-repeat 50%;
+        color: $primary-color;
+        text-align: center;
+
+        h1, p {
+            color: #fff;
+            text-shadow: 0 2px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        a:hover {
+            color: $primary-color;
+        }
+    }
+
+    #content {
+        flex: 1 0 auto;
+        background: #eee;
+
+        #inner {
+            margin-top: -100px;
+            padding: 40px;
+            border-radius: 3px;
+            background: #fff;
+        }
+    }
+
+    .collection {
+        i.fa {
+            &.fa-facebook {
+                color: #3b5998;
+            }
+
+            &.fa-twitter {
+                color: #55acee;
+            }
+
+            &.fa-google {
+                color: #dc4e41;
+            }
+        }
+    }
+
+    a.tag {
+        display: inline-block;
+        padding: 4px 8px;
+        margin: 4px;
+        border-radius: 5px;
+        background: color('grey', 'lighten-3');
+        color: color('grey', 'darken-1');
+
+        &:hover {
+            background: color('grey', 'lighten-2');
+            color: color('grey', 'darken-2');
+        }
+    }
+
+    footer {
+        flex: 0 1 auto;
+        height: 60px;
+        min-height: 60px;
+        margin: 0;
+        color: color('grey', 'darken-1');
+        text-align: center;
+
+        a {
+            color: color('grey', 'darken-3');
+
+            &:hover {
+                color: color('grey', 'darken-4');
+            }
+        }
+    }
+}

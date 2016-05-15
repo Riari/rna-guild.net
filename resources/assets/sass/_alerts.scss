@@ -1,0 +1,26 @@
+.alert {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 3px;
+    color: #fff;
+
+    &.info {
+        background: color('blue-grey', 'lighten-3');
+    }
+
+    &.success {
+        background: color('teal', 'accent-4');
+    }
+
+    &.warning {
+        background: color('orange', 'accent-4');
+    }
+
+    &.error {
+        background: color('red', 'accent-4');
+    }
+
+    ul {
+        margin: 0;
+    }
+}

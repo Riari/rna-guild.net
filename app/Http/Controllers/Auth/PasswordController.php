@@ -7,6 +7,11 @@ use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class PasswordController extends Controller
 {
+    /**
+     * @var string
+     */
+    protected $redirectPath = '/';
+
     /*
     |--------------------------------------------------------------------------
     | Password Reset Controller

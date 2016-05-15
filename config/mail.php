@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'messenger@therustynails.cf', 'name' => 'The Rusty Nails'],
 
     /*
     |--------------------------------------------------------------------------
