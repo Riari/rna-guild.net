@@ -157,6 +157,12 @@ return [
         App\Providers\RouteServiceProvider::class,
         Krucas\Notification\NotificationServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Riari\Forum\ForumServiceProvider::class,
+        Riari\Forum\Frontend\ForumFrontendServiceProvider::class,
+        TeamTeaTime\Filer\FilerServiceProvider::class,
+        GrahamCampbell\Markdown\MarkdownServiceProvider::class,
+        Conner\Tagging\Providers\TaggingServiceProvider::class,
+
     ],
 
     /*
@@ -189,6 +195,7 @@ return [
         'Lang' => Illuminate\Support\Facades\Lang::class,
         'Log' => Illuminate\Support\Facades\Log::class,
         'Mail' => Illuminate\Support\Facades\Mail::class,
+        'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
         'Notification' => Krucas\Notification\Facades\Notification::class,
         'Password' => Illuminate\Support\Facades\Password::class,
         'Queue' => Illuminate\Support\Facades\Queue::class,

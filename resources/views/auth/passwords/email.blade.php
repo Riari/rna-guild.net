@@ -11,7 +11,7 @@
             </div>
         @endif
 
-        <form  role="form" method="POST" action="{{ url('auth/password/email') }}">
+        <form role="form" method="POST" action="{{ url('auth/password/email') }}">
             {!! csrf_field() !!}
 
             <div class="row">

@@ -3,6 +3,49 @@ html, body {
     margin: 0
 }
 
+hr {
+    height: 1px;
+    margin: 30px 0;
+    border: 0;
+    background: color('blue-grey', 'lighten-4');
+}
+
+.block {
+    display: block;
+}
+
+.brand-facebook {
+    background: $brand-facebook;
+}
+
+.brand-google {
+    background: $brand-google;
+}
+
+.brand-twitter {
+    background: $brand-twitter;
+}
+
+.brand-facebook-text {
+    color: $brand-facebook;
+}
+
+.brand-google-text {
+    color: $brand-google;
+}
+
+.brand-twitter-text {
+    color: $brand-twitter;
+}
+
+h1, h2, h3, h4 {
+    color: $primary-color;
+}
+
+table {
+    margin-bottom: 30px;
+}
+
 nav {
     position: relative;
     z-index: 1000;
@@ -26,39 +69,20 @@ nav {
     }
 }
 
-hr {
-    height: 1px;
-    margin: 30px 0;
-    border: 0;
-    background: color('blue-grey', 'lighten-4');
-}
-
-.block {
-    display: block;
-}
-
-.brand-facebook {
-    background: #3b5998;
-}
-
-.brand-twitter {
-    background: #55acee;
-}
-
-.brand-google {
-    background: #dc4e41;
+.editor-toolbar:not(.fullscreen) {
+    margin-top: 30px;
 }
 
 #main {
     display: flex;
     flex-flow: column;
-    height: 100%;
+    min-height: 100%;
     margin-top: -64px;
 
     #splash {
         flex: 0 0 auto;
         padding: 80px 0 140px 0;
-        background: url('http://images9.gry-online.pl/galeria/galeria_duze3/1120484671.jpg') no-repeat 50%;
+        background: url('/images/splash.jpg') no-repeat 50%;
         color: $primary-color;
         text-align: center;
 
@@ -75,12 +99,24 @@ hr {
     #content {
         flex: 1 0 auto;
         background: #eee;
+        padding-bottom: 40px;
 
         #inner {
             margin-top: -100px;
+            margin-bottom: 40px;
             padding: 40px;
             border-radius: 3px;
             background: #fff;
+
+            nav.breadcrumbs {
+                width: auto;
+                padding: 0 20px;
+                margin: -40px -40px 40px -40px;
+                border-top-left-radius: 3px;
+                border-top-right-radius: 3px;
+                background: $primary-color;
+                z-index: initial;
+            }
         }
     }
 

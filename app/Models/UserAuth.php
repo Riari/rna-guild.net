@@ -37,6 +37,18 @@ class UserAuth extends Model
     }
 
     /**
+     * Scope: for provider
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @param  string  $key
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function scopeForProvider($query, $key)
+    {
+        return $query->where('provider', $key);
+    }
+
+    /**
      * Helper: create a new auth from the given user and socialite user
      *
      * @param  User  $user

@@ -23,4 +23,14 @@
     ul {
         margin: 0;
     }
+
+    a {
+        border-bottom: 2px dotted rgba(0, 0, 0, 0.4);
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.6);
+
+        &:hover {
+            border-bottom-style: solid;
+        }
+    }
 }

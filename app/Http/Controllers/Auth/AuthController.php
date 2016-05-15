@@ -26,7 +26,9 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware($this->guestMiddleware(), ['except' => 'getLogout']);
+        $this->middleware($this->guestMiddleware(), [
+            'except' => ['redirectToProvider', 'handleProviderCallback', 'getLogout']
+        ]);
     }
 
     /**
@@ -39,7 +41,7 @@ class AuthController extends Controller
     {
         $provider = $request->route('provider');
 
-        if (!in_array($provider, ['facebook', 'google', 'twitter'])) {
+        if (!isset(config('auth.login_providers')[$provider])) {
             return redirect('auth/login');
         }
 
@@ -56,7 +58,7 @@ class AuthController extends Controller
     {
         $provider = $request->route('provider');
 
-        if (!in_array($provider, ['facebook', 'google', 'twitter'])) {
+        if (!isset(config('auth.login_providers')[$provider])) {
             return redirect('auth/login');
         }
 
@@ -68,9 +70,15 @@ class AuthController extends Controller
         ])->first();
 
         if (is_null($auth)) {
-            Session::flash('pending_user_auth', $socialiteUser);
-            Session::flash('pending_user_auth_provider', $provider);
-            return redirect('auth/register');
+            if (Auth::guest()) {
+                Session::flash('pending_user_auth', $socialiteUser);
+                Session::flash('pending_user_auth_provider', $provider);
+                return redirect('auth/register');
+            } else {
+                UserAuth::createFromSocialite(Auth::user(), $provider, $socialiteUser);
+                Notification::success("Your {$provider} account is now connected and you can log in with it from now on.");
+                return redirect('account/settings');
+            }
         } else {
             Auth::login($auth->user);
             Notification::success("Welcome back, {$auth->user->name}!");
@@ -168,7 +176,7 @@ class AuthController extends Controller
 
         // Send it with the activation email
         Mail::send('auth.emails.activation', compact('user', 'activation'), function ($m) use ($user) {
-            $m->to($user->email, $user->name)->subject('TRN account activation');
+            $m->to($user->email, $user->name)->subject('TNA account activation');
         });
 
         Notification::success("Thanks for registering, {$user->name}! An account activation link has been sent to {$user->email}.");
@@ -219,6 +227,9 @@ class AuthController extends Controller
 
         $activation->user->activate();
         $activation->delete();
+
+        // Give the user a profile
+        UserProfile::create(['user_id' => $activation->user->id]);
 
         Notification::success("Account {$activation->user->name}/{$activation->user->email} successfully activated. You are now logged in. :D");
         Auth::login($activation->user);

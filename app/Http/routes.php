@@ -11,6 +11,7 @@
 |
 */
 
+// Auth
 $r->group(['prefix' => 'auth'], function ($r) {
     // Registration
     $r->get('register', 'Auth\AuthController@getRegister');
@@ -41,7 +42,51 @@ $r->group(['prefix' => 'auth'], function ($r) {
     $r->get('{provider}/callback', 'Auth\AuthController@handleProviderCallback');
 });
 
+// Account
+$r->group(['prefix' => 'account', 'as' => 'account.'], function ($r) {
+    // Settings & logins
+    $r->get(
+        'settings',
+        ['as' => 'settings', 'uses' => 'User\AccountController@getSettings']
+    );
+    $r->post('settings', 'User\AccountController@postSettings');
+    $r->get(
+        '{provider}/disconnect',
+        ['as' => 'disconnect-login', 'uses' => 'User\AccountController@getDisconnectLogin']
+    );
+    $r->post('{provider}/disconnect', 'User\AccountController@postDisconnectLogin');
+
+    // Profile
+    $r->get('profile', 'User\AccountController@redirectToProfile');
+    $r->get(
+        'profile/edit',
+        ['as' => 'profile.edit', 'uses' => 'User\AccountController@getEditProfile']
+    );
+    $r->post('profile/edit', 'User\AccountController@postEditProfile');
+});
+
+// User
+$r->group(['prefix' => 'user', 'as' => 'user.'], function ($r) {
+    // Profiles
+    $r->get(
+        '{id}-{name}',
+        ['as' => 'profile', 'uses' => 'User\ProfileController@show']
+    );
+});
+
+// Home
 $r->get(
     '/',
     ['as' => 'home', 'uses' => 'HomeController@show']
 );
+
+// Admin
+$r->group(['prefix' => 'admin', 'namespace' => 'Admin'], function ($r) {
+    // Dashboard
+    $r->get('/', 'AdminController@getDashboard');
+
+    // Forum
+    $r->group(['prefix' => 'forum', 'namespace' => 'Forum'], function ($r) {
+        $r->resource('category', 'CategoryController');
+    });
+});

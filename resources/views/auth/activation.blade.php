@@ -5,7 +5,7 @@
 @section('content')
 <div class="row">
     <div class="col m6 offset-m3">
-        <form  role="form" method="POST" action="{{ url('auth/activate') }}">
+        <form method="POST" action="{{ url('auth/activate') }}">
             {!! csrf_field() !!}
 
             <input type="hidden" name="token" value="{{ $activation->token }}">

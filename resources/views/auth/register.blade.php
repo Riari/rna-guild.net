@@ -6,12 +6,12 @@
 @section('content')
 <div class="row">
     <div class="col s12 {{ session('pending_user_auth') ? 'm12 l8' : 'm6 l4' }} offset-l2">
-        <form  role="form" method="POST" action="{{ url('auth/register') }}">
+        <form role="form" method="POST" action="{{ url('auth/register') }}">
             {!! csrf_field() !!}
 
-            @if (Session::has('pending_user_auth'))
+            @if (session('pending_user_auth'))
                 <div class="alert success">
-                    Almost done! Just finish registration below, or if you want to associate
+                    Almost done! Just finish registration below, or if you want to associate your {{ session('pending_user_auth_provider') }} account with an existing TRN one, <a href="{{ url('auth/login') }}">log in</a> first.
                 </div>
             @endif
 
@@ -55,9 +55,9 @@
 
                 <hr>
 
-                <p><a href="{{ url('auth/facebook') }}" class="waves-effect waves-light btn-large block brand-facebook">Facebook :D</a></p>
-                <p><a href="{{ url('auth/twitter') }}" class="waves-effect waves-light btn-large block brand-twitter">Twitter :D</a></p>
-                <p><a href="{{ url('auth/google') }}" class="waves-effect waves-light btn-large block brand-google">Google :D</a></p>
+                @foreach (config('auth.login_providers') as $key => $provider)
+                    <p><a href="{{ url("auth/{$key}") }}" class="waves-effect waves-light btn-large block brand-{{ $key }}">{{ $provider }} :D</a></p>
+                @endforeach
         </div>
     @endif
 </div>

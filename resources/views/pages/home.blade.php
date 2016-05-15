@@ -1,7 +1,7 @@
 @extends('app')
 
-@section('title', 'The Rusty Nails')
-@section('subtitle', "<em>'Tis but a scratch!</em>")
+@section('title', 'Rusty Nails Adventurers')
+@section('subtitle', "<em>{$quote}</em>")
 
 @section('content')
 <div class="row">

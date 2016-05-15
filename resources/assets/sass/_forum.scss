@@ -1,0 +1,27 @@
+body.forum {
+    #category {
+        #threads {
+            td {
+                vertical-align: top;
+            }
+        }
+    }
+
+    #thread {
+        .post {
+            a.author-name {
+                font-size: 19px;
+            }
+
+            .body {
+                vertical-align: top;
+            }
+        }
+
+        tr {
+            [type="checkbox"] + label {
+                margin: 0 0 -8px 5px;
+            }
+        }
+    }
+}

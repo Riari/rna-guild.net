@@ -5,7 +5,7 @@
 @section('content')
 <div class="row">
     <div class="col s12 m6 l4 offset-l2">
-        <form  role="form" method="POST" action="{{ url('auth/login') }}">
+        <form role="form" method="POST" action="{{ url('auth/login') }}">
             {!! csrf_field() !!}
 
             <div class="row">
@@ -38,9 +38,9 @@
 
         <hr>
 
-        <p><a href="{{ url('auth/facebook') }}" class="waves-effect waves-light btn-large block brand-facebook">Facebook :D</a></p>
-        <p><a href="{{ url('auth/twitter') }}" class="waves-effect waves-light btn-large block brand-twitter">Twitter :D</a></p>
-        <p><a href="{{ url('auth/google') }}" class="waves-effect waves-light btn-large block brand-google">Google :D</a></p>
+        @foreach (config('auth.login_providers') as $key => $provider)
+            <p><a href="{{ url("auth/{$key}") }}" class="waves-effect waves-light btn-large block brand-{{ $key }}">{{ $provider }} :D</a></p>
+        @endforeach
     </div>
 </div>
 @endsection

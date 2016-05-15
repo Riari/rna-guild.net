@@ -23,13 +23,23 @@ class User extends Authenticatable
     ];
 
     /**
+     * Relationship: profile
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function profile()
+    {
+        return $this->hasOne(UserProfile::class);
+    }
+
+    /**
      * Relationship: socialite auths
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function auths()
     {
-        return $this->hasMany(UserAuth::class, 'user_id');
+        return $this->hasMany(UserAuth::class);
     }
 
     /**
@@ -50,6 +60,26 @@ class User extends Authenticatable
     public function getRoleListAttribute()
     {
         return implode(', ', $this->roles()->lists('name')->toArray());
+    }
+
+    /**
+     * Attribute: slugified name
+     *
+     * @return string
+     */
+    public function getSlugAttribute()
+    {
+        return str_slug($this->name, '-');
+    }
+
+    /**
+     * Attribute: profile URL
+     *
+     * @return string
+     */
+    public function getProfileUrlAttribute()
+    {
+        return url("user/{$this->id}-{$this->slug}");
     }
 
     /**
