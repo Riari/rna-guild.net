@@ -5,6 +5,18 @@ use Riari\Forum\Models\Category;
 class CategoryPolicy extends \Riari\Forum\Policies\CategoryPolicy
 {
     /**
+     * Permission: Create threads in category.
+     *
+     * @param  object  $user
+     * @param  Category  $category
+     * @return bool
+     */
+    public function createThreads($user, Category $category)
+    {
+        return $user->hasRole('User');
+    }
+
+    /**
      * Permission: Delete threads in category.
      *
      * @param  object  $user

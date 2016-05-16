@@ -28,9 +28,9 @@ class HomeController extends Controller
 
         return view('pages.home', [
             'quote' => $quotes[rand(0, count($quotes) - 1)],
-            'newUsers' => User::orderBy('created_at')->limit(10)->get(),
-            'newThreads' => Thread::orderBy('created_at')->limit(10)->get(),
-            'newPosts' => Post::orderBy('created_at')->limit(10)->get(),
+            'newUsers' => User::orderBy('created_at', 'desc')->limit(10)->get(),
+            'newThreads' => Thread::orderBy('created_at', 'desc')->limit(10)->get(),
+            'newPosts' => Post::orderBy('created_at', 'desc')->limit(10)->get(),
             'articles' => Article::published()->paginate()
         ]);
     }
