@@ -1,4 +1,34 @@
 body.forum {
+    tr.category {
+        &:not(.top) {
+            td:first-child {
+                position: relative;
+                padding-left: 20px;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    width: 5px;
+                    background: color('grey', 'lighten-3');
+                }
+            }
+
+            a.title {
+                font-weight: bold;
+                color: color('blue-grey', 'base');
+            }
+        }
+
+        &.top {
+            a.title {
+                font-size: 18px;
+            }
+        }
+    }
+
     #category {
         #threads {
             td {
