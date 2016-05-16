@@ -172,6 +172,9 @@ class AuthController extends Controller
         // Given them the default role
         $user->roles()->attach(Setting::get('default_role', 3));
 
+        // Give the user a profile
+        UserProfile::create(['user_id' => $user->id]);
+
         // Create an activation token
         $activation = UserActivation::createForUser($user);
 
@@ -228,9 +231,6 @@ class AuthController extends Controller
 
         $activation->user->activate();
         $activation->delete();
-
-        // Give the user a profile
-        UserProfile::create(['user_id' => $activation->user->id]);
 
         Notification::success("Account {$activation->user->name}/{$activation->user->email} successfully activated. You are now logged in. :D");
         Auth::login($activation->user);
