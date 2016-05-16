@@ -13,7 +13,7 @@ class CategoryPolicy extends \Riari\Forum\Policies\CategoryPolicy
      */
     public function createThreads($user, Category $category)
     {
-        return $user->hasRole('User');
+        return !$user->hasRole('New user');
     }
 
     /**

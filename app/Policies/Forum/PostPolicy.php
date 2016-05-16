@@ -1,5 +1,7 @@
 <?php namespace App\Policies\Forum;
 
+use Riari\Forum\Models\Post;
+
 class PostPolicy extends \Riari\Forum\Policies\PostPolicy
 {
     /**

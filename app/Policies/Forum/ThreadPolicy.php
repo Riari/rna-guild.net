@@ -1,5 +1,7 @@
 <?php namespace App\Policies\Forum;
 
+use Riari\Forum\Models\Thread;
+
 class ThreadPolicy extends \Riari\Forum\Policies\ThreadPolicy
 {
     /**
@@ -11,7 +13,7 @@ class ThreadPolicy extends \Riari\Forum\Policies\ThreadPolicy
      */
     public function deletePosts($user, Thread $thread)
     {
-        return $this->can('admin');
+        return $user->can('admin');
     }
 
     /**
@@ -23,7 +25,7 @@ class ThreadPolicy extends \Riari\Forum\Policies\ThreadPolicy
      */
     public function rename($user, Thread $thread)
     {
-        return $this->can('admin');
+        return $user->can('admin');
     }
 
     /**
@@ -35,7 +37,7 @@ class ThreadPolicy extends \Riari\Forum\Policies\ThreadPolicy
      */
     public function reply($user, Thread $thread)
     {
-        return $user->hasRole('User');
+        return !$user->hasRole('New user');
     }
 
     /**
