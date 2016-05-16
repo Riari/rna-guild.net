@@ -4,12 +4,12 @@
 
 @section ('content')
     @if (!$threads->isEmpty())
-        <table class="responsive-table bordered">
+        <table class="bordered">
             <thead>
                 <tr>
                     <th>{{ trans('forum::general.subject') }}</th>
-                    <th class="col-md-2">{{ trans('forum::general.replies') }}</th>
-                    <th class="col-md-2 right-align">{{ trans('forum::posts.last') }}</th>
+                    <th style="width:5%;" class="center-align">{{ trans('forum::general.replies') }}</th>
+                    <th style="width:15%;" class="right-align">{{ trans('forum::posts.last') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,21 +27,19 @@
                                     <span class="label label-primary">{{ trans($thread->userReadStatus) }}</span>
                                 @endif
                             </span>
-                            <p class="lead">
-                                <a href="{{ Forum::route('thread.show', $thread) }}">{{ $thread->title }}</a>
-                            </p>
+                            <a href="{{ Forum::route('thread.show', $thread) }}">{{ $thread->title }}</a>
                             <p>
                                 {{ $thread->authorName }}
                                 <span class="text-muted">(<em><a href="{{ Forum::route('category.show', $thread->category) }}">{{ $thread->category->title }}</a></em>, {{ $thread->posted }})</span>
                             </p>
                         </td>
-                        <td>
+                        <td class="center-align">
                             {{ $thread->replyCount }}
                         </td>
                         <td class="right-align">
                             {{ $thread->lastPost->authorName }}
                             <p class="text-muted">({{ $thread->lastPost->posted }})</p>
-                            <a href="{{ Forum::route('thread.show', $thread->lastPost) }}" class="waves-effect waves-light btn-large ">{{ trans('forum::posts.view') }} &raquo;</a>
+                            <a href="{{ Forum::route('thread.show', $thread->lastPost) }}">{{ trans('forum::posts.view') }} &raquo;</a>
                         </td>
                     </tr>
                 @endforeach

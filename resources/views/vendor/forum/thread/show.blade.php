@@ -23,19 +23,19 @@
 
         @can ('reply', $thread)
             <div class="row">
-                <div class="col-xs-4">
+                <div class="col s4">
                     <div class="btn-group" role="group">
                         <a href="{{ Forum::route('post.create', $thread) }}" class="waves-effect waves-light btn-large">{{ trans('forum::general.new_reply') }}</a>
                         <a href="#quick-reply" class="waves-effect waves-light btn-large">{{ trans('forum::general.quick_reply') }}</a>
                     </div>
                 </div>
-                <div class="col-xs-8 right-align">
+                <div class="col s8 right-align">
                     {!! $thread->postsPaginated->render() !!}
                 </div>
             </div>
         @endcan
 
-        <table class="responsive-table bordered {{ $thread->trashed() ? 'deleted' : '' }}">
+        <table class="bordered {{ $thread->trashed() ? 'deleted' : '' }}">
             <thead>
                 <tr>
                     <th colspan="2" class="right-align">

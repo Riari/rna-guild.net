@@ -6,7 +6,7 @@
 
         <a href="{{ Forum::route('thread.show', $thread) }}" class="btn btn-default">&laquo; {{ trans('forum::threads.view') }}</a>
 
-        <table class="responsive-table bordered">
+        <table class="bordered">
             <thead>
                 <tr>
                     <th class="col-md-2">
