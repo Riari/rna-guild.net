@@ -58,7 +58,7 @@
         <ul class="collection">
             @foreach ($newPosts as $post)
                 <li class="collection-item grey-text">
-                    Re: <a href="{{ Forum::route('post.show', $post) }}">
+                    Re: <a href="{{ Forum::route('thread.show', $post) }}">
                         {{ $post->thread->title }}
                     </a>
                     by
