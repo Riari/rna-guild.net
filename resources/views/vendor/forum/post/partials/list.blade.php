@@ -20,6 +20,10 @@
             <span class="label label-danger">{{ trans('forum::general.deleted') }}</span>
         @else
             {!! Markdown::convertToHtml($post->content) !!}
+
+            <div class="grey-text">
+                {{ $post->author->profile->signature }}
+            </div>
         @endif
     </td>
 </tr>
