@@ -1,5 +1,6 @@
 <?php namespace App\Policies\Forum;
 
+use Gate;
 use Riari\Forum\Models\Thread;
 
 class ThreadPolicy extends \Riari\Forum\Policies\ThreadPolicy
