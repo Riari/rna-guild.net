@@ -1,17 +1,10 @@
 <?php namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Notification;
 
 class AdminController extends Controller
 {
-    /**
-     * Create a new admin controller instance.
-     */
-    public function __construct()
-    {
-        $this->authorize('admin');
-    }
-
     /**
      * Show the admin dashboard.
      *
@@ -20,5 +13,36 @@ class AdminController extends Controller
     public function getDashboard()
     {
         return view('admin.dashboard');
+    }
+
+    /**
+     * Show the resource deletion page.
+     *
+     * @param  string  $model
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getDeleteResource($model, $id)
+    {
+        return view('admin.delete-resource', compact('model', 'id'));
+    }
+
+    /**
+     * Handle a resource deletion request.
+     *
+     * @param  Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postDeleteResource(Request $request)
+    {
+        $model = $request->route('model');
+        $id = $request->route('id');
+
+        $class = "\App\Models\\{$model}";
+        $resource = (new $class)->findOrFail($id);
+        $resource->delete();
+
+        Notification::success("{$model} #{$id} deleted.");
+        return redirect('admin');
     }
 }

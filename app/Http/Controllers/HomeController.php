@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\Forum\Post;
+use App\Models\Forum\Thread;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,6 +26,12 @@ class HomeController extends Controller
             "Look, that rabbit's got a vicious streak a mile wide! It's a killer!",
         ];
 
-        return view('pages.home', ['quote' => $quotes[rand(0, count($quotes) - 1)]]);
+        return view('pages.home', [
+            'quote' => $quotes[rand(0, count($quotes) - 1)],
+            'newUsers' => User::orderBy('created_at')->limit(10)->get(),
+            'newThreads' => Thread::orderBy('created_at')->limit(10)->get(),
+            'newPosts' => Post::orderBy('created_at')->limit(10)->get(),
+            'articles' => Article::published()->paginate()
+        ]);
     }
 }

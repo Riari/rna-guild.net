@@ -1,30 +1,25 @@
 body.forum {
-    tr.category {
-        &:not(.top) {
-            td:first-child {
-                position: relative;
-                padding-left: 20px;
+    #index {
+        table {
+            thead th {
+                vertical-align: bottom;
 
-                &::before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    bottom: 0;
-                    width: 5px;
-                    background: color('grey', 'lighten-3');
+                &:first-child {
+                    font-weight: normal;
+
+                    a.title {
+                        font-size: 18px;
+                    }
                 }
             }
+        }
+    }
 
+    tr.category {
+        td {
             a.title {
                 font-weight: bold;
                 color: color('blue-grey', 'base');
-            }
-        }
-
-        &.top {
-            a.title {
-                font-size: 18px;
             }
         }
     }
@@ -37,17 +32,22 @@ body.forum {
         }
     }
 
-    #thread {
-        .post {
-            a.author-name {
-                font-size: 19px;
-            }
+    .post {
+        .author-info {
+            width: 15%;
+            vertical-align: top;
 
-            .body {
-                vertical-align: top;
+            a.author-name {
+                font-size: 18px;
             }
         }
 
+        .body {
+            vertical-align: top;
+        }
+    }
+
+    #thread {
         tr {
             [type="checkbox"] + label {
                 margin: 0 0 -8px 5px;

@@ -1,21 +1,25 @@
-<div class="panel panel-default" data-actions>
-    <div class="panel-heading">
-        <span class="glyphicon glyphicon-option-vertical"></span>
-        <a href="#" data-toggle="collapse" data-target=".collapse.post-actions">{{ trans('forum::posts.actions') }}</a>
-    </div>
-    <div class="collapse post-actions">
-        <div class="panel-body">
-            <div class="form-group">
-                <label for="action">{{ trans_choice('forum::general.actions', 1) }}</label>
-                <select name="action" id="action" class="form-control">
-                    @can ('delete', $post)
-                        <option value="delete" data-confirm="true" data-method="delete">{{ trans('forum::general.delete') }}</option>
-                    @endcan
-                </select>
+<div class="row post-actions" data-actions>
+    <div class="col s12 m12 l12">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">Post Actions</span>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select name="action" id="action">
+                            @can ('delete', $post)
+                                <option value="delete" data-confirm="true" data-method="delete">{{ trans('forum::general.delete') }}</option>
+                            @endcan
+                        </select>
+                        <label>Action</label>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="panel-footer clearfix">
-            <button type="submit" class="btn btn-default pull-right">{{ trans('forum::general.proceed') }}</button>
+            <div class="card-action right-align">
+                <button type="submit" class="waves-effect waves-light btn-large">
+                    Proceed
+                </button>
+            </div>
         </div>
     </div>
 </div>

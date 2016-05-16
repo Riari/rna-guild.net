@@ -85,8 +85,21 @@ $r->group(['prefix' => 'admin', 'namespace' => 'Admin'], function ($r) {
     // Dashboard
     $r->get('/', 'AdminController@getDashboard');
 
+    // Articles
+    $r->resource('article', 'ArticleController');
+
     // Forum
     $r->group(['prefix' => 'forum', 'namespace' => 'Forum'], function ($r) {
         $r->resource('category', 'CategoryController');
     });
+
+    // Resource deletion
+    $r->get(
+        '{model}/{id}/delete',
+        ['as' => 'admin.resource.delete', 'uses' => 'AdminController@getDeleteResource']
+    );
+    $r->delete('{model}/{id}', 'AdminController@postDeleteResource');
 });
+
+// Model binding
+$r->model('article', \App\Models\Article::class);

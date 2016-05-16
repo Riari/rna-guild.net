@@ -4,14 +4,14 @@
 @section ('content')
     <div id="category">
         @if (!$category->children->isEmpty())
-            <table class="table table-category">
+            <table class="bordered">
                 <thead>
                     <tr>
                         <th>{{ trans_choice('forum::categories.category', 1) }}</th>
-                        <th class="col-md-2">{{ trans_choice('forum::threads.thread', 2) }}</th>
-                        <th class="col-md-2">{{ trans_choice('forum::posts.post', 2) }}</th>
-                        <th class="col-md-2">{{ trans('forum::threads.newest') }}</th>
-                        <th class="col-md-2">{{ trans('forum::posts.last') }}</th>
+                        <th class="center-align" style="width:10%;">{{ trans_choice('forum::threads.thread', 2) }}</th>
+                        <th class="center-align" style="width:10%;">{{ trans_choice('forum::posts.post', 2) }}</th>
+                        <th class="right-align" style="width:20%;">{{ trans('forum::threads.newest') }}</th>
+                        <th class="right-align" style="width:20%;">{{ trans('forum::posts.last') }}</th>
                     </tr>
                 </thead>
                 <tbody>

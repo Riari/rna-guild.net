@@ -1,7 +1,7 @@
 <table class="bordered">
     <thead>
         <tr>
-            <th style="width:20%">
+            <th>
                 {{ trans('forum::general.author') }}
             </th>
             <th>
@@ -10,13 +10,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr id="post-{{ $post->id }}">
-            <td>
+        <tr id="post-{{ $post->id }}" class="post">
+            <td class="author-info">
                 <a href="{{ $post->author->profileUrl }}">
                     <strong>{!! $post->authorName !!}</strong>
                 </a>
             </td>
-            <td>
+            <td class="body">
                 {!! Markdown::convertToHtml($post->content) !!}
             </td>
         </tr>

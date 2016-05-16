@@ -4,7 +4,7 @@
 
 @section ('content')
     @if (!$threads->isEmpty())
-        <table class="bordered">
+        <table class="responsive-table bordered">
             <thead>
                 <tr>
                     <th>{{ trans('forum::general.subject') }}</th>

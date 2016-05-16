@@ -9,7 +9,7 @@
 @append
 
 @section('content')
-<table class="bordered">
+<table class="responsive-table bordered">
     <thead>
         <tr>
             <th>Category</th>
@@ -28,8 +28,8 @@
                 <td>{{ $category->threads->count() }}</td>
                 <td class="right-align">
                     <a href="#">Edit</a>
-                    @if (!$category->threads()->count() && !$category->children()->count())
-                        &nbsp; <a href="#">Delete</a>
+                    @if ($category->children->isEmpty() && $category->threads->isEmpty())
+                        &nbsp; <a href="{{ route('admin.resource.delete', ['Forum\\Category', $category->id])}}">Delete</a>
                     @endif
                 </td>
             </tr>

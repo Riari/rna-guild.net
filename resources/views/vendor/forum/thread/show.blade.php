@@ -35,18 +35,13 @@
             </div>
         @endcan
 
-        <table class="bordered {{ $thread->trashed() ? 'deleted' : '' }}">
+        <table class="responsive-table bordered {{ $thread->trashed() ? 'deleted' : '' }}">
             <thead>
                 <tr>
-                    <th class="col-md-2">
-                        {{ trans('forum::general.author') }}
-                    </th>
-                    <th>
-                        {{ trans_choice('forum::posts.post', 1) }}
+                    <th colspan="2" class="right-align">
                         @can ('deletePosts', $thread)
-                            <span class="pull-right">
-                                <input type="checkbox" data-toggle-all>
-                            </span>
+                            <input type="checkbox" id="toggle-all" data-toggle-all>
+                            <label for="toggle-all">Select all replies</label>
                         @endcan
                     </th>
                 </tr>

@@ -1,5 +1,5 @@
 <tr id="post-{{ $post->id }}" class="post {{ $post->trashed() ? 'deleted' : '' }}">
-    <td>
+    <td class="author-info">
         <a href="{{ $post->author->profileUrl }}" class="author-name">{!! $post->authorName !!}</a><br>
         @include ('user.partials.rank-list', ['user' => $post->author])
     </td>
@@ -31,7 +31,7 @@
             @endcan
         @endif
     </td>
-    <td class="text-muted">
+    <td class="grey-text">
         {{ trans('forum::general.posted') }} {{ $post->posted }}
         @if ($post->hasBeenUpdated())
             | {{ trans('forum::general.last_updated') }} {{ $post->updated }}

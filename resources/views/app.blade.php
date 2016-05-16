@@ -32,9 +32,12 @@
                         <li><a href="{{ url('forum/new') }}">New & updated</a></li>
                     </ul>
                     @if (Auth::check())
-                        <ul id="admin-links" class="dropdown-content">
-                            <li><a href="{{ url('admin/forum/category') }}">Forum Categories</a></li>
-                        </ul>
+                        @can('admin')
+                            <ul id="admin-links" class="dropdown-content">
+                                <li><a href="{{ url('admin/article') }}">Articles</a></li>
+                                <li><a href="{{ url('admin/forum/category') }}">Forum Categories</a></li>
+                            </ul>
+                        @endcan
                         <ul id="user-links" class="dropdown-content">
                             <li><a href="{{ url('account/profile') }}">View profile</a></li>
                             <li><a href="{{ url('account/profile/edit') }}">Edit profile</a></li>

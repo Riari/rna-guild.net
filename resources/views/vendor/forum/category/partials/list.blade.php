@@ -4,7 +4,7 @@
             {{ $category->title }}
         </a>
         <br>
-        <span class="text-muted">{{ $category->description }}</span>
+        <span class="grey-text darken-1">{{ $category->description }}</span>
     </td>
     @if ($category->threadsEnabled)
         <td class="center-align">{{ $category->threadCount }}</td>
