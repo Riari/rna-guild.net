@@ -53,7 +53,7 @@ class AccountController extends Controller
         if ($request->has('email')) {
             $email = $request->input('email');
             Mail::send('account.emails.email-changed', compact('user', 'email'), function ($m) use ($user) {
-                $m->to($user->email, $user->name)->subject('TNA account email address changed');
+                $m->to($user->email, $user->name)->subject('RNA account email address changed');
             });
             $user->email = $email;
             Notification::success("Email address updated.");
@@ -63,7 +63,7 @@ class AccountController extends Controller
             $user->password = bcrypt($request->input('password'));
             Notification::success("Password updated.");
             Mail::send('account.emails.password-changed', compact('user'), function ($m) use ($user) {
-                $m->to($user->email, $user->name)->subject('TNA account password changed');
+                $m->to($user->email, $user->name)->subject('RNA account password changed');
             });
         }
 

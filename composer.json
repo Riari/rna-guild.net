@@ -14,7 +14,8 @@
         "riari/laravel-forum-frontend": "~1.0",
         "teamteatime/laravel-filer": "dev-master",
         "graham-campbell/markdown": "^6.1",
-        "rtconner/laravel-tagging": "~2.1"
+        "rtconner/laravel-tagging": "~2.1",
+        "maddhatter/laravel-fullcalendar": "^1.2"
     },
     "require-dev": {
     },

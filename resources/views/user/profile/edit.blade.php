@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="input-field col s12 right-align">
                     <button type="submit" class="waves-effect waves-light btn-large">
-                        Yes please
+                        Save
                     </button>
                 </div>
             </div>

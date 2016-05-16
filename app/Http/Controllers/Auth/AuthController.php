@@ -6,6 +6,7 @@ use App\Models\Setting;
 use App\Models\User;
 use App\Models\UserActivation;
 use App\Models\UserAuth;
+use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -176,7 +177,7 @@ class AuthController extends Controller
 
         // Send it with the activation email
         Mail::send('auth.emails.activation', compact('user', 'activation'), function ($m) use ($user) {
-            $m->to($user->email, $user->name)->subject('TNA account activation');
+            $m->to($user->email, $user->name)->subject('RNA account activation');
         });
 
         Notification::success("Thanks for registering, {$user->name}! An account activation link has been sent to {$user->email}.");

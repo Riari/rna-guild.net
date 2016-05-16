@@ -162,6 +162,7 @@ return [
         TeamTeaTime\Filer\FilerServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
         Conner\Tagging\Providers\TaggingServiceProvider::class,
+        MaddHatter\LaravelFullcalendar\ServiceProvider::class,
 
     ],
 
@@ -183,6 +184,7 @@ return [
         'Auth' => Illuminate\Support\Facades\Auth::class,
         'Blade' => Illuminate\Support\Facades\Blade::class,
         'Cache' => Illuminate\Support\Facades\Cache::class,
+        'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
         'Config' => Illuminate\Support\Facades\Config::class,
         'Cookie' => Illuminate\Support\Facades\Cookie::class,
         'Crypt' => Illuminate\Support\Facades\Crypt::class,

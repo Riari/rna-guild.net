@@ -19,6 +19,7 @@
     "font-awesome": "fontawesome#^4.5.0",
     "Materialize": "materialize#~0.97.5",
     "simplemde": "~1.10.1",
-    "vue": "~1.0.17"
+    "vue": "~1.0.17",
+    "fullcalendar": "^2.7.1"
   }
 }

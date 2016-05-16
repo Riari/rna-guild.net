@@ -20,6 +20,7 @@ elixir(function(mix) {
                 path('font-awesome/scss'),
                 path('Materialize/sass'),
                 path('simplemde/src/css'),
+                path('fullcalendar/dist'),
                 path('css/vendor', 'assets')
             ]
         })
@@ -29,6 +30,7 @@ elixir(function(mix) {
             path('jquery/dist/jquery.js'),
             path('Materialize/dist/js/materialize.js'),
             path('vue/dist/vue.js'),
+            path('fullcalendar/dist/fullcalendar.js'),
             path('js/vendor/editor.js', 'assets'),
             path('js/vendor/marked.js', 'assets')
         ], 'public/js/trn.js', './')

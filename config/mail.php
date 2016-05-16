@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'messenger@therustynails.cf', 'name' => 'The Rusty Nails'],
+    'from' => ['address' => 'messenger@rna-guild.net', 'name' => 'Rusty Nails Adventurers'],
 
     /*
     |--------------------------------------------------------------------------

@@ -6,7 +6,7 @@
 <table align="center" border="0" cellpadding="25" cellspacing="1" style="width:65%;">
 	<tbody>
 		<tr>
-			<td style="background:#3a3c46;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;font-size:22px;color:#fff;">The Rusty Nails</span></td>
+			<td style="background:#3a3c46;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;font-size:22px;color:#fff;">Rusty Nails Adventurers</span></td>
 		</tr>
 		<tr>
 			<td style="background:#f2f2f2;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;">
