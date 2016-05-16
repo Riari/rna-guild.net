@@ -1,42 +1,46 @@
 @extends('app')
 
+@section('body_class', 'home')
+
 @section('title', 'Rusty Nails Adventurers')
 @section('subtitle', "<em>{$quote}</em>")
 
 @section('content')
 <div class="row">
-    <div class="col s12 m3 l3">
+    <div class="col s12 m12 l3">
         <h4>Newest users</h4>
         <ul class="collection">
             @foreach ($newUsers as $user)
-                <li class="collection-item">
-                    <a href="{{ $user->profileUrl }}">
+                <li class="collection-item right-align">
+                    <a href="{{ $user->profileUrl }}" class="pull-left">
                         {{ $user->name }}
                     </a>
-                    <span class="grey-text pull-right">joined {{ $user->created_at->diffForHumans() }}</span>
+                    <span class="grey-text">joined {{ $user->created_at->diffForHumans() }}</span>
                 </li>
             @endforeach
         </ul>
     </div>
-    <div class="col s12 m6 l6">
+    <div class="col s12 m12 l6">
         @foreach ($articles as $article)
-            <h3>{{ $article->title }}</h3>
-            <span class="grey-text">
-                Published by
-                <a href="{{ $article->author->profileUrl }}">
-                    {{ $article->author->name }}
-                </a>
-                {{ $article->published_at->diffForHumans() }}
-            </span>
-            {!! Markdown::convertToHtml($article->body) !!}
-            @foreach ($article->tagNames() as $tag)
-                <div class="chip">{{ $tag }}</div>
-            @endforeach
-            <hr>
+            <div class="article">
+                <h3>{{ $article->title }}</h3>
+                <span class="grey-text">
+                    Published by
+                    <a href="{{ $article->author->profileUrl }}">
+                        {{ $article->author->name }}
+                    </a>
+                    {{ $article->published_at->diffForHumans() }}
+                </span>
+                {!! Markdown::convertToHtml($article->body) !!}
+                @foreach ($article->tagNames() as $tag)
+                    <div class="chip">{{ $tag }}</div>
+                @endforeach
+                <hr>
+            </div>
         @endforeach
         {!! $articles->render() !!}
     </div>
-    <div class="col s12 m3 l3">
+    <div class="col s12 m12 l3">
         <h4>Latest forum threads</h4>
         <ul class="collection">
             @foreach ($newThreads as $thread)
