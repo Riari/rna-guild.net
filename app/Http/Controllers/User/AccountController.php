@@ -84,7 +84,7 @@ class AccountController extends Controller
         $providers = config('auth.login_providers');
 
         if ($provider = $providers[$key]) {
-            return view('account.disconnect-login', compact('key', 'provider'));
+            return view('user.account.disconnect-login', compact('key', 'provider'));
         }
 
         return redirect('account/settings');

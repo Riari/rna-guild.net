@@ -7,13 +7,13 @@
     <div class="col s12 m6 l3">
         <h3>Rank</h3>
 
-        @foreach (Auth::user()->roles as $role)
+        @foreach ($user->roles as $role)
             <strong style="color:{{ $role->colour }}">{{ $role->name }}</strong><br>
         @endforeach
 
         <h3>Stats</h3>
 
-        <strong>Joined:</strong> {{ Auth::user()->created_at->diffForHumans() }}
+        <strong>Joined:</strong> {{ $user->created_at->diffForHumans() }}
     </div>
     <div class="col s12 m6 l9">
         <h3>About</h3>
