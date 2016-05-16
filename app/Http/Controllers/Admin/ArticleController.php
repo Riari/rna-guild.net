@@ -54,7 +54,9 @@ class ArticleController extends Controller
             'published_at' => Carbon::createFromFormat('Y-m-d\\Th:i', $request->input('published_at'))
         ] + $request->only('title', 'body'));
 
-        $article->tag($request->input('tags'));
+        if ($request->has('tags')) {
+            $article->tag($request->input('tags'));
+        }
 
         Notification::success("Article created.");
         return redirect('admin/article');
@@ -91,7 +93,9 @@ class ArticleController extends Controller
             'published_at' => Carbon::createFromFormat('Y-m-d\\Th:i', $request->input('published_at'))
         ] + $request->only('title', 'body'));
 
-        $article->retag($request->input('tags'));
+        if ($request->has('tags')) {
+            $article->retag($request->input('tags'));
+        }
 
         Notification::success("Article updated.");
         return redirect('admin/article');
