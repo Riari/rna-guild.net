@@ -21,7 +21,9 @@ class TagController extends Controller
 
         $articles = Article::published()->withAnyTag($tag)->orderBy('published_at', 'desc')->get();
 
-        $events = Auth::check() ? new Event : Event::publicOnly();
+        $events = (Auth::guest() || Auth::user()->hasRole('New user'))
+            ? Event::publicOnly()
+            : new Event;
         $events = $events->withAnyTag($tag)->get();
         $calendar = Utils::createCalendarFromEvents($events);
 
