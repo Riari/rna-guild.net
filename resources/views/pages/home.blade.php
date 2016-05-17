@@ -8,6 +8,26 @@
 @section('content')
 <div class="row">
     <div class="col s12 m12 l3">
+        <h4>Upcoming events</h4>
+        @if ($upcomingEvents->isEmpty())
+            <p class="grey-text">No events</p>
+        @else
+            <ul class="collection">
+                @foreach ($upcomingEvents as $event)
+                    <li class="collection-item right-align clearfix">
+                        <a href="{{ $event->url }}" class="pull-left">
+                            {{ $event->title }}
+                        </a>
+                        @if ($event->starts < \Carbon\Carbon::now())
+                            <span class="purple-text">Happening now!</span>
+                        @else
+                            <span class="grey-text">{{ $event->starts->diffForHumans() }}</span>
+                        @endif
+                    </li>
+                @endforeach
+            </ul>
+        @endif
+
         <h4>Newest users</h4>
         <ul class="collection">
             @foreach ($newUsers as $user)
@@ -22,21 +42,7 @@
     </div>
     <div class="col s12 m12 l6">
         @foreach ($articles as $article)
-            <div class="article">
-                <h3>{{ $article->title }}</h3>
-                <span class="grey-text">
-                    Published by
-                    <a href="{{ $article->author->profileUrl }}">
-                        {{ $article->author->name }}
-                    </a>
-                    {{ $article->published_at->diffForHumans() }}
-                </span>
-                {!! Markdown::convertToHtml($article->body) !!}
-                @foreach ($article->tagNames() as $tag)
-                    <div class="chip">{{ $tag }}</div>
-                @endforeach
-                <hr>
-            </div>
+            @include('articles.partials.list')
         @endforeach
         {!! $articles->render() !!}
     </div>

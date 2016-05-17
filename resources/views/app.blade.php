@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Rusty Nails Adventurers</title>
+    <title>Rusty Nails Adventurers - @yield('title') - @yield('subtitle')</title>
 
     <link href="{{ elixir('css/trn.css') }}" rel="stylesheet">
 </head>
@@ -17,6 +17,7 @@
                     <a href="{{ url('/') }}" class="brand-logo left">[RNA]</a>
                     <ul class="right">
                         <li><a class="dropdown-button" href="{{ url('forum') }}" data-activates="forum-links" data-beloworigin="true" data-constrainwidth="false" data-hover="true">Forum&nbsp; <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
+                        <li><a href="{{ url('events') }}">Events</a></li>
                         @if (Auth::guest())
                             <li><a href="{{ url('auth/login') }}">Login</a></li>
                             <li><a href="{{ url('auth/register') }}">Register</a></li>
@@ -35,6 +36,7 @@
                         @can('admin')
                             <ul id="admin-links" class="dropdown-content">
                                 <li><a href="{{ url('admin/article') }}">Articles</a></li>
+                                <li><a href="{{ url('admin/event') }}">Events</a></li>
                                 <li><a href="{{ url('admin/forum/category') }}">Forum Categories</a></li>
                             </ul>
                         @endcan
@@ -88,9 +90,14 @@
                 </div>
 
                 @yield('after_content')
-
-                <div class="center-align grey-text darken-2">
-                    Built by Febby ^_^
+            </div>
+            <div id="footer">
+                <div class="container">
+                    <div class="inner">
+                        Built by Lilli/Febby/Syraana. ^_^
+                        <br>
+                        Code available on <a href="https://github.com/Riari/rna-guild.net" class="blue-text">GitHub</a>. All times are UTC.
+                    </div>
                 </div>
             </div>
         </div>

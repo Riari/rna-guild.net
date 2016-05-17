@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\Article;
+use App\Models\Event;
 use App\Models\Forum\Post;
 use App\Models\Forum\Thread;
 use App\Models\User;
@@ -11,7 +13,7 @@ class HomeController extends Controller
     /**
      * Return the homepage view.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request)
@@ -26,8 +28,11 @@ class HomeController extends Controller
             "Look, that rabbit's got a vicious streak a mile wide! It's a killer!",
         ];
 
+        $events = Auth::check() ? Event::upcoming() : Event::publicOnly()->upcoming();
+
         return view('pages.home', [
             'quote' => $quotes[rand(0, count($quotes) - 1)],
+            'upcomingEvents' => $events->orderBy('ends', 'desc')->limit(5)->get(),
             'newUsers' => User::activated()->orderBy('created_at', 'desc')->limit(5)->get(),
             'newThreads' => Thread::orderBy('created_at', 'desc')->limit(5)->get(),
             'newPosts' => Post::orderBy('created_at', 'desc')->limit(5)->get(),

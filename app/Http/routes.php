@@ -80,6 +80,18 @@ $r->get(
     ['as' => 'home', 'uses' => 'HomeController@show']
 );
 
+// Events
+$r->group(['prefix' => 'events', 'as' => 'event.'], function ($r) {
+    $r->get('/', 'EventController@overview');
+    $r->get(
+        '{id}-{name}',
+        ['as' => 'view', 'uses' => 'EventController@show']
+    );
+});
+
+// Tags
+$r->get('tagged/{tag}', 'TagController@show');
+
 // Admin
 $r->group(['prefix' => 'admin', 'namespace' => 'Admin'], function ($r) {
     // Dashboard
@@ -87,6 +99,9 @@ $r->group(['prefix' => 'admin', 'namespace' => 'Admin'], function ($r) {
 
     // Articles
     $r->resource('article', 'ArticleController');
+
+    // Events
+    $r->resource('event', 'EventController');
 
     // Forum
     $r->group(['prefix' => 'forum', 'namespace' => 'Forum'], function ($r) {
@@ -103,3 +118,4 @@ $r->group(['prefix' => 'admin', 'namespace' => 'Admin'], function ($r) {
 
 // Model binding
 $r->model('article', \App\Models\Article::class);
+$r->model('event', \App\Models\Event::class);

@@ -51,7 +51,7 @@ class ArticleController extends Controller
 
         $article = Article::create([
             'user_id' => Auth::user()->id,
-            'published_at' => Carbon::createFromFormat('Y-m-d\\Th:i', $request->input('published_at'))
+            'published_at' => Carbon::createFromFormat(DT_INPUT_FORMAT, $request->input('published_at'))
         ] + $request->only('title', 'body'));
 
         if ($request->has('tags')) {
@@ -72,8 +72,8 @@ class ArticleController extends Controller
     {
         $tags = implode(',',  $article->tagNames());
         $published_at = !empty($article->published_at)
-            ? $article->published_at->format('Y-m-d\\Th:i')
-            : Carbon::now()->format('Y-m-d\\Th:i');
+            ? $article->published_at->format(DT_INPUT_FORMAT)
+            : Carbon::now()->format(DT_INPUT_FORMAT);
 
         return view('admin.article.edit', compact('article', 'tags', 'published_at'));
     }
@@ -90,7 +90,7 @@ class ArticleController extends Controller
         $this->validate($request, $this->rules);
 
         $article->update([
-            'published_at' => Carbon::createFromFormat('Y-m-d\\Th:i', $request->input('published_at'))
+            'published_at' => Carbon::createFromFormat(DT_INPUT_FORMAT, $request->input('published_at'))
         ] + $request->only('title', 'body'));
 
         if ($request->has('tags')) {

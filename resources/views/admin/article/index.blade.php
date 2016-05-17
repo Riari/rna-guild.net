@@ -16,6 +16,7 @@
 <table class="bordered">
     <thead>
         <tr>
+            <th>#</th>
             <th>Title</th>
             <th>Author</th>
             <th>Created</th>
@@ -26,6 +27,7 @@
     <tbody>
         @foreach ($articles as $article)
             <tr>
+                <td>{{ $article->id }}</td>
                 <td>{{ $article->title }}</td>
                 <td>{{ $article->author->name }}</td>
                 <td>{{ $article->created_at }}</td>

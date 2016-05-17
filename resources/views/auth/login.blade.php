@@ -23,12 +23,14 @@
 
             <div class="row">
                 <div class="input-field col s12">
-                    <a href="{{ url('auth/password/reset') }}" class="waves-effect waves-light btn-large blue-grey lighten-2">
-                        Reset password
-                    </a>
                     <button type="submit" class="waves-effect waves-light btn-large pull-right">
                         Log in
                     </button>
+                    <p>
+                        <a href="{{ url('auth/password/reset') }}" class="blue-grey-text text-lighten-2">
+                            <i class="fa fa-question-circle" aria-hidden="true"></i> Reset password
+                        </a>
+                    </p>
                 </div>
             </div>
         </form>

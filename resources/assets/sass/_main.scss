@@ -14,6 +14,16 @@ hr {
     display: block;
 }
 
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
 .brand-facebook {
     background: $brand-facebook;
 }
@@ -77,6 +87,12 @@ nav {
     margin-top: 40px;
 }
 
+.row {
+    .col.tab-content {
+        padding-top: 30px;
+    }
+}
+
 #main {
     display: flex;
     flex-flow: column;
@@ -107,7 +123,7 @@ nav {
 
         #inner {
             margin-top: -100px;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             padding: 40px;
             border-radius: 3px;
             background: #fff;
@@ -122,51 +138,30 @@ nav {
                 z-index: initial;
             }
         }
-    }
 
-    .collection {
-        i.fa {
-            &.fa-facebook {
-                color: #3b5998;
+        #footer .container {
+            position: relative;
+            text-align: center;
+
+            &:before {
+                position: absolute;
+                top: 46%;
+                left: 0;
+                right: 0;
+                display: block;
+                content: "";
+                height: 2px;
+                background: color('grey', 'lighten-2');
+                z-index: 1;
             }
 
-            &.fa-twitter {
-                color: #55acee;
-            }
-
-            &.fa-google {
-                color: #dc4e41;
-            }
-        }
-    }
-
-    a.tag {
-        display: inline-block;
-        padding: 4px 8px;
-        margin: 4px;
-        border-radius: 5px;
-        background: color('grey', 'lighten-3');
-        color: color('grey', 'darken-1');
-
-        &:hover {
-            background: color('grey', 'lighten-2');
-            color: color('grey', 'darken-2');
-        }
-    }
-
-    footer {
-        flex: 0 1 auto;
-        height: 60px;
-        min-height: 60px;
-        margin: 0;
-        color: color('grey', 'darken-1');
-        text-align: center;
-
-        a {
-            color: color('grey', 'darken-3');
-
-            &:hover {
-                color: color('grey', 'darken-4');
+            .inner {
+                position: relative;
+                display: inline-block;
+                padding: 20px;
+                background: #eee;
+                color: color('grey', 'lighten-1');
+                z-index: 2;
             }
         }
     }
