@@ -94,9 +94,7 @@
             <div id="footer">
                 <div class="container">
                     <div class="inner">
-                        Built by Lilli/Febby/Syraana. ^_^
-                        <br>
-                        Code available on <a href="https://github.com/Riari/rna-guild.net" class="blue-text">GitHub</a>. All times are UTC.
+                        Built by Febby. All times are displayed in UTC.
                     </div>
                 </div>
             </div>
