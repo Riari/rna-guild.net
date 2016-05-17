@@ -1,12 +1,12 @@
 @extends('admin.master')
 
-@section('title', $article->exists() ? 'Edit Article' : 'Create Article')
+@section('title', $article->exists ? 'Edit Article' : 'Create Article')
 
 @section('breadcrumbs')
 @parent
 <span class="breadcrumb">Articles</span>
 <span class="breadcrumb">
-    @if ($article->exists())
+    @if ($article->exists)
         Edit
     @else
         Create
@@ -17,9 +17,9 @@
 @section('content')
 <div class="row">
     <div class="col m8 offset-m2">
-        <form method="POST" action="{{ route($article->exists() ? 'admin.article.update' : 'admin.article.store', $article->id) }}">
+        <form method="POST" action="{{ route($article->exists ? 'admin.article.update' : 'admin.article.store', $article->id) }}">
             {!! csrf_field() !!}
-            @if ($article->exists())
+            @if ($article->exists)
                 {!! method_field('PATCH') !!}
             @endif
 
