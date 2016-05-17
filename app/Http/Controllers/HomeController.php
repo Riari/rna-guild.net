@@ -28,10 +28,10 @@ class HomeController extends Controller
 
         return view('pages.home', [
             'quote' => $quotes[rand(0, count($quotes) - 1)],
-            'newUsers' => User::orderBy('created_at', 'desc')->limit(5)->get(),
+            'newUsers' => User::activated()->orderBy('created_at', 'desc')->limit(5)->get(),
             'newThreads' => Thread::orderBy('created_at', 'desc')->limit(5)->get(),
             'newPosts' => Post::orderBy('created_at', 'desc')->limit(5)->get(),
-            'articles' => Article::published()->paginate()
+            'articles' => Article::published()->orderBy('published_at', 'desc')->paginate()
         ]);
     }
 }

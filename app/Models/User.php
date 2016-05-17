@@ -53,6 +53,17 @@ class User extends Authenticatable
     }
 
     /**
+     * Scope: activated
+     *
+     * @param  \Illuminate\Database\Query\Builder
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function scopeActivated($query)
+    {
+        return $query->where('activated', 1);
+    }
+
+    /**
      * Attribute: role list
      *
      * @return string
