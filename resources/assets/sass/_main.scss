@@ -60,39 +60,6 @@ img {
     max-width: 100%;
 }
 
-nav {
-    position: relative;
-    z-index: 1000;
-    background: transparentize($primary-color, 0.1);
-
-    .nav-wrapper > ul > li.active {
-        position: relative;
-
-        &::after {
-            content: "";
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            right: 0;
-            display: block;
-            height: 3px;
-            border-bottom-left-radius: 3px;
-            border-bottom-right-radius: 3px;
-            background: $link-color;
-        }
-    }
-}
-
-.editor-toolbar:not(.fullscreen) {
-    margin-top: 40px;
-}
-
-.row {
-    .col.tab-content {
-        padding-top: 30px;
-    }
-}
-
 #main {
     display: flex;
     flex-flow: column;

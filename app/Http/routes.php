@@ -84,7 +84,7 @@ $r->get(
 $r->group(['prefix' => 'events', 'as' => 'event.'], function ($r) {
     $r->get('/', 'EventController@overview');
     $r->get(
-        '{id}-{name}',
+        '{event}-{name}',
         ['as' => 'view', 'uses' => 'EventController@show']
     );
 });

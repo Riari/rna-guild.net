@@ -1,5 +1,6 @@
 <?php namespace App\Models;
 
+use App\Models\Setting;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -71,6 +72,16 @@ class User extends Authenticatable
     public function getRoleListAttribute()
     {
         return implode(', ', $this->roles()->lists('name')->toArray());
+    }
+
+    /**
+     * Attribute: determine if the user is considered to be new
+     *
+     * @return bool
+     */
+    public function getIsNewAttribute()
+    {
+        return $this->hasRole(Setting::get('new_user_role', 'New user'));
     }
 
     /**

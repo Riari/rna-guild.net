@@ -21,6 +21,7 @@ elixir(function(mix) {
                 path('Materialize/sass'),
                 path('simplemde/src/css'),
                 path('fullcalendar/dist'),
+                path('datetimepicker'),
                 path('css/vendor', 'assets')
             ]
         })
@@ -32,6 +33,7 @@ elixir(function(mix) {
             path('vue/dist/vue.js'),
             path('moment/min/moment-with-locales.js'),
             path('fullcalendar/dist/fullcalendar.js'),
+            path('datetimepicker/build/jquery.datetimepicker.full.js'),
             path('js/vendor/materialize-tags.js', 'assets'),
             path('js/vendor/editor.js', 'assets'),
             path('js/vendor/marked.js', 'assets')

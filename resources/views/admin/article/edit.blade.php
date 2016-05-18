@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="col s12">
                     <label for="published_at">Publish date & time</label>
-                    <input id="published_at" name="published_at" type="datetime-local" value="{{ !empty(old('published_at')) ? old('published_at') : $published_at }}">
+                    <input id="published_at" name="published_at" type="text" class="datetimepicker" value="{{ !empty(old('published_at')) ? old('published_at') : $published_at }}">
                 </div>
             </div>
 

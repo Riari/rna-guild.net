@@ -110,6 +110,7 @@
     }
 
     $('select').material_select();
+    $('.datetimepicker').datetimepicker();
 
     $('nav li a').not('.dropdown-button').each(function () {
         var href = this.pathname;

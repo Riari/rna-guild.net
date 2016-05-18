@@ -3,7 +3,7 @@
 use Calendar;
 use Illuminate\Support\Collection;
 
-class Utils
+class Util
 {
     /**
      * Create a Calendar with the given collection of events.

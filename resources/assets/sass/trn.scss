@@ -5,6 +5,7 @@
 @import 'font-awesome';
 @import 'fullcalendar';
 @import 'vendor/materialize-tags';
+@import 'jquery.datetimepicker';
 @import 'editor';
 
 // Material Icons
@@ -12,5 +13,6 @@
 
 // TRN
 @import 'main';
+@import 'overrides';
 @import 'alerts';
 @import 'forum';

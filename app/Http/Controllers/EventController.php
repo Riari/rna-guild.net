@@ -2,7 +2,7 @@
 
 use Auth;
 use App\Models\Event;
-use App\Utils;
+use App\Util;
 use Calendar;
 use Illuminate\Http\Request;
 
@@ -16,23 +16,28 @@ class EventController extends Controller
      */
     public function overview(Request $request)
     {
-        $calendar = Utils::createCalendarFromEvents(
-            (Auth::guest() || Auth::user()->hasRole('New user'))
+        $events = Auth::guest()
             ? Event::publicOnly()->get()
-            : Event::all()
+            : Event::all();
+
+        $calendar = Util::createCalendarFromEvents(
+            $events->filter(function ($event) {
+                return Auth::user()->can('view', $event);
+            })
         );
+
         return view('events.overview', compact('calendar'));
     }
 
     /**
      * Display an event.
      *
-     * @param  Request  $request
+     * @param  Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show(Event $event)
     {
-        $event = Event::findOrFail($request->route('id'));
+        $this->authorize('view', $event);
         return view('events.show', compact('event'));
     }
 }

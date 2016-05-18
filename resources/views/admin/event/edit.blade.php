@@ -57,11 +57,11 @@
             <div class="row">
                 <div class="col s6">
                     <label for="starts">Starts at</label>
-                    <input id="starts" name="starts" type="datetime-local" value="{{ !empty(old('starts')) ? old('starts') : $starts }}">
+                    <input id="starts" name="starts" type="text" class="datetimepicker" value="{{ !empty(old('starts')) ? old('starts') : $starts }}">
                 </div>
                 <div class="col s6">
                     <label for="ends">Ends at</label>
-                    <input id="ends" name="ends" type="datetime-local" value="{{ !empty(old('ends')) ? old('ends') : $ends }}">
+                    <input id="ends" name="ends" type="text" class="datetimepicker" value="{{ !empty(old('ends')) ? old('ends') : $ends }}">
                 </div>
             </div>
             <div class="row">

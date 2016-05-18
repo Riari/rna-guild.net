@@ -1,0 +1,81 @@
+nav {
+    position: relative;
+    z-index: 1000;
+    background: transparentize($primary-color, 0.1);
+
+    .nav-wrapper > ul > li.active {
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            display: block;
+            height: 3px;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+            background: $link-color;
+        }
+    }
+}
+
+.editor-toolbar:not(.fullscreen) {
+    margin-top: 40px;
+}
+
+.row {
+    .col.tab-content {
+        padding-top: 30px;
+    }
+}
+
+.xdsoft_datetimepicker {
+    padding: 15px;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px 0px rgba(0, 0, 0, .25);
+
+    .xdsoft_datepicker {
+        td {
+            &.xdsoft_current {
+                background: $link-color;
+                box-shadow: none;
+            }
+
+            &.xdsoft_today {
+                color: $link-color;
+            }
+
+            &:hover {
+                background: $secondary-color !important;
+            }
+        }
+    }
+
+    .xdsoft_timepicker {
+        .xdsoft_time_box {
+            border: none;
+
+            .xdsoft_time_variant .xdsoft_time {
+                &:hover {
+                    background: $secondary-color !important;
+                }
+
+                &.xdsoft_current {
+                    box-shadow: none;
+                    background: $link-color;
+                }
+            }
+
+            .xdsoft_scrollbar {
+                .xdsoft_scroller {
+                    &:hover {
+                        background: $secondary-color !important;
+                    }
+                }
+            }
+        }
+    }
+}
