@@ -14,6 +14,7 @@ use Mail;
 use Notification;
 use Session;
 use Socialite;
+use URL;
 use Validator;
 
 class AuthController extends Controller
@@ -130,9 +131,13 @@ class AuthController extends Controller
      */
     public function getLogout()
     {
-        Auth::logout();
+        if (!empty(URL::previous()) && !str_contains(URL::previous(), 'auth/')) {
+            $this->redirectAfterLogout = URL::previous();
+        }
+
         Notification::success("You are now logged out.");
-        return redirect('/');
+
+        return $this->logout();
     }
 
     /**

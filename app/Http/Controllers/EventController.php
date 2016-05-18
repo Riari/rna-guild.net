@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use Auth;
+use App\Models\Comment;
 use App\Models\Event;
 use App\Util;
 use Calendar;
@@ -40,6 +41,7 @@ class EventController extends Controller
             $this->authorize('view', $event);
         }
 
-        return view('events.show', compact('event'));
+        $commentPaginator = Comment::onModel($event)->orderBy('created_at', 'desc')->paginate();
+        return view('events.show', compact('event', 'commentPaginator'));
     }
 }

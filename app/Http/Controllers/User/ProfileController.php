@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,7 @@ class ProfileController extends Controller
     public function show($id, $name)
     {
         $user = User::findOrFail($id);
-        return view('user.profile.show', compact('user'));
+        $commentPaginator = Comment::onModel($user->profile)->orderBy('created_at', 'desc')->paginate();
+        return view('user.profile.show', compact('user', 'commentPaginator'));
     }
 }

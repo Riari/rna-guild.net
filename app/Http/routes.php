@@ -89,6 +89,12 @@ $r->group(['prefix' => 'events', 'as' => 'event.'], function ($r) {
     );
 });
 
+// Comments
+$r->post(
+    'comments/{model}/{id}',
+    ['as' => 'comment.add', 'uses' => 'CommentController@add']
+);
+
 // Tags
 $r->get('tagged/{tag}', 'TagController@show');
 

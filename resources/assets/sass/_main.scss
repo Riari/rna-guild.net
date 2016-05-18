@@ -10,6 +10,18 @@ hr {
     background: color('blue-grey', 'lighten-4');
 }
 
+h1, h2, h3, h4 {
+    color: $primary-color;
+}
+
+table {
+    margin-bottom: 30px;
+}
+
+img {
+    max-width: 100%;
+}
+
 .block {
     display: block;
 }
@@ -48,16 +60,14 @@ hr {
     color: $brand-twitter;
 }
 
-h1, h2, h3, h4 {
-    color: $primary-color;
-}
-
-table {
-    margin-bottom: 30px;
-}
-
-img {
-    max-width: 100%;
+.card {
+    .card-footer {
+        position: relative;
+        background-color: inherit;
+        border-top: 1px solid hsla(0,0%,63%,.2);
+        padding: 20px;
+        z-index: 2;
+    }
 }
 
 #main {

@@ -30,3 +30,8 @@
     </div>
 </div>
 @stop
+
+@section('after_content')
+@include('partials.add-comment', ['model' => 'Event', 'id' => $event->id])
+@include('partials.comment-list')
+@stop

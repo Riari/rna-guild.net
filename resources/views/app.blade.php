@@ -110,6 +110,7 @@
     }
 
     $('select').material_select();
+    $('.modal-trigger').leanModal();
     $('.datetimepicker').datetimepicker();
 
     $('nav li a').not('.dropdown-button').each(function () {

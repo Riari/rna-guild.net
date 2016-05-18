@@ -14,6 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         \App\Models\Event::class => \App\Policies\EventPolicy::class,
+        \App\Models\UserProfile::class => \App\Policies\UserProfilePolicy::class,
     ];
 
     /**
@@ -24,10 +25,27 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(GateContract $gate)
     {
-        foreach (get_class_methods(new \App\Policies\AdminPolicy) as $method) {
-            $gate->define($method, "App\Policies\AdminPolicy@{$method}");
+        foreach(['AdminPolicy'] as $policy) {
+            $gate = $this->defineFromClass($gate, "App\\Policies\\{$policy}");
         }
 
         $this->registerPolicies($gate);
+    }
+
+    /**
+     * Define policy methods in the given gate using the given policy class.
+     *
+     * @param  GateContract  $gate
+     * @param  string  $className
+     * @return GateContract
+     */
+    private function defineFromClass(GateContract $gate, $className)
+    {
+        $class = "\\{$className}";
+        foreach (get_class_methods(new $class) as $method) {
+            $gate->define($method, "{$className}@{$method}");
+        }
+
+        return $gate;
     }
 }

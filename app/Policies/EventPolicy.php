@@ -9,6 +9,18 @@ class EventPolicy
     use HandlesAuthorization;
 
     /**
+     * Determine if the given user can add a comment on the given event.
+     *
+     * @param  User  $user
+     * @param  Event  $event
+     * @return bool
+     */
+    public function addComment(User $user, Event $event)
+    {
+        return !$user->isNew;
+    }
+
+    /**
      * Determine if the given user can view the given event.
      *
      * @param  User  $user
