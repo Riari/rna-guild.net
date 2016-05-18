@@ -17,7 +17,8 @@ class ProfileController extends Controller
     public function show($id, $name)
     {
         $user = User::findOrFail($id);
-        $commentPaginator = Comment::onModel($user->profile)->orderBy('created_at', 'desc')->paginate();
-        return view('user.profile.show', compact('user', 'commentPaginator'));
+        return view('user.profile.show', compact('user') + [
+            'commentPaginator' => $user->profile->comments()->orderBy('created_at', 'desc')->paginate()
+        ]);
     }
 }

@@ -33,6 +33,16 @@ class Event extends Model
     }
 
     /**
+     * Relationship: comments
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    /**
      * Scope: public only
      *
      * @param  \Illuminate\Database\Query\Builder  $query

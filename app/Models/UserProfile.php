@@ -25,6 +25,16 @@ class UserProfile extends Model
     }
 
     /**
+     * Relationship: comments
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    /**
      * Attribute: Picture.
      *
      * @return \TeamTeaTime\Filer\Attachment

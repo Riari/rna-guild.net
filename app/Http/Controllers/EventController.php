@@ -41,7 +41,8 @@ class EventController extends Controller
             $this->authorize('view', $event);
         }
 
-        $commentPaginator = Comment::onModel($event)->orderBy('created_at', 'desc')->paginate();
-        return view('events.show', compact('event', 'commentPaginator'));
+        return view('events.show', compact('event') + [
+            'commentPaginator' => $event->comments()->orderBy('created_at', 'desc')->paginate()
+        ]);
     }
 }

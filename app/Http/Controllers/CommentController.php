@@ -26,7 +26,11 @@ class CommentController extends Controller
         $model = (new $class)->findOrFail($request->route('id'));
         $this->authorize('addComment', $model);
 
-        Comment::add($model, Auth::user(), $request->input('body'));
+        $comment = new Comment;
+        $comment->user_id = Auth::user()->id;
+        $comment->body = $request->input('body');
+
+        $model->comments()->save($comment);
 
         Notification::success("Comment added.");
 
