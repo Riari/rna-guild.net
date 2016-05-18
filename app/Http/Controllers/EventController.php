@@ -16,16 +16,15 @@ class EventController extends Controller
      */
     public function overview(Request $request)
     {
-        $events = Auth::guest()
-            ? Event::publicOnly()->get()
-            : Event::all();
-
-        $calendar = Util::createCalendarFromEvents(
-            $events->filter(function ($event) {
+        if (Auth::guest()) {
+            $events = Event::publicOnly()->get();
+        } else {
+            $events = Event::all()->filter(function ($event) {
                 return Auth::user()->can('view', $event);
-            })
-        );
+            });
+        }
 
+        $calendar = Util::createCalendarFromEvents($events);
         return view('events.overview', compact('calendar'));
     }
 

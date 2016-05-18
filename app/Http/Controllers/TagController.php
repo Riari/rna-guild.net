@@ -21,14 +21,15 @@ class TagController extends Controller
 
         $articles = Article::published()->withAnyTag($tag)->orderBy('published_at', 'desc')->get();
 
-        $events = Auth::guest() ? Event::publicOnly() : new Event;
-        $events = $events->withAnyTag($tag)->get();
-        $calendar = Util::createCalendarFromEvents(
-            $events->filter(function ($event) {
+        if (Auth::guest()) {
+            $events = Event::withAnyTag($tag)->publicOnly()->get();
+        } else {
+            $events = Event::withAnyTag($tag)->get()->filter(function ($event) {
                 return Auth::user()->can('view', $event);
-            })
-        );
+            });
+        }
 
+        $calendar = Util::createCalendarFromEvents($events);
         return view('tags.content-list', compact('tag', 'articles', 'events', 'calendar'));
     }
 }
