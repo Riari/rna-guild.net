@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="col s12">
                     <input type="hidden" name="all_day" value="0">
-                    <input type="checkbox" class="filled-in" id="all-day" name="all_day" {{ (old('all_day') || $event->all_day) ? 'checked' : '' }}>
+                    <input type="checkbox" class="filled-in" id="all-day" name="all_day" value="1" {{ (old('all_day') || $event->all_day) ? 'checked' : '' }}>
                     <label for="all-day">All day event</label>
                 </div>
             </div>
@@ -66,7 +66,8 @@
             </div>
             <div class="row">
                 <div class="col s12">
-                    <input type="checkbox" class="filled-in" id="public" name="public" {{ (old('public') || $event->public) ? 'checked' : '' }}>
+                    <input type="hidden" name="public" value="0">
+                    <input type="checkbox" class="filled-in" id="public" name="public" value="1" {{ (old('public') || $event->public) ? 'checked' : '' }}>
                     <label for="public">Public (visible to guests and new users)</label>
                 </div>
             </div>
