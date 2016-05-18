@@ -12,10 +12,13 @@
 <div class="row">
     <div class="col s12 m12 l4">
         <h4>When</h4>
-        <p>Starts: {{ $event->starts }} <span class="grey-text text-lighten-1">({{ $event->starts->diffForHumans() }})</span></p>
-        <p>Ends: {{ $event->ends }} <span class="grey-text text-lighten-1">({{ $event->ends->diffForHumans() }})</span></p>
         @if ($event->all_day)
-            <p>(All day event)</p>
+            <p>Starts <strong>{{ $event->startsOn() }}</strong></p>
+            <p>Ends <strong>{{ $event->endsOn() }}</strong></p>
+            <p class="grey-text">(All day)</p>
+        @else
+            <p>Starts <strong>{{ $event->startsOn() }}</strong> <span class="grey-text text-lighten-1">({{ $event->starts->diffForHumans() }})</span></p>
+            <p>Ends <strong>{{ $event->endsOn() }}</strong> <span class="grey-text text-lighten-1">({{ $event->ends->diffForHumans() }})</span></p>
         @endif
         @if ($event->location)
             <h4>Where</h4>

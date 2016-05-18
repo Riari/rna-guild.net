@@ -23,6 +23,20 @@ class Event extends Model
     protected $dates = ['starts', 'ends'];
 
     /**
+     * The format to use for formatted dates.
+     *
+     * @var string
+     */
+    const DATE_FORMAT = '%A %d %B %Y';
+
+    /**
+     * The format to use for formatted datetimes.
+     *
+     * @var string
+     */
+    const DATETIME_FORMAT = '%A %d %B %Y, %l%P';
+
+    /**
      * Relationship: user
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -72,5 +86,35 @@ class Event extends Model
     public function getUrlAttribute()
     {
         return route('event.view', ['id' => $this->id, 'title' => str_slug($this->title, '-')]);
+    }
+
+    /**
+     * Helper: formatted 'starts' datetime
+     *
+     * @return string
+     */
+    public function startsOn()
+    {
+        return $this->starts->formatLocalized($this->getFormat());
+    }
+
+    /**
+     * Helper: formatted 'ends' datetime
+     *
+     * @return string
+     */
+    public function endsOn()
+    {
+        return $this->ends->formatLocalized($this->getFormat());
+    }
+
+    /**
+     * Helper: get date(time) format to be used for this event.
+     *
+     * @return string
+     */
+    private function getFormat()
+    {
+        return $this->all_day ? self::DATE_FORMAT : self::DATETIME_FORMAT;
     }
 }

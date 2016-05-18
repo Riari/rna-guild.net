@@ -52,6 +52,7 @@
                     <input type="hidden" name="all_day" value="0">
                     <input type="checkbox" class="filled-in" id="all-day" name="all_day" value="1" {{ (old('all_day') || $event->all_day) ? 'checked' : '' }}>
                     <label for="all-day">All day event</label>
+                    <span class="grey-text">(If checked, start and end times are ignored)</span>
                 </div>
             </div>
             <div class="row">
