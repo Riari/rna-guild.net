@@ -5,6 +5,7 @@ use App\Models\Article;
 use App\Models\Event;
 use App\Models\Forum\Post;
 use App\Models\Forum\Thread;
+use App\Models\Session;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -34,6 +35,7 @@ class HomeController extends Controller
             'quote' => $quotes[rand(0, count($quotes) - 1)],
             'upcomingEvents' => $events->orderBy('ends', 'desc')->limit(5)->get(),
             'newUsers' => User::activated()->orderBy('created_at', 'desc')->limit(5)->get(),
+            'onlineUsers' => Session::authenticated()->recent()->limit(10)->get(),
             'newThreads' => Thread::orderBy('created_at', 'desc')->limit(5)->get(),
             'newPosts' => Post::orderBy('created_at', 'desc')->limit(5)->get(),
             'articles' => Article::published()->orderBy('published_at', 'desc')->paginate()

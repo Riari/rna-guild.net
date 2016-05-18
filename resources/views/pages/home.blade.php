@@ -39,6 +39,20 @@
                 </li>
             @endforeach
         </ul>
+
+        @if (!$onlineUsers->isEmpty())
+            <h4>Online users</h4>
+            <ul class="collection">
+                @foreach ($onlineUsers as $session)
+                    <li class="collection-item right-align">
+                        <a href="{{ $session->user->profileUrl }}" class="pull-left">
+                            {{ $session->user->name }}
+                        </a>
+                        <span class="grey-text">{{ $session->last_activity->diffForHumans() }}</span>
+                    </li>
+                @endforeach
+            </ul>
+        @endif
     </div>
     <div class="col s12 m12 l6">
         @foreach ($articles as $article)
