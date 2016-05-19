@@ -1,6 +1,10 @@
 <tr id="post-{{ $post->id }}" class="post {{ $post->trashed() ? 'deleted' : '' }}">
     <td class="author-info">
-        <a href="{{ $post->author->profileUrl }}" class="author-name">{!! $post->authorName !!}</a><br>
+        <a href="{{ $post->author->profile->url }}" class="author-name">
+            {!! $post->authorName !!}<br>
+            @include('partials.avatar', ['user' => $post->author])
+        </a>
+        <br>
         @include ('user.partials.rank-list', ['user' => $post->author])
     </td>
     <td class="body">

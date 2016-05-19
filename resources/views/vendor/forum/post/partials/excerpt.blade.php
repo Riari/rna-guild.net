@@ -12,7 +12,7 @@
     <tbody>
         <tr id="post-{{ $post->id }}" class="post">
             <td class="author-info">
-                <a href="{{ $post->author->profileUrl }}">
+                <a href="{{ $post->author->profile->url }}">
                     <strong>{!! $post->authorName !!}</strong>
                 </a>
             </td>

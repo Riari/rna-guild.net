@@ -35,6 +35,6 @@
 @stop
 
 @section('after_content')
-@include('partials.add-comment', ['model' => 'Event', 'id' => $event->id])
-@include('partials.comment-list')
+@include('comments.partials.add', ['model' => 'Event', 'id' => $event->id])
+@include('comments.partials.list')
 @stop

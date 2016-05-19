@@ -13,8 +13,8 @@ return [
     */
 
     'path' => [
-        'relative' => 'uploads/',
-        'absolute' => public_path() . '/uploads/'
+        'relative' => 'uploads',
+        'absolute' => storage_path('uploads'),
     ],
 
     /*

@@ -3,6 +3,9 @@
 @section('title', $user->name)
 
 @section('content')
+<div style="margin-top: -95px;" class="center-align">
+    @include('partials.avatar', ['class' => 'circular bordered'])
+</div>
 <div class="row">
     <div class="col s12 m6 l3">
         <h3>Rank</h3>

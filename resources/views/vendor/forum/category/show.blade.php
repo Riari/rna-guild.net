@@ -92,7 +92,7 @@
                                         {{ $thread->replyCount }}
                                     </td>
                                     <td class="right-align">
-                                        <a href="{{ $thread->lastPost->author->profileUrl }}">
+                                        <a href="{{ $thread->lastPost->author->profile->url }}">
                                             <strong>{{ $thread->lastPost->authorName }}</strong>
                                         </a>
                                         <br>

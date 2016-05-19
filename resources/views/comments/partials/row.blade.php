@@ -18,7 +18,11 @@
                         </form>
                     @endcan
                 </div>
-                by <a href="{{ $comment->user->profileUrl }}">{{ $comment->user->name }}</a> {{ $comment->created_at->diffForHumans() }}
+                <a href="{{ $comment->user->profile->url }}">
+                    @include('partials.avatar', ['user' => $comment->user, 'class' => 'tiny circular'])
+                    {{ $comment->user->name }}
+                </a>
+                {{ $comment->created_at->diffForHumans() }}
                 @if ($comment->created_at != $comment->updated_at)
                     (edited {{ $comment->updated_at->diffForHumans() }})
                 @endif

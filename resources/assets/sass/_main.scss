@@ -22,6 +22,32 @@ img {
     max-width: 100%;
 }
 
+form.inline {
+    display: inline-block;
+}
+
+img.avatar {
+    max-width: 150px;
+    border-radius: 3px;
+    vertical-align: middle;
+
+    &.small {
+        width: 46px;
+    }
+
+    &.tiny {
+        width: 26px;
+    }
+
+    &.circular {
+        border-radius: 100%;
+    }
+
+    &.bordered {
+        border: 5px solid transparentize($primary-color, 0.8);
+    }
+}
+
 .block {
     display: block;
 }
@@ -68,10 +94,6 @@ img {
         padding: 20px;
         z-index: 2;
     }
-}
-
-form.inline {
-    display: inline-block;
 }
 
 .btn-link {

@@ -25,7 +25,12 @@
                             @can('admin')
                                 <li><a class="dropdown-button" href="{{ url('admin') }}" data-activates="admin-links" data-beloworigin="true" data-constrainwidth="false" data-hover="true">Admin&nbsp; <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
                             @endcan
-                            <li><a class="dropdown-button" href="#!" data-activates="user-links" data-beloworigin="true" data-constrainwidth="false" data-hover="true">Hello, <strong>{{ Auth::user()->name }}</strong>!&nbsp; <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
+                            <li>
+                                <a class="dropdown-button" href="#!" data-activates="user-links" data-beloworigin="true" data-constrainwidth="false" data-hover="true">
+                                    @include('partials.avatar', ['user' => Auth::user(), 'class' => 'tiny circular'])
+                                    &nbsp;Hello, <strong>{{ Auth::user()->name }}</strong>!&nbsp; <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </a>
+                            </li>
                         @endif
                     </ul>
                     <ul id="forum-links" class="dropdown-content">
@@ -76,7 +81,7 @@
 
                     {!! Notification::showAll() !!}
 
-                    @if (count($errors) > 0)
+                    @if (isset($errors) && count($errors) > 0)
                         <div class="alert error">
                             <ul>
                                 @foreach ($errors->all() as $error)

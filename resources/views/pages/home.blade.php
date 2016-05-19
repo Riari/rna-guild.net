@@ -32,7 +32,7 @@
         <ul class="collection">
             @foreach ($newUsers as $user)
                 <li class="collection-item right-align">
-                    <a href="{{ $user->profileUrl }}" class="pull-left">
+                    <a href="{{ $user->profile->url }}" class="pull-left">
                         {{ $user->name }}
                     </a>
                     <span class="grey-text">joined {{ $user->created_at->diffForHumans() }}</span>
@@ -45,7 +45,7 @@
             <ul class="collection">
                 @foreach ($onlineUsers as $session)
                     <li class="collection-item right-align">
-                        <a href="{{ $session->user->profileUrl }}" class="pull-left">
+                        <a href="{{ $session->user->profile->url }}" class="pull-left">
                             {{ $session->user->name }}
                         </a>
                         <span class="grey-text">{{ $session->last_activity->diffForHumans() }}</span>
@@ -69,7 +69,7 @@
                         {{ $thread->title }}
                     </a>
                     by
-                    <a href="{{ $thread->author->profileUrl }}">
+                    <a href="{{ $thread->author->profile->url }}">
                         {{ $thread->author->name }}
                     </a>
                     <br>
@@ -86,7 +86,7 @@
                         {{ $post->thread->title }}
                     </a>
                     by
-                    <a href="{{ $post->author->profileUrl }}">
+                    <a href="{{ $post->author->profile->url }}">
                         {{ $post->author->name }}
                     </a>
                     <br>

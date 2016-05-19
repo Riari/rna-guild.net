@@ -5,9 +5,23 @@
 @section('content')
 <div class="row">
     <div class="col m6 offset-m3">
-        <form method="POST" action="{{ url('account/profile/edit') }}">
+        <form method="POST" action="{{ url('account/profile/edit') }}" enctype="multipart/form-data">
             {!! csrf_field() !!}
 
+            <div class="row">
+                <div class="file-field input-field col s12">
+                    <div class="pull-right" style="margin-left:5px;">
+                        @include('partials.avatar', ['class' => 'small'])
+                    </div>
+                    <div class="btn">
+                        <span>Choose avatar</span>
+                        <input type="file" name="avatar">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="input-field col s12">
                     <label for="about">About</label>

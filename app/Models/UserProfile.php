@@ -1,5 +1,6 @@
 <?php namespace App\Models;
 
+use Cache;
 use Illuminate\Database\Eloquent\Model;
 use TeamTeaTime\Filer\AttachableTrait as Attachable;
 use Slynova\Commentable\Traits\Commentable;
@@ -33,52 +34,36 @@ class UserProfile extends Model
     }
 
     /**
-     * Attribute: Picture.
+     * Attribute: avatar.
      *
      * @return \TeamTeaTime\Filer\Attachment
      */
-    public function getPictureAttribute()
+    public function getAvatarAttribute()
     {
-        return $this->attachments()->key('picture')->first();
+        return Cache::remember("user_{$this->user->id}_avatar", 5, function () {
+            return $this->attachments()->key('avatar')->first();
+        });
     }
 
     /**
-     * Attribute: Backdrop.
-     *
-     * @return \TeamTeaTime\Filer\Attachment
-     */
-    public function getBackdropAttribute()
-    {
-        return $this->attachments()->key('backdrop')->first();
-    }
-
-    /**
-     * Attribute: Picture URL.
+     * Attribute: avatar URL.
      *
      * @return string
      */
-    public function getPictureURLAttribute()
+    public function getAvatarUrlAttribute()
     {
-        return !empty($this->picture->url) ? "/{$this->picture->url}" : config('user.default_picture_path');
+        return (is_null($this->avatar))
+            ? config('user.default_avatar_path')
+            : $this->avatar->getUrl();
     }
 
     /**
-     * Attribute: Backdrop URL.
+     * Attribute: URL.
      *
      * @return string
      */
-    public function getBackdropURLAttribute()
+    public function getUrlAttribute()
     {
-        return !empty($this->backdrop->url) ? "/{$this->backdrop->url}" : config('user.default_backdrop_path');
-    }
-
-    /**
-     * Attribute: Route.
-     *
-     * @return string
-     */
-    public function getRouteAttribute()
-    {
-        return route('user.profile', ['username' => strtolower($this->user->username)]);
+        return route('user.profile', ['id' => $this->user->id, 'name' => str_slug($this->user->name)]);
     }
 }

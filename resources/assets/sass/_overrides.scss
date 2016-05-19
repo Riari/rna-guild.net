@@ -3,6 +3,10 @@ nav {
     z-index: 1000;
     background: transparentize($primary-color, 0.1);
 
+    .avatar.tiny {
+        margin-top: -2px;
+    }
+
     .nav-wrapper > ul > li.active {
         position: relative;
 

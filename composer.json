@@ -16,7 +16,9 @@
         "graham-campbell/markdown": "^6.1",
         "rtconner/laravel-tagging": "~2.1",
         "maddhatter/laravel-fullcalendar": "^1.2",
-        "slynova/laravel-commentable": "^2.0"
+        "slynova/laravel-commentable": "^2.0",
+        "intervention/image": "^2.3",
+        "barryvdh/laravel-debugbar": "^2.2"
     },
     "require-dev": {
     },

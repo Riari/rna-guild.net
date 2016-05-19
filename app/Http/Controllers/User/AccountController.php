@@ -6,6 +6,7 @@ use Auth;
 use Hash;
 use Illuminate\Http\Request;
 use Mail;
+use Image;
 use Notification;
 
 class AccountController extends Controller
@@ -142,8 +143,25 @@ class AccountController extends Controller
      */
     public function postEditProfile(Request $request)
     {
+        $config = config('image.avatars');
+
+        $this->validate($request, [
+            'avatar' => "mimes:jpeg,gif,png|max:{$config['max_size']}"
+        ]);
+
         $profile = $request->user()->profile;
         $profile->update($request->only('about', 'signature'));
+
+        if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
+            $file = $request->file('avatar');
+            $destination = config('filer.path.absolute');
+            $filename = 'avatars/' . Auth::id() . '.' . $file->guessExtension();
+            Image::make($request->file('avatar'))
+                ->resize($config['dimensions'][0], $config['dimensions'][1])
+                ->save("{$destination}/{$filename}");
+
+            $profile->attach($filename, ['key' => 'avatar']);
+        }
 
         Notification::success("Profile updated.");
         return redirect('account/profile/edit');
