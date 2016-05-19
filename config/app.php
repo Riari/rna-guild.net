@@ -163,6 +163,7 @@ return [
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
         Conner\Tagging\Providers\TaggingServiceProvider::class,
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
+        Slynova\Commentable\ServiceProvider::class,
 
     ],
 

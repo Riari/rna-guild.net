@@ -21,6 +21,7 @@
     "simplemde": "~1.10.1",
     "vue": "~1.0.17",
     "fullcalendar": "^2.7.1",
-    "datetimepicker": "^2.5.3"
+    "datetimepicker": "^2.5.3",
+    "sweetalert2": "^3.0.1"
   }
 }

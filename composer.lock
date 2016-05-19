@@ -4,9 +4,64 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cc1e6b2d763cb759588e2f20f3f7faa6",
-    "content-hash": "73f7b44dc679ab1525dd0c1fbda33c3f",
+    "hash": "ce5d251c431038ece988862d5d0b9f68",
+    "content-hash": "357b58076be82ad051a5cdf14ec05255",
     "packages": [
+        {
+            "name": "baum/baum",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/etrepat/baum.git",
+                "reference": "9290bed862d329aaaef666a71e0a2734afc28286"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/etrepat/baum/zipball/9290bed862d329aaaef666a71e0a2734afc28286",
+                "reference": "9290bed862d329aaaef666a71e0a2734afc28286",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "5.*",
+                "illuminate/database": "5.*",
+                "illuminate/events": "5.*",
+                "illuminate/filesystem": "5.*",
+                "illuminate/support": "5.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "d11wtq/boris": "~1.0.10",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Baum": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Estanislau Trepat",
+                    "email": "estanis@etrepat.com",
+                    "homepage": "http://etrepat.com"
+                }
+            ],
+            "description": "Baum is an implementation of the Nested Set pattern for Eloquent models.",
+            "keywords": [
+                "Laravel 4",
+                "database",
+                "eloquent",
+                "laravel",
+                "laravel 5",
+                "nested set"
+            ],
+            "time": "2015-03-04 12:07:54"
+        },
         {
             "name": "classpreloader/classpreloader",
             "version": "3.0.0",
@@ -2138,6 +2193,52 @@
                 "tags"
             ],
             "time": "2016-04-07 05:36:25"
+        },
+        {
+            "name": "slynova/laravel-commentable",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Slynova-Org/laravel-commentable.git",
+                "reference": "5ced0a9ffd39dd8766152433a1a5639b0c2c591d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Slynova-Org/laravel-commentable/zipball/5ced0a9ffd39dd8766152433a1a5639b0c2c591d",
+                "reference": "5ced0a9ffd39dd8766152433a1a5639b0c2c591d",
+                "shasum": ""
+            },
+            "require": {
+                "baum/baum": "~1.1",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Slynova\\Commentable\\": "src/Commentable"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Romain Lanz",
+                    "email": "romain.lanz@slynova.ch",
+                    "homepage": "https://github.com/RomainLanz",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Polymorphic threaded comments for Laravel",
+            "keywords": [
+                "comment",
+                "commentable",
+                "laravel",
+                "nested set",
+                "threaded"
+            ],
+            "time": "2016-01-13 08:43:06"
         },
         {
             "name": "swiftmailer/swiftmailer",

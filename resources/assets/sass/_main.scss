@@ -70,6 +70,30 @@ img {
     }
 }
 
+form.inline {
+    display: inline-block;
+}
+
+.btn-link {
+    display: inline;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    background: none;
+    letter-spacing: 0;
+    line-height: 1.5;
+    color: $link-color;
+    text-transform: none;
+    vertical-align: bottom;
+
+    &:hover, &:focus {
+        box-shadow: none;
+        background: none;
+        color: $link-color;
+    }
+}
+
 #main {
     display: flex;
     flex-flow: column;

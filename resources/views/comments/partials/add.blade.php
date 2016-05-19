@@ -9,7 +9,7 @@
 
             <div class="row">
                 <div class="col s12 m8 l8 offset-m2 offset-l2">
-                    <form method="POST" action="{{ route('comment.add', compact('model', 'id')) }}">
+                    <form method="POST" action="{{ route('comment.store', compact('model', 'id')) }}">
                         {!! csrf_field() !!}
 
                         <div class="row">

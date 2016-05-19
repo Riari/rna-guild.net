@@ -7,7 +7,7 @@
 
     <title>Rusty Nails Adventurers - @yield('title') - @yield('subtitle')</title>
 
-    <link href="{{ elixir('css/trn.css') }}" rel="stylesheet">
+    <link href="{{ elixir('css/rna.css') }}" rel="stylesheet">
 </head>
 <body class="@yield('body_class')">
     <div id="top-bar" class="navbar-fixed">
@@ -101,33 +101,7 @@
         </div>
     </div>
 
-    <script src="{{ elixir('js/trn.js') }}"></script>
-
-    <script>
-    if ($('textarea').length) {
-        var editor = new Editor();
-        editor.render();
-    }
-
-    $('select').material_select();
-    $('.modal-trigger').leanModal();
-    $('.datetimepicker').datetimepicker();
-
-    $('nav li a').not('.dropdown-button').each(function () {
-        var href = this.pathname;
-        if (href === window.location.pathname) {
-            $(this).parent('li').addClass('active');
-        }
-    });
-
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-77914915-1', 'auto');
-    ga('send', 'pageview');
-    </script>
+    <script src="{{ elixir('js/rna.js') }}"></script>
     @yield('bottom')
 </body>
 </html>

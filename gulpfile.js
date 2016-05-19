@@ -15,11 +15,12 @@ elixir.config.sourcemaps = false;
 elixir(function(mix) {
     mix
         // Stylesheets
-        .sass('trn.scss', 'public/css/', {
+        .sass('rna.scss', 'public/css/', {
             includePaths: [
                 path('font-awesome/scss'),
                 path('Materialize/sass'),
                 path('simplemde/src/css'),
+                path('sweetalert2/src'),
                 path('fullcalendar/dist'),
                 path('datetimepicker'),
                 path('css/vendor', 'assets')
@@ -31,14 +32,16 @@ elixir(function(mix) {
             path('jquery/dist/jquery.js'),
             path('Materialize/dist/js/materialize.js'),
             path('vue/dist/vue.js'),
+            path('sweetalert2/dist/sweetalert2.min.js'),
             path('moment/min/moment-with-locales.js'),
             path('fullcalendar/dist/fullcalendar.js'),
             path('datetimepicker/build/jquery.datetimepicker.full.js'),
             path('js/vendor/materialize-tags.js', 'assets'),
             path('js/vendor/editor.js', 'assets'),
-            path('js/vendor/marked.js', 'assets')
-        ], 'public/js/trn.js', './')
+            path('js/vendor/marked.js', 'assets'),
+            path('js/rna.js', 'assets')
+        ], 'public/js/rna.js', './')
 
         // Versioning
-        .version(['js/trn.js', 'css/trn.css']);
+        .version(['js/rna.js', 'css/rna.css']);
 });

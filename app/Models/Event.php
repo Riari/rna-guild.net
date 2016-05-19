@@ -3,10 +3,11 @@
 use Carbon\Carbon;
 use Conner\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
+use Slynova\Commentable\Traits\Commentable;
 
 class Event extends Model
 {
-    use Taggable;
+    use Taggable, Commentable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +22,13 @@ class Event extends Model
      * @var array
      */
     protected $dates = ['starts', 'ends'];
+
+    /**
+     * User-friendly model name.
+     *
+     * @return string
+     */
+    public $friendlyName = 'Event';
 
     /**
      * The format to use for formatted dates.
@@ -44,16 +52,6 @@ class Event extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Relationship: comments
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
-     */
-    public function comments()
-    {
-        return $this->morphMany(Comment::class, 'commentable');
     }
 
     /**

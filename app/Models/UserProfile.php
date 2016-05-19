@@ -2,10 +2,11 @@
 
 use Illuminate\Database\Eloquent\Model;
 use TeamTeaTime\Filer\AttachableTrait as Attachable;
+use Slynova\Commentable\Traits\Commentable;
 
 class UserProfile extends Model
 {
-    use Attachable;
+    use Attachable, Commentable;
 
     /**
      * The attributes that are mass assignable.
@@ -15,6 +16,13 @@ class UserProfile extends Model
     protected $fillable = ['user_id', 'about', 'signature'];
 
     /**
+     * User-friendly model name.
+     *
+     * @return string
+     */
+    public $friendlyName = 'User Profile';
+
+    /**
      * Relationship: User.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -22,16 +30,6 @@ class UserProfile extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Relationship: comments
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
-     */
-    public function comments()
-    {
-        return $this->morphMany(Comment::class, 'commentable');
     }
 
     /**

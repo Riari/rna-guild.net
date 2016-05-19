@@ -90,10 +90,24 @@ $r->group(['prefix' => 'events', 'as' => 'event.'], function ($r) {
 });
 
 // Comments
-$r->post(
-    'comments/{model}/{id}',
-    ['as' => 'comment.add', 'uses' => 'CommentController@add']
-);
+$r->group(['prefix' => 'comments', 'as' => 'comment.'], function ($r) {
+    $r->post(
+        '{model}/{id}',
+        ['as' => 'store', 'uses' => 'CommentController@store']
+    );
+    $r->get(
+        '{comment}/edit',
+        ['as' => 'edit', 'uses' => 'CommentController@edit']
+    );
+    $r->patch(
+        '{comment}',
+        ['as' => 'update', 'uses' => 'CommentController@update']
+    );
+    $r->delete(
+        '{comment}',
+        ['as' => 'delete', 'uses' => 'CommentController@delete']
+    );
+});
 
 // Tags
 $r->get('tagged/{tag}', 'TagController@show');
@@ -124,4 +138,5 @@ $r->group(['prefix' => 'admin', 'namespace' => 'Admin'], function ($r) {
 
 // Model binding
 $r->model('article', \App\Models\Article::class);
+$r->model('comment', \Slynova\Commentable\Models\Comment::class);
 $r->model('event', \App\Models\Event::class);
