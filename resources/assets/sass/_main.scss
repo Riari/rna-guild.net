@@ -48,6 +48,12 @@ img.avatar {
     }
 }
 
+.profile-avatar-container {
+    position: relative;
+    margin-bottom: -95px;
+    z-index: 100;
+}
+
 .block {
     display: block;
 }

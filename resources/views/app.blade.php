@@ -62,6 +62,7 @@
             <div class="container">
                 <h1>@yield('title')</h1>
                 <p>@yield('subtitle')</p>
+                @yield('before_content')
             </div>
         </div>
         <div id="content">

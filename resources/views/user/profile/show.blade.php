@@ -2,10 +2,13 @@
 
 @section('title', $user->name)
 
-@section('content')
-<div style="margin-top: -95px;" class="center-align">
+@section('before_content')
+<div class="profile-avatar-container center-align">
     @include('partials.avatar', ['class' => 'circular bordered'])
 </div>
+@stop
+
+@section('content')
 <div class="row">
     <div class="col s12 m6 l3">
         <h3>Rank</h3>
