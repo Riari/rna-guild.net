@@ -1,9 +1,9 @@
-@extends('emails.base')
+@extends('email.base')
 
 @section('body')
 <p>Hello {{ $user->name }},</p>
 
-<p>The email address on your TNA site account has been changed to <strong>{{ $email }}</strong>. If you didn't do this, contact an officer ASAP.</p>
+<p>The email address on your RNA site account has been changed to <strong>{{ $email }}</strong>. If you didn't do this, contact an officer ASAP.</p>
 
 <p>
     Sincerely,<br>

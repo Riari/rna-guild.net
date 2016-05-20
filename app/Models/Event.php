@@ -1,5 +1,6 @@
 <?php namespace App\Models;
 
+use App\Models\Traits\HasOwner;
 use Carbon\Carbon;
 use Conner\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
@@ -7,7 +8,7 @@ use Slynova\Commentable\Traits\Commentable;
 
 class Event extends Model
 {
-    use Taggable, Commentable;
+    use Commentable, HasOwner, Taggable;
 
     /**
      * The attributes that are mass assignable.
@@ -83,7 +84,7 @@ class Event extends Model
      */
     public function getUrlAttribute()
     {
-        return route('event.view', ['id' => $this->id, 'title' => str_slug($this->title, '-')]);
+        return route('event.show', ['id' => $this->id, 'title' => str_slug($this->title, '-')]);
     }
 
     /**

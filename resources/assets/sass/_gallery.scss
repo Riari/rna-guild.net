@@ -1,0 +1,24 @@
+body.gallery {
+    .album {
+        a {
+            .title {
+                font-size: 1.8rem;
+            }
+            img {
+                border-radius: 3px;
+                opacity: 0.9;
+            }
+
+            &:hover {
+                img {
+                    opacity: 1.0;
+                }
+            }
+        }
+
+        &.multiple-images img {
+            margin-bottom: 12px;
+            box-shadow: 6px 6px 0 0 #aaa, 12px 12px 0 0 #ddd;
+        }
+    }
+}

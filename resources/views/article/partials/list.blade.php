@@ -2,8 +2,8 @@
     <h3>{{ $article->title }}</h3>
     <span class="grey-text">
         Published by
-        <a href="{{ $article->author->profile->url }}">
-            {{ $article->author->name }}
+        <a href="{{ $article->user->profile->url }}">
+            {{ $article->user->name }}
         </a>
         {{ $article->published_at->diffForHumans() }}
     </span>

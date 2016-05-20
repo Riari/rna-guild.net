@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "52f78d5babdad6bf42ceefcd7e5e8794",
-    "content-hash": "4d83d1b4f208c1652ce53bf37ad6f8de",
+    "hash": "94347ec5963a7fcfde0cf62a0dbb9f23",
+    "content-hash": "064e0a0f12a8de521e5c415aaf59be06",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -1106,6 +1106,59 @@
                 "watermark"
             ],
             "time": "2016-04-26 14:08:40"
+        },
+        {
+            "name": "intervention/imagecache",
+            "version": "2.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Intervention/imagecache.git",
+                "reference": "7936b90e695daee1aafbd25221815352ef97bcbc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Intervention/imagecache/zipball/7936b90e695daee1aafbd25221815352ef97bcbc",
+                "reference": "7936b90e695daee1aafbd25221815352ef97bcbc",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": "~4|~5",
+                "illuminate/filesystem": "~4|~5",
+                "intervention/image": "dev-master|~2,>=2.2.0",
+                "jeremeamia/superclosure": "~1|~2",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.2",
+                "phpunit/phpunit": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Intervention\\Image\\": "src/Intervention/Image"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Vogel",
+                    "email": "oliver@olivervogel.net",
+                    "homepage": "http://olivervogel.net/"
+                }
+            ],
+            "description": "Caching extension for the Intervention Image Class",
+            "homepage": "http://image.intervention.io",
+            "keywords": [
+                "cache",
+                "gd",
+                "image",
+                "imagick",
+                "laravel"
+            ],
+            "time": "2015-09-22 15:22:47"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -3255,12 +3308,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Team-Tea-Time/laravel-filer.git",
-                "reference": "507bdd21a96fb491d98ab03bd6e219a917944272"
+                "reference": "ccadc7a68c386b72987dff0706296cb8e8c60306"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Team-Tea-Time/laravel-filer/zipball/507bdd21a96fb491d98ab03bd6e219a917944272",
-                "reference": "507bdd21a96fb491d98ab03bd6e219a917944272",
+                "url": "https://api.github.com/repos/Team-Tea-Time/laravel-filer/zipball/ccadc7a68c386b72987dff0706296cb8e8c60306",
+                "reference": "ccadc7a68c386b72987dff0706296cb8e8c60306",
                 "shasum": ""
             },
             "require": {
@@ -3293,7 +3346,7 @@
                 "laravel",
                 "laravel-5"
             ],
-            "time": "2016-05-19 15:16:34"
+            "time": "2016-05-20 15:47:57"
         },
         {
             "name": "vlucas/phpdotenv",

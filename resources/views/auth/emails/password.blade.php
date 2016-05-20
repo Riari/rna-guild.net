@@ -1,9 +1,9 @@
-@extends('emails.base')
+@extends('email.base')
 
 @section('body')
 <p>Hello,</p>
 
-<p>You or someone you know has requested a password reset for the TRN site account associated with this email address. You can follow the link below to change the password.</p>
+<p>A password reset request has been made for the RNA site account associated with this email address. If this was you, you can follow the link below to change the password.</p>
 
 <p><a href="{{ $link = url('auth/password/reset', $token).'?email='.urlencode($user->getEmailForPasswordReset()) }}"> {{ $link }} </a></p>
 

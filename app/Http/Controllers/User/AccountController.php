@@ -27,7 +27,7 @@ class AccountController extends Controller
      */
     public function getSettings(Request $request)
     {
-        $auths = UserAuth::forUser(Auth::user())->get();
+        $auths = UserAuth::byUser(Auth::user())->get();
         return view('user.account.settings', compact('auths'));
     }
 
@@ -103,7 +103,7 @@ class AccountController extends Controller
         $providers = config('auth.login_providers');
 
         if ($provider = $providers[$key]) {
-            $auth = UserAuth::forUser(Auth::user())->forProvider($key)->delete();
+            $auth = UserAuth::byUser(Auth::user())->forProvider($key)->delete();
             Notification::success("Your {$provider} login has been disconnected.");
         }
 

@@ -56,7 +56,7 @@
     </div>
     <div class="col s12 m12 l6">
         @foreach ($articles as $article)
-            @include('articles.partials.list')
+            @include('article.partials.list')
         @endforeach
         {!! $articles->render() !!}
     </div>

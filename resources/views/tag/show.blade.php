@@ -16,7 +16,7 @@
             <p class="grey-text center-align">No articles tagged <em>{{ $tag }}</em></p>
         @else
             @foreach ($articles as $article)
-                @include('articles.partials.list')
+                @include('article.partials.list')
             @endforeach
         @endif
     </div>

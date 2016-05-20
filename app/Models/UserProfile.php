@@ -1,13 +1,14 @@
 <?php namespace App\Models;
 
+use App\Models\Traits\HasOwner;
 use Cache;
 use Illuminate\Database\Eloquent\Model;
-use TeamTeaTime\Filer\AttachableTrait as Attachable;
+use TeamTeaTime\Filer\HasAttachments;
 use Slynova\Commentable\Traits\Commentable;
 
 class UserProfile extends Model
 {
-    use Attachable, Commentable;
+    use Commentable, HasAttachments, HasOwner;
 
     /**
      * The attributes that are mass assignable.
@@ -24,16 +25,6 @@ class UserProfile extends Model
     public $friendlyName = 'User Profile';
 
     /**
-     * Relationship: User.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
      * Attribute: avatar.
      *
      * @return \TeamTeaTime\Filer\Attachment
@@ -41,7 +32,7 @@ class UserProfile extends Model
     public function getAvatarAttribute()
     {
         return Cache::remember("user_{$this->user->id}_avatar", 5, function () {
-            return $this->attachments()->key('avatar')->first();
+            return $this->findAttachmentByKey('avatar');
         });
     }
 

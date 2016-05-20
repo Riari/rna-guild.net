@@ -1,4 +1,4 @@
-@extends('emails.base')
+@extends('email.base')
 
 @section('body')
 <p>Hello {{ $activation->user->name }},</p>

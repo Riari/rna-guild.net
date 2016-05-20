@@ -45,7 +45,7 @@ class CommentController extends Controller
     public function edit(Comment $comment)
     {
         $this->authorize($comment);
-        return view('comments.edit', compact('comment'));
+        return view('comment.edit', compact('comment'));
     }
 
     /**

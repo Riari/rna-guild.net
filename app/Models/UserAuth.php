@@ -1,40 +1,19 @@
 <?php namespace App\Models;
 
+use App\Models\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Socialite\Contracts\User as SocialiteUser;
 
 class UserAuth extends Model
 {
+    use HasOwner;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'user_id', 'provider', 'provider_user_id', 'provider_user_email', 'token',
-    ];
-
-    /**
-     * Relationship: user
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    /**
-     * Scope: for user
-     *
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @param  User  $user
-     * @return \Illuminate\Database\Query\Builder
-     */
-    public function scopeForUser($query, User $user)
-    {
-        return $query->where('user_id', $user->id);
-    }
+    protected $fillable = ['user_id', 'provider', 'provider_user_id', 'provider_user_email', 'token'];
 
     /**
      * Scope: for provider

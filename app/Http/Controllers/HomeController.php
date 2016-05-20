@@ -31,7 +31,7 @@ class HomeController extends Controller
 
         $events = Auth::check() ? Event::upcoming() : Event::publicOnly()->upcoming();
 
-        return view('pages.home', [
+        return view('page.home', [
             'quote' => $quotes[rand(0, count($quotes) - 1)],
             'upcomingEvents' => $events->orderBy('ends', 'desc')->limit(5)->get(),
             'newUsers' => User::activated()->orderBy('created_at', 'desc')->limit(5)->get(),

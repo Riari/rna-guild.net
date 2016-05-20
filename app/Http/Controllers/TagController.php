@@ -30,6 +30,6 @@ class TagController extends Controller
         }
 
         $calendar = Util::createCalendarFromEvents($events);
-        return view('tags.content-list', compact('tag', 'articles', 'events', 'calendar'));
+        return view('tag.show', compact('tag', 'articles', 'events', 'calendar'));
     }
 }

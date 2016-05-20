@@ -2,7 +2,7 @@
     <div class="col s12">
         @if (!$commentPaginator->isEmpty())
             @foreach ($commentPaginator->items() as $comment)
-                @include('comments.partials.row')
+                @include('comment.partials.row')
             @endforeach
             {!! $commentPaginator->render() !!}
         @else

@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers;
 
 use Auth;
-use App\Models\Comment;
 use App\Models\Event;
 use App\Util;
 use Calendar;
@@ -10,12 +9,12 @@ use Illuminate\Http\Request;
 class EventController extends Controller
 {
     /**
-     * Display the events overview page.
+     * Display an event index (calendar).
      *
      * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function overview(Request $request)
+    public function index(Request $request)
     {
         if (Auth::guest()) {
             $events = Event::publicOnly()->get();
@@ -26,7 +25,7 @@ class EventController extends Controller
         }
 
         $calendar = Util::createCalendarFromEvents($events);
-        return view('events.overview', compact('calendar'));
+        return view('event.index', compact('calendar'));
     }
 
     /**
@@ -41,7 +40,7 @@ class EventController extends Controller
             $this->authorize('view', $event);
         }
 
-        return view('events.show', compact('event') + [
+        return view('event.show', compact('event') + [
             'commentPaginator' => $event->comments()->orderBy('created_at', 'desc')->paginate()
         ]);
     }

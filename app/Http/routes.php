@@ -85,7 +85,32 @@ $r->group(['prefix' => 'events', 'as' => 'event.'], function ($r) {
     $r->get('/', 'EventController@overview');
     $r->get(
         '{event}-{name}',
-        ['as' => 'view', 'uses' => 'EventController@show']
+        ['as' => 'show', 'uses' => 'EventController@show']
+    );
+});
+
+// Image gallery
+$r->group(['prefix' => 'gallery', 'as' => 'image-album.'], function ($r) {
+    $r->get('/', 'ImageAlbumController@index');
+    $r->get(
+        '{album}-{title}',
+        ['as' => 'show', 'uses' => 'ImageAlbumController@show']
+    );
+    $r->get(
+        'create',
+        ['as' => 'create', 'uses' => 'ImageAlbumController@create']
+    );
+    $r->post(
+        'create',
+        ['as' => 'store', 'uses' => 'ImageAlbumController@store']
+    );
+    $r->get(
+        '{album}/edit',
+        ['as' => 'edit', 'uses' => 'ImageAlbumController@edit']
+    );
+    $r->patch(
+        '{album}',
+        ['as' => 'update', 'uses' => 'ImageAlbumController@update']
     );
 });
 
@@ -137,6 +162,7 @@ $r->group(['prefix' => 'admin', 'namespace' => 'Admin'], function ($r) {
 });
 
 // Model binding
+$r->model('album', \App\Models\ImageAlbum::class);
 $r->model('article', \App\Models\Article::class);
 $r->model('comment', \Slynova\Commentable\Models\Comment::class);
 $r->model('event', \App\Models\Event::class);

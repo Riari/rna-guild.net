@@ -1,9 +1,12 @@
 <?php namespace App\Models;
 
+use App\Models\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 
 class UserActivation extends Model
 {
+    use HasOwner;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,16 +23,6 @@ class UserActivation extends Model
      */
     public function setUpdatedAtAttribute($value)
     {
-    }
-
-    /**
-     * Relationship: user
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**

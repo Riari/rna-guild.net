@@ -26,7 +26,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(GateContract $gate)
     {
-        foreach(['AdminPolicy'] as $policy) {
+        foreach(['AdminPolicy', 'GeneralPolicy'] as $policy) {
             $gate = $this->defineFromClass($gate, "App\\Policies\\{$policy}");
         }
 

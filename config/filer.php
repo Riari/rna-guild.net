@@ -4,6 +4,30 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Routes
+    |--------------------------------------------------------------------------
+    |
+    | Determine whether or not to automatically define filer's routes. You can
+    | use Filer::routes($router, $namespace) if you wish to define them in your
+    | app.
+    |
+    */
+
+    'routes' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Route Prefix
+    |--------------------------------------------------------------------------
+    |
+    | With routes enabled, you can specify the prefix to use here.
+    |
+    */
+
+    'route_prefix' => 'files',
+
+    /*
+    |--------------------------------------------------------------------------
     | Paths
     |--------------------------------------------------------------------------
     |
@@ -28,23 +52,6 @@ return [
     |
     */
 
-    'append_query_string' => true,
-
-    /*
-    |--------------------------------------------------------------------------
-    | User
-    |--------------------------------------------------------------------------
-    |
-    | The name of your app's User model, and a closure to return the user ID.
-    | These are used to associate attachments with users.
-    |
-    */
-
-    'user' => [
-        'model' => \App\Models\User::class,
-        'id'    => function () {
-            return (auth()->check()) ? auth()->user()->id : 0;
-        }
-    ]
+    'append_query_string' => true
 
 ];

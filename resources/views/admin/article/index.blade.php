@@ -29,7 +29,7 @@
             <tr>
                 <td>{{ $article->id }}</td>
                 <td>{{ $article->title }}</td>
-                <td>{{ $article->author->name }}</td>
+                <td>{{ $article->user->name }}</td>
                 <td>{{ $article->created_at }}</td>
                 <td>{{ $article->published_at }}</td>
                 <td class="right-align">
