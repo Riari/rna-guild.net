@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Models\UserAuth;
 use Auth;
+use Cache;
 use Hash;
 use Illuminate\Http\Request;
 use Mail;
@@ -153,6 +154,13 @@ class AccountController extends Controller
         $profile->update($request->only('about', 'signature'));
 
         if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
+            $current = $request->user()->profile->avatar;
+
+            if (!is_null($current)) {
+                $current->delete();
+                Cache::forget("user_{$request->user()->id}_avatar");
+            }
+
             $file = $request->file('avatar');
             $destination = config('filer.path.absolute');
             $filename = 'avatars/' . Auth::id() . '.' . $file->guessExtension();
