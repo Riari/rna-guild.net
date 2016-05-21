@@ -84,8 +84,11 @@ nav {
     }
 }
 
-.unslider {
+.slider {
     position: relative;
+    height: auto;
+    margin-bottom: 50px;
+    transition: height 0.5s;
 
     li {
         a.download {
@@ -97,8 +100,7 @@ nav {
         }
 
         img {
-            border-top-left-radius: 3px;
-            border-top-right-radius: 3px;
+            border-radius: 3px;
         }
 
         span.caption {
@@ -115,6 +117,21 @@ nav {
             a.download {
                 opacity: 1.0;
             }
+        }
+    }
+}
+
+.unslider {
+    position: relative;
+
+    .slider {
+        margin-bottom: 0;
+    }
+
+    li {
+        img {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
         }
     }
 

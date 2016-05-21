@@ -45,15 +45,17 @@ $('select').material_select();
 $('.modal-trigger').leanModal();
 
 // Unslider
-var slider = $('.slider').unslider({
-    animation: 'fade'
-});
-$(window).on('load', function() {
-    slider.height(slider.find('li:first img').height());
-});
-slider.on('unslider.change', function(event, index, slide) {
-	slide.parents('.slider').height(slide.children('img').height());
-});
+if ($('.slider').find('img').length > 1) {
+    var slider = $('.slider').unslider({
+        animation: 'fade'
+    });
+    $(window).on('load', function() {
+        slider.height(slider.find('li:first img').height());
+    });
+    slider.on('unslider.change', function(event, index, slide) {
+        slide.parents('.slider').height(slide.children('img').height());
+    });
+}
 
 // Datetime picker inputs
 $('.datetimepicker').datetimepicker();
