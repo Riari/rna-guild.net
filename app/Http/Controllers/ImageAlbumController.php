@@ -42,6 +42,7 @@ class ImageAlbumController extends Controller
      */
     public function create()
     {
+        $this->authorize('createImageAlbums');
         return $this->edit(new ImageAlbum);
     }
 
@@ -53,6 +54,7 @@ class ImageAlbumController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('createImageAlbums');
         $this->validate($request, $this->getRules($request));
 
         $album = ImageAlbum::create([
@@ -75,6 +77,7 @@ class ImageAlbumController extends Controller
      */
     public function edit(ImageAlbum $album)
     {
+        $this->authorize($album);
         return view('image-album.edit', compact('album'));
     }
 
@@ -86,6 +89,7 @@ class ImageAlbumController extends Controller
      */
     public function update(ImageAlbum $album, Request $request)
     {
+        $this->authorize('edit', $album);
         $this->validate($request, $this->getRules($request));
 
         $images = $request->file('image_files');
@@ -129,6 +133,7 @@ class ImageAlbumController extends Controller
      */
     public function delete(ImageAlbum $album)
     {
+        $this->authorize($album);
         $album->delete();
 
         rmdir(config('filer.path.absolute') . "/albums/{$album->id}");
