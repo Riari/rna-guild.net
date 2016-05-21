@@ -20,6 +20,7 @@
                     <ul class="right">
                         <li><a class="dropdown-button" href="{{ url('forum') }}" data-activates="forum-links" data-beloworigin="true" data-constrainwidth="false" data-hover="true">Forum&nbsp; <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
                         <li><a href="{{ url('events') }}">Events</a></li>
+                        <li><a href="{{ url('gallery') }}">Gallery</a></li>
                         @if (Auth::guest())
                             <li><a href="{{ url('auth/login') }}">Login</a></li>
                             <li><a href="{{ url('auth/register') }}">Register</a></li>
