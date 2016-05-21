@@ -157,7 +157,7 @@ class AccountController extends Controller
             $destination = config('filer.path.absolute');
             $filename = 'avatars/' . Auth::id() . '.' . $file->guessExtension();
             Image::make($request->file('avatar'))
-                ->resize($config['dimensions'][0], $config['dimensions'][1])
+                ->fit($config['dimensions'][0], $config['dimensions'][1])
                 ->save("{$destination}/{$filename}");
 
             $profile->attach($filename, ['key' => 'avatar']);
