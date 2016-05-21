@@ -44,6 +44,11 @@ $('select').material_select();
 // Materialize modals
 $('.modal-trigger').leanModal();
 
+// Materialize sidenav
+$('.button-collapse').sideNav({
+    edge: 'right'
+});
+
 // Unslider
 if ($('.slider').find('img').length > 1) {
     var slider = $('.slider').unslider({

@@ -189,7 +189,7 @@ class ImageAlbumController extends Controller
     {
         return [
             'title' => 'required',
-            'image_files.*' => 'mimes:jpeg,gif,png|max:8000'
+            'image_files.*' => 'required|mimes:jpeg,gif,png|max:8000'
         ];
     }
 }

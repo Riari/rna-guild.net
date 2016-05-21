@@ -17,7 +17,25 @@
                     <a href="{{ url('/') }}" class="brand-logo left">
                         <img src="{{ url('images/logo.png') }}" alt="[RNA]">
                     </a>
-                    <ul class="right">
+                    <a href="#" data-activates="mobile-links" class="button-collapse right"><i class="material-icons">menu</i></a>
+                    <ul class="side-nav" id="mobile-links">
+                        <li><a href="{{ url('forum') }}">Forum</a></li>
+                        <li><a href="{{ url('events') }}">Events</a></li>
+                        <li><a href="{{ url('gallery') }}">Gallery</a></li>
+                        @if (Auth::guest())
+                            <li><a href="{{ url('auth/login') }}">Login</a></li>
+                            <li><a href="{{ url('auth/register') }}">Register</a></li>
+                        @else
+                            @can('admin')
+                                <li><a href="{{ url('admin') }}">Admin</a></li>
+                            @endcan
+                            <li><a href="{{ url('account/profile') }}">View profile</a></li>
+                            <li><a href="{{ url('account/profile/edit') }}">Edit profile</a></li>
+                            <li><a href="{{ url('account/settings') }}">Account settings</a></li>
+                            <li><a href="{{ url('auth/logout') }}">Log out ({{ Auth::user()->name }})</a></li>
+                        @endif
+                    </ul>
+                    <ul class="right hide-on-med-and-down">
                         <li><a class="dropdown-button" href="{{ url('forum') }}" data-activates="forum-links" data-beloworigin="true" data-constrainwidth="false" data-hover="true">Forum&nbsp; <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
                         <li><a href="{{ url('events') }}">Events</a></li>
                         <li><a href="{{ url('gallery') }}">Gallery</a></li>
@@ -36,6 +54,7 @@
                             </li>
                         @endif
                     </ul>
+
                     <ul id="forum-links" class="dropdown-content">
                         <li><a href="{{ url('forum') }}">Forum index</a></li>
                         <li><a href="{{ url('forum/new') }}">New & updated</a></li>
