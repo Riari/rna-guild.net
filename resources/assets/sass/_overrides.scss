@@ -83,3 +83,77 @@ nav {
         }
     }
 }
+
+.unslider {
+    position: relative;
+
+    li {
+        a.download {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            transition: opacity 0.25s;
+            opacity: 0;
+        }
+
+        img {
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+
+        span.caption {
+            display: block;
+            margin-top: -70px;
+            font-family: 'Economica', sans-serif;
+            color: #fff;
+            font-size: 1.6rem;
+            text-align: center;
+            text-shadow: 0 2px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        &:hover {
+            a.download {
+                opacity: 1.0;
+            }
+        }
+    }
+
+    nav {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        z-index: 1;
+
+        ol {
+            li {
+                height: 12px;
+                width: 12px;
+            }
+        }
+    }
+
+    a.unslider-arrow {
+        &.prev, &.next {
+            display: block;
+            height: 64px;
+            width: 64px;
+            line-height: 64px;
+            background: $secondary-color;
+            text-align: center;
+            color: #fff;
+
+            &:hover {
+                background: $link-color;
+            }
+        }
+
+        &.prev {
+            left: 0;
+            border-bottom-left-radius: 3px;
+        }
+
+        &.next {
+            right: 0;
+            border-bottom-right-radius: 3px;
+        }
+    }
+}

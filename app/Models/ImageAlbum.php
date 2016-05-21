@@ -27,6 +27,24 @@ class ImageAlbum extends Model
     public $friendlyName = 'Image Album';
 
     /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function ($album) {
+            foreach ($album->attachments as $attachment) {
+                $attachment->delete();
+            }
+            foreach ($album->comments as $comment) {
+                $comment->delete();
+            }
+        });
+    }
+
+    /**
      * Attribute: has multiple images.
      *
      * @return boolean
@@ -43,7 +61,7 @@ class ImageAlbum extends Model
      */
     public function getCoverUrlAttribute()
     {
-        return route('imagecache', ['template' => 'large', 'filename' => $this->attachments->first()->item->getRelativePath()]);
+        return route('imagecache', ['template' => 'large', 'filename' => $this->attachments->first()->attachment->getRelativePath()]);
     }
 
     /**
@@ -53,6 +71,6 @@ class ImageAlbum extends Model
      */
     public function getUrlAttribute()
     {
-        return route('image-album.show', ['id' => $this->user->id, 'name' => str_slug($this->user->name)]);
+        return route('image-album.show', ['id' => $this->id, 'name' => str_slug($this->title)]);
     }
 }

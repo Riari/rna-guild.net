@@ -6,6 +6,15 @@
 
 @section('content')
 <div class="row">
+    <div class="col s12">
+        @can('createImageAlbums')
+            <a href="{{ route('image-album.create') }}" class="waves-effect waves-light btn btn-large">
+                Upload image(s)
+            </a>
+        @endcan
+    </div>
+</div>
+<div class="row">
     @foreach ($paginator->items() as $album)
         <div class="col s6 m4 l3 album {{ $album->hasMultipleImages ? 'multiple-images' : '' }}">
             <a href="{{ $album->url }}">

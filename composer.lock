@@ -3308,12 +3308,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Team-Tea-Time/laravel-filer.git",
-                "reference": "ccadc7a68c386b72987dff0706296cb8e8c60306"
+                "reference": "ec73061e745cbce38fea767c4697a2e261b91a5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Team-Tea-Time/laravel-filer/zipball/ccadc7a68c386b72987dff0706296cb8e8c60306",
-                "reference": "ccadc7a68c386b72987dff0706296cb8e8c60306",
+                "url": "https://api.github.com/repos/Team-Tea-Time/laravel-filer/zipball/ec73061e745cbce38fea767c4697a2e261b91a5c",
+                "reference": "ec73061e745cbce38fea767c4697a2e261b91a5c",
                 "shasum": ""
             },
             "require": {
@@ -3346,7 +3346,7 @@
                 "laravel",
                 "laravel-5"
             ],
-            "time": "2016-05-20 15:47:57"
+            "time": "2016-05-21 16:05:35"
         },
         {
             "name": "vlucas/phpdotenv",

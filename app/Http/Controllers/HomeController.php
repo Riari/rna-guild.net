@@ -36,8 +36,8 @@ class HomeController extends Controller
             'upcomingEvents' => $events->orderBy('ends', 'desc')->limit(5)->get(),
             'newUsers' => User::activated()->orderBy('created_at', 'desc')->limit(5)->get(),
             'onlineUsers' => Session::authenticated()->recent()->limit(10)->get(),
-            'newThreads' => Thread::orderBy('created_at', 'desc')->limit(5)->get(),
-            'newPosts' => Post::orderBy('created_at', 'desc')->limit(5)->get(),
+            'newThreads' => Thread::with(['author', 'posts'])->orderBy('created_at', 'desc')->limit(5)->get(),
+            'newPosts' => Post::with(['author', 'thread'])->orderBy('created_at', 'desc')->limit(5)->get(),
             'articles' => Article::published()->orderBy('published_at', 'desc')->paginate()
         ]);
     }

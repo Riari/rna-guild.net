@@ -14,6 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         \App\Models\Event::class => \App\Policies\EventPolicy::class,
+        \App\Models\ImageAlbum::class => \App\Policies\ImageAlbumPolicy::class,
         \App\Models\UserProfile::class => \App\Policies\UserProfilePolicy::class,
         \Slynova\Commentable\Models\Comment::class => \App\Policies\CommentPolicy::class,
     ];

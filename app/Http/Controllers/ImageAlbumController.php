@@ -3,8 +3,10 @@
 use Auth;
 use App\Models\ImageAlbum;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Image;
 use Notification;
+use Storage;
 
 class ImageAlbumController extends Controller
 {
@@ -44,7 +46,7 @@ class ImageAlbumController extends Controller
     }
 
     /**
-     * Display an image album creation page.
+     * Create a new image album.
      *
      * @param  Request  $request
      * @return \Illuminate\Http\Response
@@ -57,28 +59,8 @@ class ImageAlbumController extends Controller
             'user_id' => Auth::id()
         ] + $request->only('title', 'description'));
 
-        foreach ($request->file('images') as $index => $image) {
-            $destination = config('filer.path.absolute');
-            $path = "albums/{$album->id}";
-            $filename = "{$path}/{$index}.{$image->guessExtension()}";
-
-            if (!is_dir("{$destination}/{$path}")) {
-                mkdir("{$destination}/{$path}");
-            }
-
-            Image::make($image)
-                ->fit(1920, 1080, function ($constraint) {
-                    $constraint->upsize();
-                })
-                ->save("{$destination}/{$filename}");
-
-            $album->attach(
-                $filename,
-                [
-                    'key' => "image.{$index}",
-                    'title' => $request->input('image_captions')[$index]
-                ]
-            );
+        foreach ($request->file('image_files') as $index => $image) {
+            $this->processImage($album, $image, $index, $request->input('image_captions')[$index]);
         }
 
         Notification::success("Image(s) uploaded successfully");
@@ -97,6 +79,102 @@ class ImageAlbumController extends Controller
     }
 
     /**
+     * Update an image album.
+     *
+     * @param  Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(ImageAlbum $album, Request $request)
+    {
+        $this->validate($request, $this->getRules($request));
+
+        $images = $request->file('image_files');
+        $captions = $request->input('image_captions');
+
+        // Delete removed images first
+        foreach ($album->attachments as $attachment) {
+            if (!array_key_exists($attachment->key, $images)) {
+                $attachment->delete();
+            }
+        }
+
+        // Update existing images and add new ones
+        foreach ($images as $index => $image) {
+            $attachment = $album->attachments()->key($index)->first();
+            $caption = $request->input('image_captions')[$index];
+
+            if (!is_null($image)) {
+                if (!is_null($attachment)) {
+                    $attachment->delete();
+                }
+
+                $this->processImage($album, $image, $index, $caption);
+            } elseif (!is_null($attachment) && $attachment->title != $caption) {
+                $attachment->title = $caption;
+                $attachment->save();
+            }
+        }
+
+        $album->update($request->only('title', 'description'));
+
+        Notification::success("Image album updated successfully");
+
+        return redirect($album->url);
+    }
+
+    /**
+     * Delete an image album.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(ImageAlbum $album)
+    {
+        $album->delete();
+
+        rmdir(config('filer.path.absolute') . "/albums/{$album->id}");
+
+        Notification::success("Image album deleted successfully");
+
+        return redirect('gallery');
+    }
+
+    /**
+     * Handle an uploaded image.
+     *
+     * @param  ImageAlbum  $album
+     * @param  UploadedFile  $image
+     * @param  int  $index
+     * @param  string  $caption
+     * @return string
+     */
+    private function processImage(ImageAlbum $album, UploadedFile $image, $index, $caption)
+    {
+        $destination = config('filer.path.absolute');
+        $path = "albums/{$album->id}";
+        $filename = "{$path}/{$index}.{$image->guessExtension()}";
+
+        if (!is_dir("{$destination}/{$path}")) {
+            mkdir("{$destination}/{$path}");
+        }
+
+        Image::make($image)
+            ->fit(1920, 1080, function ($constraint) {
+                $constraint->upsize();
+            })
+            ->save("{$destination}/{$filename}");
+
+        $album->attach(
+            $filename,
+            [
+                'key' => $index,
+                'title' => $caption
+            ]
+        );
+
+        return $album;
+    }
+
+    /**
      * Get validation rules.
      *
      * @param  Request  $request
@@ -106,7 +184,7 @@ class ImageAlbumController extends Controller
     {
         return [
             'title' => 'required',
-            'images.*' => 'mimes:jpeg,gif,png|max:8000'
+            'image_files.*' => 'mimes:jpeg,gif,png|max:8000'
         ];
     }
 }

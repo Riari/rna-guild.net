@@ -2,9 +2,11 @@ body.gallery {
     .album {
         a {
             .title {
-                font-size: 1.8rem;
+                font-size: 1.2rem;
             }
+
             img {
+                margin-bottom: 12px;
                 border-radius: 3px;
                 opacity: 0.9;
             }
@@ -17,7 +19,6 @@ body.gallery {
         }
 
         &.multiple-images img {
-            margin-bottom: 12px;
             box-shadow: 6px 6px 0 0 #aaa, 12px 12px 0 0 #ddd;
         }
     }

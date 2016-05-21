@@ -14,7 +14,9 @@
         <nav>
             <div class="container">
                 <div class="nav-wrapper">
-                    <a href="{{ url('/') }}" class="brand-logo left">[RNA]</a>
+                    <a href="{{ url('/') }}" class="brand-logo left">
+                        <img src="{{ url('images/logo.png') }}" alt="[RNA]">
+                    </a>
                     <ul class="right">
                         <li><a class="dropdown-button" href="{{ url('forum') }}" data-activates="forum-links" data-beloworigin="true" data-constrainwidth="false" data-hover="true">Forum&nbsp; <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
                         <li><a href="{{ url('events') }}">Events</a></li>

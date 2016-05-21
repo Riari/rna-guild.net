@@ -23,6 +23,7 @@ elixir(function(mix) {
                 path('sweetalert2/src'),
                 path('fullcalendar/dist'),
                 path('datetimepicker'),
+                path('unslider/dist/css'),
                 path('css/vendor', 'assets')
             ]
         })
@@ -36,6 +37,7 @@ elixir(function(mix) {
             path('moment/min/moment-with-locales.js'),
             path('fullcalendar/dist/fullcalendar.js'),
             path('datetimepicker/build/jquery.datetimepicker.full.js'),
+            path('unslider/dist/js/unslider-min.js'),
             path('js/vendor/materialize-tags.js', 'assets'),
             path('js/vendor/editor.js', 'assets'),
             path('js/vendor/marked.js', 'assets'),

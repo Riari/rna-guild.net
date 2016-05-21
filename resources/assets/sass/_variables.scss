@@ -5,17 +5,13 @@ $brand-twitter: #55acee;
 // MATERIALIZE
 $primary-color: #3a3c46;
 $secondary-color: lighten($primary-color, 15%);
-$link-color: color('red', 'base');
-$card-link-color: color('red', 'base');
+$link-color: color('deep-orange', 'accent-4');
+$card-link-color: $link-color;
 
 $roboto-font-path: '/font/roboto/';
 $icons-font-path: '/font/material-design-icons/';
 
 $h1-fontsize: 4.2rem;
-$h2-fontsize: 2.92rem;
-$h3-fontsize: 2.28rem;
-$h4-fontsize: 1.64rem;
-$h5-fontsize: 1rem;
 
 // FONT AWESOME
 $fa-font-path: '/font/font-awesome';

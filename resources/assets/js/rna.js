@@ -4,6 +4,8 @@ function swalConfirmSubmit(button) {
     var text = button.data('text');
 
     button.on('click', function (e) {
+        var target = e.target;
+
         if (!confirmed) {
             e.preventDefault();
 
@@ -15,9 +17,11 @@ function swalConfirmSubmit(button) {
                 cancelButtonColor: '#90a4ae',
                 confirmButtonColor: '#5d6070',
                 reverseButtons: true
-            }, function () {
-                confirmed = true;
-                e.target.click();
+            }).then(function (isConfirm) {
+                if (isConfirm === true) {
+                    confirmed = true;
+                    target.click();
+                }
             });
         }
     });
@@ -39,6 +43,17 @@ $('select').material_select();
 
 // Materialize modals
 $('.modal-trigger').leanModal();
+
+// Unslider
+var slider = $('.slider').unslider({
+    animation: 'fade'
+});
+$(window).on('load', function() {
+    slider.height(slider.find('li:first img').height());
+});
+slider.on('unslider.change', function(event, index, slide) {
+	slide.parents('.slider').height(slide.children('img').height());
+});
 
 // Datetime picker inputs
 $('.datetimepicker').datetimepicker();

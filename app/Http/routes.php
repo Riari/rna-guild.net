@@ -82,7 +82,7 @@ $r->get(
 
 // Events
 $r->group(['prefix' => 'events', 'as' => 'event.'], function ($r) {
-    $r->get('/', 'EventController@overview');
+    $r->get('/', 'EventController@index');
     $r->get(
         '{event}-{name}',
         ['as' => 'show', 'uses' => 'EventController@show']
@@ -111,6 +111,10 @@ $r->group(['prefix' => 'gallery', 'as' => 'image-album.'], function ($r) {
     $r->patch(
         '{album}',
         ['as' => 'update', 'uses' => 'ImageAlbumController@update']
+    );
+    $r->delete(
+        '{album}',
+        ['as' => 'delete', 'uses' => 'ImageAlbumController@delete']
     );
 });
 
