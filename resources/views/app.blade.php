@@ -103,7 +103,7 @@
             <div id="footer">
                 <div class="container">
                     <div class="inner">
-                        Built by Febby. All times are displayed in UTC.
+                        All times are displayed in UTC.
                     </div>
                 </div>
             </div>
