@@ -55,7 +55,13 @@ class ImageAlbumController extends Controller
     public function store(Request $request)
     {
         $this->authorize('createImageAlbums');
-        $this->validate($request, $this->getRules($request));
+        $this->validate(
+            $request,
+            array_merge_recursive(
+                $this->getRules($request),
+                ['image_files.*' => ['required']]
+            )
+        );
 
         $album = ImageAlbum::create([
             'user_id' => Auth::id()
@@ -189,7 +195,7 @@ class ImageAlbumController extends Controller
     {
         return [
             'title' => 'required',
-            'image_files.*' => 'required|mimes:jpeg,gif,png|max:8000'
+            'image_files.*' => ['mimes:jpeg,gif,png', 'max:8000']
         ];
     }
 }
