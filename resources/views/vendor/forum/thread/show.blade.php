@@ -15,11 +15,13 @@
 
 @section ('content')
     <div id="thread">
-        @can ('deletePosts', $thread)
-            <form action="{{ Forum::route('bulk.post.update') }}" method="POST" data-actions-form>
-                {!! csrf_field() !!}
-                {!! method_field('delete') !!}
-        @endcan
+        @if ($thread->replyCount)
+            @can ('deletePosts', $thread)
+                <form action="{{ Forum::route('bulk.post.update') }}" method="POST" data-actions-form>
+                    {!! csrf_field() !!}
+                    {!! method_field('delete') !!}
+            @endcan
+        @endif
 
         @can ('reply', $thread)
             <div class="row">
@@ -39,10 +41,12 @@
             <thead>
                 <tr>
                     <th colspan="2" class="right-align">
-                        @can ('deletePosts', $thread)
-                            <input type="checkbox" id="toggle-all" data-toggle-all>
-                            <label for="toggle-all">Select all replies</label>
-                        @endcan
+                        @if ($thread->replyCount)
+                            @can ('deletePosts', $thread)
+                                <input type="checkbox" id="toggle-all" data-toggle-all>
+                                <label for="toggle-all">Select all replies</label>
+                            @endcan
+                        @endif
                     </th>
                 </tr>
             </thead>
@@ -53,10 +57,12 @@
             </tbody>
         </table>
 
-        @can ('deletePosts', $thread)
-                @include ('forum::thread.partials.post-actions')
-            </form>
-        @endcan
+        @if ($thread->replyCount)
+            @can ('deletePosts', $thread)
+                    @include ('forum::thread.partials.post-actions')
+                </form>
+            @endcan
+        @endif
 
         {!! $thread->postsPaginated->render() !!}
 
