@@ -79,7 +79,7 @@
                                     </a>
                                     <br>
                                     <p>
-                                        <a href="{{ url("users/{$thread->author->slug}") }}">
+                                        <a href="{{ $thread->author->profile->url }}">
                                             {{ $thread->authorName }}
                                         </a>
                                         <span class="grey-text">({{ $thread->posted }})</span>
