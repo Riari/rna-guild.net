@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title', 'Viewing image album')
-@section('subtitle', $album->title)
+@section('subtitle', "{$album->title} by {$album->user->displayName}")
 
 @section('breadcrumbs')
 <a href="{{ url('gallery') }}" class="breadcrumb">Image Gallery</a>

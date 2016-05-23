@@ -151,7 +151,7 @@ class AccountController extends Controller
         ]);
 
         $profile = $request->user()->profile;
-        $profile->update($request->only('about', 'signature'));
+        $profile->update($request->only('family_name', 'about', 'signature'));
 
         if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
             $current = $request->user()->profile->avatar;

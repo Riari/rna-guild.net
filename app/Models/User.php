@@ -75,6 +75,20 @@ class User extends Authenticatable
     }
 
     /**
+     * Attribute: display name
+     *
+     * @return string
+     */
+    public function getDisplayNameAttribute()
+    {
+        if (!is_null($this->profile->family_name)) {
+            return "{$this->name} ({$this->profile->family_name})";
+        }
+
+        return $this->name;
+    }
+
+    /**
      * Attribute: role list
      *
      * @return string

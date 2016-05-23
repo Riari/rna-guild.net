@@ -15,7 +15,7 @@ class UserProfile extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'about', 'signature'];
+    protected $fillable = ['user_id', 'family_name', 'about', 'signature'];
 
     /**
      * User-friendly model name.

@@ -24,6 +24,12 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
+                    <input id="family_name" name="family_name" type="text" value="{{ !empty(old('family_name')) ? old('family_name') : $user->profile->family_name }}">
+                    <label for="family_name">Family Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
                     <label for="about">About</label>
                     <textarea id="about" name="about" class="materialize-textarea">{{ !empty(old('about')) ? old('about') : $user->profile->about }}</textarea>
                 </div>

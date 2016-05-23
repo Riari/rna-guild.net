@@ -16,6 +16,7 @@ class CreateUserProfilesTable extends Migration
             $table->increments('id')->unsigned();
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('family_name');
             $table->text('about');
             $table->text('signature');
             $table->timestamps();

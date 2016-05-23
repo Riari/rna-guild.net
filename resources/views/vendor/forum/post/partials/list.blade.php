@@ -2,7 +2,7 @@
     <td class="author-info">
         <p>
             <a href="{{ $post->author->profile->url }}" class="author-name">
-                {!! $post->authorName !!}
+                {!! $post->author->displayName !!}
             </a>
             <br>
             <a href="{{ $post->author->profile->url }}">

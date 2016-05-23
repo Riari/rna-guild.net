@@ -1,6 +1,7 @@
 @extends('app')
 
 @section('title', $user->name)
+@section('subtitle', $user->profile->family_name)
 
 @section('before_content')
 <div class="profile-avatar-container center-align">
@@ -22,16 +23,17 @@
         <strong>Joined:</strong> {{ $user->created_at->diffForHumans() }}
     </div>
     <div class="col s12 m6 l9">
-        <h3>About</h3>
+        @if ($user->profile->about)
+            <h3>About</h3>
 
-        {!! Markdown::convertToHtml($user->profile->about) !!}
+            {!! Markdown::convertToHtml($user->profile->about) !!}
+        @endif
+        @if ($user->profile->signature)
+            <hr>
+            <h3>Signature</h3>
 
-        <hr>
-
-        <h3>Signature</h3>
-
-        {{ $user->profile->signature }}
-
+            {{ $user->profile->signature }}
+        @endif
     </div>
 </div>
 @endsection

@@ -22,7 +22,7 @@
                 <img src="{!! $album->coverUrl !!}" alt="{{ $album->title }}">
             </a>
             <span class="grey-text">
-                by <a href="{{ $album->user->profile->url }}">{{ $album->user->name }}</a>
+                by <a href="{{ $album->user->profile->url }}">{{ $album->user->displayName }}</a>
                 {{ $album->created_at->diffForHumans() }}
             </span>
         </div>
