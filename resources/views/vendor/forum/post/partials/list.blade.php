@@ -1,5 +1,5 @@
 <tr id="post-{{ $post->id }}" class="post {{ $post->trashed() ? 'deleted' : '' }}">
-    <td class="author-info">
+    <td class="author-info center-align">
         <p>
             <a href="{{ $post->author->profile->url }}" class="author-name">
                 {!! $post->author->displayName !!}
