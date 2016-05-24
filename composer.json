@@ -12,7 +12,7 @@
         "edvinaskrucas/notification": "^5.1",
         "riari/laravel-forum": "~3.0",
         "riari/laravel-forum-frontend": "~1.0",
-        "teamteatime/laravel-filer": "dev-master",
+        "teamteatime/laravel-filer": "~1.0",
         "graham-campbell/markdown": "^6.1",
         "rtconner/laravel-tagging": "~2.1",
         "maddhatter/laravel-fullcalendar": "^1.2",

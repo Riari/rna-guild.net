@@ -59,7 +59,7 @@
                             @endcan
                             <li>
                                 <a class="dropdown-button" href="#!" data-activates="user-links" data-beloworigin="true" data-constrainwidth="false" data-hover="true">
-                                    @include('partials.avatar', ['user' => Auth::user(), 'class' => 'tiny circular'])
+                                    @include('user.partials.avatar', ['user' => Auth::user(), 'class' => 'tiny circular'])
                                     &nbsp;Hello, <strong>{{ Auth::user()->name }}</strong>!&nbsp; <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </a>
                             </li>

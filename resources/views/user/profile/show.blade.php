@@ -5,7 +5,7 @@
 
 @section('before_content')
 <div class="profile-avatar-container center-align">
-    @include('partials.avatar', ['class' => 'circular bordered'])
+    @include('user.partials.avatar', ['class' => 'circular bordered'])
 </div>
 @stop
 

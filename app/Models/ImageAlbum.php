@@ -61,7 +61,7 @@ class ImageAlbum extends Model
      */
     public function getCoverUrlAttribute()
     {
-        return route('imagecache', ['template' => 'large', 'filename' => $this->attachments->first()->attachment->getRelativePath()]);
+        return route('imagecache', ['template' => 'large', 'filename' => $this->attachments->first()->item->getRelativePath()]);
     }
 
     /**

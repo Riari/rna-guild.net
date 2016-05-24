@@ -6,7 +6,7 @@
             </a>
             <br>
             <a href="{{ $post->author->profile->url }}">
-                @include('partials.avatar', ['user' => $post->author, 'class' => 'circular'])
+                @include('user.partials.avatar', ['user' => $post->author, 'class' => 'circular'])
             </a>
         </p>
         @include ('user.partials.rank-list', ['user' => $post->author])

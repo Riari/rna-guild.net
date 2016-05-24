@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="file-field input-field col s12">
                     <div class="pull-right" style="margin-left:5px;">
-                        @include('partials.avatar', ['class' => 'small'])
+                        @include('user.partials.avatar', ['class' => 'small'])
                     </div>
                     <div class="btn">
                         <span>Choose avatar</span>

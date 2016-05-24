@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "94347ec5963a7fcfde0cf62a0dbb9f23",
-    "content-hash": "064e0a0f12a8de521e5c415aaf59be06",
+    "hash": "77e5ac47803546c4c22c6df58856e3eb",
+    "content-hash": "0dc66e7b13795e624991b4b7d638d346",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -3305,16 +3305,16 @@
         },
         {
             "name": "teamteatime/laravel-filer",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Team-Tea-Time/laravel-filer.git",
-                "reference": "da762c8eae00d348b202b0e24eaf7f22db2dd864"
+                "reference": "c587fe039dc4fcdf3228641bc57588529251d88a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Team-Tea-Time/laravel-filer/zipball/da762c8eae00d348b202b0e24eaf7f22db2dd864",
-                "reference": "da762c8eae00d348b202b0e24eaf7f22db2dd864",
+                "url": "https://api.github.com/repos/Team-Tea-Time/laravel-filer/zipball/c587fe039dc4fcdf3228641bc57588529251d88a",
+                "reference": "c587fe039dc4fcdf3228641bc57588529251d88a",
                 "shasum": ""
             },
             "require": {
@@ -3347,7 +3347,7 @@
                 "laravel",
                 "laravel-5"
             ],
-            "time": "2016-05-23 08:49:52"
+            "time": "2016-05-24 16:32:50"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -3404,8 +3404,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "msurguy/honeypot": 20,
-        "teamteatime/laravel-filer": 20
+        "msurguy/honeypot": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

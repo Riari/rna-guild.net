@@ -19,7 +19,7 @@
                     @endcan
                 </div>
                 <a href="{{ $comment->user->profile->url }}">
-                    @include('partials.avatar', ['user' => $comment->user, 'class' => 'tiny circular'])
+                    @include('user.partials.avatar', ['user' => $comment->user, 'class' => 'tiny circular'])
                     {{ $comment->user->name }}
                 </a>
                 {{ $comment->created_at->diffForHumans() }}
