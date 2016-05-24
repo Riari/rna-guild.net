@@ -2279,16 +2279,16 @@
         },
         {
             "name": "riari/laravel-forum",
-            "version": "3.0.5",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Riari/laravel-forum.git",
-                "reference": "881568a61f7601bde94b8f3fe4ddd2b0daffa70e"
+                "reference": "cb66463b3c420fdb4e4fe6c1ff733c92a463fe5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Riari/laravel-forum/zipball/881568a61f7601bde94b8f3fe4ddd2b0daffa70e",
-                "reference": "881568a61f7601bde94b8f3fe4ddd2b0daffa70e",
+                "url": "https://api.github.com/repos/Riari/laravel-forum/zipball/cb66463b3c420fdb4e4fe6c1ff733c92a463fe5b",
+                "reference": "cb66463b3c420fdb4e4fe6c1ff733c92a463fe5b",
                 "shasum": ""
             },
             "require": {
@@ -2323,11 +2323,11 @@
                 "laravel-4",
                 "laravel-5"
             ],
-            "time": "2016-05-24 13:57:32"
+            "time": "2016-05-24 14:00:38"
         },
         {
             "name": "riari/laravel-forum-frontend",
-            "version": "1.0.5",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Riari/laravel-forum-frontend.git",
