@@ -2279,16 +2279,16 @@
         },
         {
             "name": "riari/laravel-forum",
-            "version": "3.0.4",
+            "version": "3.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Riari/laravel-forum.git",
-                "reference": "480785e5b7b16793faf923a1387d2a2c9bc367ea"
+                "reference": "881568a61f7601bde94b8f3fe4ddd2b0daffa70e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Riari/laravel-forum/zipball/480785e5b7b16793faf923a1387d2a2c9bc367ea",
-                "reference": "480785e5b7b16793faf923a1387d2a2c9bc367ea",
+                "url": "https://api.github.com/repos/Riari/laravel-forum/zipball/881568a61f7601bde94b8f3fe4ddd2b0daffa70e",
+                "reference": "881568a61f7601bde94b8f3fe4ddd2b0daffa70e",
                 "shasum": ""
             },
             "require": {
@@ -2323,20 +2323,20 @@
                 "laravel-4",
                 "laravel-5"
             ],
-            "time": "2016-03-26 15:29:44"
+            "time": "2016-05-24 13:57:32"
         },
         {
             "name": "riari/laravel-forum-frontend",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Riari/laravel-forum-frontend.git",
-                "reference": "91acf60749aaacc9a0367e6dbd7b6cceb864717b"
+                "reference": "b7ef718fbc915934ece6f82f546422054c952098"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Riari/laravel-forum-frontend/zipball/91acf60749aaacc9a0367e6dbd7b6cceb864717b",
-                "reference": "91acf60749aaacc9a0367e6dbd7b6cceb864717b",
+                "url": "https://api.github.com/repos/Riari/laravel-forum-frontend/zipball/b7ef718fbc915934ece6f82f546422054c952098",
+                "reference": "b7ef718fbc915934ece6f82f546422054c952098",
                 "shasum": ""
             },
             "require": {
@@ -2368,7 +2368,7 @@
                 "laravel-4",
                 "laravel-5"
             ],
-            "time": "2016-01-10 11:59:13"
+            "time": "2016-05-24 13:24:41"
         },
         {
             "name": "rtconner/laravel-tagging",
@@ -3309,12 +3309,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Team-Tea-Time/laravel-filer.git",
-                "reference": "8352905f1b3b0134ca2260cc4d6cdee567841471"
+                "reference": "da762c8eae00d348b202b0e24eaf7f22db2dd864"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Team-Tea-Time/laravel-filer/zipball/8352905f1b3b0134ca2260cc4d6cdee567841471",
-                "reference": "8352905f1b3b0134ca2260cc4d6cdee567841471",
+                "url": "https://api.github.com/repos/Team-Tea-Time/laravel-filer/zipball/da762c8eae00d348b202b0e24eaf7f22db2dd864",
+                "reference": "da762c8eae00d348b202b0e24eaf7f22db2dd864",
                 "shasum": ""
             },
             "require": {
@@ -3347,7 +3347,7 @@
                 "laravel",
                 "laravel-5"
             ],
-            "time": "2016-05-22 09:33:37"
+            "time": "2016-05-23 08:49:52"
         },
         {
             "name": "vlucas/phpdotenv",

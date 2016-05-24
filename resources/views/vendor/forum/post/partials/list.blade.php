@@ -1,6 +1,6 @@
-<tr id="post-{{ $post->id }}" class="post {{ $post->trashed() ? 'deleted' : '' }}">
+<tr id="post-{{ $post->sequenceNumber }}" class="post {{ $post->trashed() ? 'deleted' : '' }}">
     <td class="author-info center-align">
-        <p>
+        <p class="center-align">
             <a href="{{ $post->author->profile->url }}" class="author-name">
                 {!! $post->author->displayName !!}
             </a>
@@ -49,7 +49,7 @@
             | {{ trans('forum::general.last_updated') }} {{ $post->updated }}
         @endif
         <span class="pull-right">
-            <a href="{{ Forum::route('thread.show', $post) }}">#{{ $post->id }}</a>
+            <a href="{{ Forum::route('thread.show', $post) }}">#{{ $post->sequenceNumber }}</a>
             @if (!$post->trashed())
                 @can ('reply', $post->thread)
                     - <a href="{{ Forum::route('post.create', $post) }}">{{ trans('forum::general.reply') }}</a>
