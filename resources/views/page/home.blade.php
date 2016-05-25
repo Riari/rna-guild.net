@@ -78,7 +78,7 @@
             @endforeach
         </ul>
         <hr>
-        <h4>Latest forum posts</h4>
+        <h4>Latest forum replies</h4>
         <ul class="collection">
             @foreach ($newPosts as $post)
                 <li class="collection-item grey-text">
