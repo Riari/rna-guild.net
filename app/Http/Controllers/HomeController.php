@@ -7,6 +7,7 @@ use App\Models\Forum\Post;
 use App\Models\Forum\Thread;
 use App\Models\Session;
 use App\Models\User;
+use DB;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -37,7 +38,7 @@ class HomeController extends Controller
             'newUsers' => User::activated()->orderBy('created_at', 'desc')->limit(5)->get(),
             'onlineUsers' => Session::authenticated()->groupBy('user_id')->recent()->limit(10)->get(),
             'newThreads' => Thread::with(['author', 'posts'])->orderBy('created_at', 'desc')->limit(5)->get(),
-            'newPosts' => Post::with(['author', 'thread'])->orderBy('created_at', 'desc')->limit(5)->get(),
+            'newPosts' => Post::where('post_id', '!=', null)->orderBy('created_at', 'DESC')->limit(5)->get(),
             'articles' => Article::published()->orderBy('published_at', 'desc')->paginate()
         ]);
     }
