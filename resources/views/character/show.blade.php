@@ -14,6 +14,14 @@
         @can('edit', $character)
             <a href="{{ route('character.edit', compact('character')) }}">Edit</a>
         @endcan
+        @can('delete', $character)
+            <form class="inline" method="post" action="{{ route('character.delete', compact('character')) }}">
+                {!! csrf_field() !!}
+                {!! method_field('delete') !!}
+
+                &nbsp; <button type="submit" data-confirm data-text="Are you sure you want to delete this character? The portrait and all comments will be permanently removed." class="btn btn-link">Delete</button>
+            </form>
+        @endcan
     </div>
 </div>
 <div class="row">

@@ -137,7 +137,7 @@ class CharacterController extends Controller
         $this->authorize($character);
         $character->delete();
 
-        Notification::success("Character deleted successfully");
+        Notification::success("Character deleted");
 
         return redirect('characters');
     }
