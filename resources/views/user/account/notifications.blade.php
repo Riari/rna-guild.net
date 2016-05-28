@@ -5,7 +5,7 @@
 @section('content')
 <div class="row">
     <div class="col s12 m12 l8 offset-l2">
-        <div class="collection">
+        <div class="collection" style="margin:0;">
             @foreach ($notifications as $notification)
                 <a href="{{ $notification->url }}" class="collection-item">
                     {{ $notification->text }}
