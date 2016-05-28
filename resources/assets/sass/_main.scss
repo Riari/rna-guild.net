@@ -146,8 +146,9 @@ img.avatar {
             text-shadow: 0 2px 0 rgba(0, 0, 0, 0.5);
         }
 
-        a:hover {
-            color: $primary-color;
+        a {
+            color: #fff;
+            font-weight: bold;
         }
     }
 

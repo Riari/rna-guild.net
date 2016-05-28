@@ -1,6 +1,10 @@
 <div class="article">
-    <h3>{{ $article->title }}</h3>
+    <h3><a href="{{ $article->url }}">{{ $article->title }}</a></h3>
     <span class="grey-text">
+        <a href="{{ $article->url }}" class="pull-right">
+            {{ $article->comments()->count() }}
+            {{ str_plural('comment', $article->comments()->count()) }}
+        </a>
         Published by
         <a href="{{ $article->user->profile->url }}">
             {{ $article->user->name }}

@@ -80,6 +80,14 @@ $r->get(
     ['as' => 'home', 'uses' => 'HomeController@show']
 );
 
+// Articles
+$r->group(['prefix' => 'articles', 'as' => 'article.'], function ($r) {
+    $r->get(
+        '{article}-{title}',
+        ['as' => 'show', 'uses' => 'ArticleController@show']
+    );
+});
+
 // Events
 $r->group(['prefix' => 'events', 'as' => 'event.'], function ($r) {
     $r->get('/', 'EventController@index');
