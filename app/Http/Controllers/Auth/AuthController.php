@@ -58,6 +58,10 @@ class AuthController extends Controller
      */
     public function handleProviderCallback(Request $request)
     {
+        if (!$request->has('code') || $request->has('denied')) {
+            return redirect('auth/login');
+        }
+
         $provider = $request->route('provider');
 
         if (!isset(config('auth.login_providers')[$provider])) {
