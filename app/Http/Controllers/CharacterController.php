@@ -85,7 +85,12 @@ class CharacterController extends Controller
      */
     public function edit(Character $character)
     {
-        $this->authorize($character);
+        if ($character->exists) {
+            $this->authorize($character);
+        } else {
+            $this->authorize('createCharacters');
+        }
+
         $classes = CharacterClass::pluck('name', 'id');
         return view('character.edit', compact('character', 'classes'));
     }
