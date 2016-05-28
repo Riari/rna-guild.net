@@ -56,6 +56,12 @@ $r->group(['prefix' => 'account', 'as' => 'account.'], function ($r) {
     );
     $r->post('{provider}/disconnect', 'User\AccountController@postDisconnectLogin');
 
+    // Notifications
+    $r->get(
+        'notifications',
+        ['as' => 'notifications', 'uses' => 'User\AccountController@getNotifications']
+    );
+
     // Profile
     $r->get('profile', 'User\AccountController@redirectToProfile');
     $r->get(

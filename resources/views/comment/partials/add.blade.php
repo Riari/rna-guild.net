@@ -19,7 +19,7 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12 right-align">
-                                <input type="hidden" name="redirect_to" value="{{ Request::url() }}">
+                                <input type="hidden" name="redirect_to" value="{{ Request::url() }}#comments">
                                 <a href="#!" class="modal-action modal-close waves-effect waves-green btn-large btn-flat">Cancel</a>
                                 <button type="submit" class="waves-effect waves-light btn-large">
                                     Add

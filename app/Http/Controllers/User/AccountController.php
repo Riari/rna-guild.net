@@ -112,6 +112,19 @@ class AccountController extends Controller
     }
 
     /**
+     * Show the user's notifications.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function getNotifications(Request $request)
+    {
+        $notifications = $request->user()->getNotifications();
+        $request->user()->readAllNotifications();
+        return view('user.account.notifications', compact('notifications'));
+    }
+
+    /**
      * Redirect to the user's profile.
      *
      * @param  Request  $request

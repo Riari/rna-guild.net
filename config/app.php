@@ -166,6 +166,7 @@ return [
         Slynova\Commentable\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Fenos\Notifynder\NotifynderServiceProvider::class,
 
     ],
 
@@ -203,6 +204,7 @@ return [
         'Mail' => Illuminate\Support\Facades\Mail::class,
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
         'Notification' => Krucas\Notification\Facades\Notification::class,
+        'Notifynder' => Fenos\Notifynder\Facades\Notifynder::class,
         'Password' => Illuminate\Support\Facades\Password::class,
         'Queue' => Illuminate\Support\Facades\Queue::class,
         'Redirect' => Illuminate\Support\Facades\Redirect::class,

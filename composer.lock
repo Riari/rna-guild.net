@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "77e5ac47803546c4c22c6df58856e3eb",
-    "content-hash": "0dc66e7b13795e624991b4b7d638d346",
+    "hash": "441660acfd193e46c08785c68a841f90",
+    "content-hash": "e4359b9633d6eef9c4e63a3a6f025f26",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -719,6 +719,57 @@
                 "notifications"
             ],
             "time": "2016-01-19 14:26:18"
+        },
+        {
+            "name": "fenos/notifynder",
+            "version": "3.2.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fenos/Notifynder.git",
+                "reference": "bcb7d237e00a97103807cde32673e1a646f50a60"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fenos/Notifynder/zipball/bcb7d237e00a97103807cde32673e1a646f50a60",
+                "reference": "bcb7d237e00a97103807cde32673e1a646f50a60",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^2.5",
+                "laracasts/testdummy": "~2.0",
+                "laravel/framework": "~5.0",
+                "orchestra/testbench": "~3.0",
+                "phpspec/phpspec": "~2.1",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [],
+                "psr-4": {
+                    "Fenos\\Notifynder\\": "src/Notifynder"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabrizio Fenoglio",
+                    "email": "fabri_feno@yahoo.it",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Management system of internal notifications for Laravel 5.*",
+            "keywords": [
+                "laravel",
+                "notifications"
+            ],
+            "time": "2016-05-19 12:13:10"
         },
         {
             "name": "graham-campbell/markdown",

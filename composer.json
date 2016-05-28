@@ -19,7 +19,8 @@
         "slynova/laravel-commentable": "^2.0",
         "intervention/image": "^2.3",
         "barryvdh/laravel-debugbar": "^2.2",
-        "intervention/imagecache": "^2.3"
+        "intervention/imagecache": "^2.3",
+        "fenos/notifynder": "^3.2"
     },
     "require-dev": {
     },

@@ -3,6 +3,7 @@
 use Auth;
 use Illuminate\Http\Request;
 use Notification;
+use Notifynder;
 use Slynova\Commentable\Models\Comment;
 
 class CommentController extends Controller
@@ -26,10 +27,17 @@ class CommentController extends Controller
         $this->authorize('addComment', $model);
 
         $comment = new Comment;
-        $comment->user_id = Auth::user()->id;
+        $comment->user_id = Auth::id();
         $comment->body = $request->input('body');
 
         $model->comments()->save($comment);
+
+        Notifynder::category('comment.added')
+                   ->from($comment->user_id)
+                   ->to($model->user_id)
+                   ->url("{$model->url}#comments")
+                   ->extra(['model_name' => $model->friendlyName])
+                   ->send();
 
         Notification::success("Comment added.");
 
@@ -98,6 +106,6 @@ class CommentController extends Controller
     private function getModel($name, $id)
     {
         $class = "\\App\\Models\\{$name}";
-        return(new $class)->findOrFail($id);
+        return (new $class)->findOrFail($id);
     }
 }

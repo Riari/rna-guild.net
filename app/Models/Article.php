@@ -25,6 +25,13 @@ class Article extends Model
     protected $dates = ['published_at'];
 
     /**
+     * User-friendly model name.
+     *
+     * @return string
+     */
+    public $friendlyName = 'Article';
+
+    /**
      * Scope: published
      *
      * @param  \Illuminate\Database\Query\Builder

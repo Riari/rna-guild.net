@@ -1,10 +1,13 @@
 <?php namespace App\Models;
 
 use App\Models\Setting;
+use Fenos\Notifynder\Notifable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    use Notifable;
+
     /**
      * The attributes that are mass assignable.
      *

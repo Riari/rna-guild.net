@@ -44,6 +44,14 @@
                             @can('admin')
                                 <li><a href="{{ url('admin') }}">Admin</a></li>
                             @endcan
+                            <li>
+                                <a href="{{ url('account/notifications') }}">
+                                    Notifications
+                                    @if (Auth::user()->countNotificationsNotRead() > 0)
+                                        <span class="teal badge">{{ Auth::user()->countNotificationsNotRead() }}</span>
+                                    @endif
+                                </a>
+                            </li>
                             <li><a href="{{ url('account/profile') }}">View profile</a></li>
                             <li><a href="{{ url('account/profile/edit') }}">Edit profile</a></li>
                             <li><a href="{{ url('account/settings') }}">Account settings</a></li>
@@ -67,7 +75,11 @@
                             <li>
                                 <a class="dropdown-button" href="#!" data-activates="user-links" data-beloworigin="true" data-constrainwidth="false" data-hover="true">
                                     @include('user.partials.avatar', ['user' => Auth::user(), 'class' => 'tiny circular'])
-                                    &nbsp;Hello, <strong>{{ Auth::user()->name }}</strong>!&nbsp; <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                    &nbsp;Hello, <strong>{{ Auth::user()->name }}</strong>!&nbsp;
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                    @if (Auth::user()->countNotificationsNotRead() > 0)
+                                        <span class="teal new badge">{{ Auth::user()->countNotificationsNotRead() }}</span>
+                                    @endif
                                 </a>
                             </li>
                         @endif
@@ -86,6 +98,14 @@
                             </ul>
                         @endcan
                         <ul id="user-links" class="dropdown-content">
+                            <li>
+                                <a href="{{ url('account/notifications') }}">
+                                    Notifications
+                                    @if (Auth::user()->countNotificationsNotRead() > 0)
+                                        <span class="teal new badge">{{ Auth::user()->countNotificationsNotRead() }}</span>
+                                    @endif
+                                </a>
+                            </li>
                             <li><a href="{{ url('account/profile') }}">View profile</a></li>
                             <li><a href="{{ url('account/profile/edit') }}">Edit profile</a></li>
                             <li><a href="{{ url('account/settings') }}">Account settings</a></li>

@@ -18,7 +18,7 @@
 
             <div class="row">
                 <div class="input-field col s12 right-align">
-                    <input type="hidden" name="redirect_to" value="{{ URL::previous() }}">
+                    <input type="hidden" name="redirect_to" value="{{ URL::previous() }}#comments">
                     <button type="submit" class="waves-effect waves-light btn-large">
                         Save
                     </button>

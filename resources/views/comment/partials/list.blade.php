@@ -1,4 +1,4 @@
-<div class="row">
+<div id="comments" class="row">
     <div class="col s12">
         @if (!$commentPaginator->isEmpty())
             @foreach ($commentPaginator->items() as $comment)
