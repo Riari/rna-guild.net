@@ -84,7 +84,10 @@ class ImageAlbumController extends Controller
      */
     public function edit(ImageAlbum $album)
     {
-        $this->authorize($album);
+        if ($album->exists) {
+            $this->authorize($album);
+        }
+
         return view('image-album.edit', compact('album'));
     }
 

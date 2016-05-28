@@ -87,8 +87,6 @@ class CharacterController extends Controller
     {
         if ($character->exists) {
             $this->authorize($character);
-        } else {
-            $this->authorize('createCharacters');
         }
 
         $classes = CharacterClass::pluck('name', 'id');
