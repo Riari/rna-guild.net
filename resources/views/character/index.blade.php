@@ -16,7 +16,7 @@
 </div>
 <div class="row">
     @foreach ($paginator->items() as $character)
-        <div class="col s6 m4 l3 character center-align">
+        <div class="col s6 m4 l2 character center-align">
             <h4>
                 <a href="{{ $character->url }}">
                     {{ $character->name }}
