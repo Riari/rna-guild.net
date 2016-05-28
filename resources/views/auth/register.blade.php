@@ -19,7 +19,7 @@
                 <div class="input-field col s12">
                     <input id="name" name="name" type="text" value="{{ (is_null(old('name')) && session('pending_user_auth')) ? session('pending_user_auth')->nickname : old('name') }}">
                     <label for="name">Name</label>
-                    <span class="grey-text">This is the name displayed throughout the site. Spaces are allowed.</span>
+                    <span class="grey-text">This is the name displayed throughout the site (family name can be set through your profile after registering). Spaces are allowed.</span>
                 </div>
             </div>
             <div class="row">
