@@ -111,11 +111,11 @@ class CharacterController extends Controller
         }
 
         if ($request->has('main') && $request->input('main') == true) {
-            $character = Character::byUser(Auth::user())->where('main', 1)->first();
+            $existingMain = Character::byUser($character->user)->where('main', 1)->first();
 
-            if (!is_null($character)) {
-                $character->main = 0;
-                $character->save();
+            if (!is_null($existingMain)) {
+                $existingMain->main = 0;
+                $existingMain->save();
             }
         }
 
