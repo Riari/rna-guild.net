@@ -1,9 +1,9 @@
 @extends('app')
 
-@section('title', 'Maintenance')
+@section('title', 'Site under maintenance')
 
 @section('content')
-<div class="center-align">
+<div class="alert info center-align">
     BRB.
 </div>
 @stop
