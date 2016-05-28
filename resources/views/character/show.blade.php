@@ -19,10 +19,11 @@
 <div class="row">
     <div class="col s12 m12 l3">
         <div class="character-panel">
-            <img src="{{ $character->portraitUrl }}" alt="{{ $character->name }}'s portrait">
-            <h4 class="class grey-text">
+            <img src="{{ $character->portraitUrl }}" alt="{{ $character->name }}'s portrait" class="portrait">
+            <h5 class="class grey-text">
                 {{ $character->gameClass->name }}
-            </h4>
+            </h5>
+            <img src="{{ $character->gameClass->iconUrl }}">
             @if ($character->age || $character->occupation)
                 <div class="details grey-text">
                     @if ($character->age)<strong>Age:</strong> {{ $character->age }}<br>@endif

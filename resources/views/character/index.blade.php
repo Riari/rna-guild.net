@@ -25,9 +25,10 @@
             <p><a href="{{ $character->user->profile->url }}">{{ $character->user->profile->family_name }}</a></p>
             <div class="character-panel">
                 <a href="{{ $character->url }}">
-                    <img src="{{ $character->portraitUrl }}" alt="{{ $character->name }}'s portrait">
+                    <img src="{{ $character->portraitUrl }}" alt="{{ $character->name }}'s portrait" class="portrait">
                 </a>
-                <span class="grey-text">{{ $character->gameClass->name }}</span>
+                <h5 class="grey-text">{{ $character->gameClass->name }}</h5>
+                <img src="{{ $character->gameClass->iconUrl }}">
             </div>
         </div>
     @endforeach

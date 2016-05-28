@@ -39,4 +39,14 @@ class CharacterClass extends Model
             }
         });
     }
+
+    /**
+     * Attribute: icon URL.
+     *
+     * @return string
+     */
+    public function getIconUrlAttribute()
+    {
+        return url('images/game/class/icon_' . strtolower($this->name) . '.png');
+    }
 }

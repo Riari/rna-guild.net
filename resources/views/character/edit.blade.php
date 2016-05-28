@@ -29,7 +29,7 @@
                     <div class="input-field col s12">
                         <select name="class_id">
                             @foreach ($classes as $id => $name)
-                                <option value="{{ $id }}">{{ $name }}</option>
+                                <option value="{{ $id }}" data-icon="{{ url('images/game/class/icon_' . strtolower($name) . '.png') }}" class="circle">{{ $name }}</option>
                             @endforeach
                         </select>
                         <label>Class</label>
