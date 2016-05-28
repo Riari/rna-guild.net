@@ -30,8 +30,12 @@
                     </a>
                     <a href="#" data-activates="mobile-links" class="button-collapse right"><i class="material-icons">menu</i></a>
                     <ul class="side-nav" id="mobile-links">
+                        <li><a href="{{ url('/') }}">Home</a></li>
                         <li><a href="{{ url('forum') }}">Forum</a></li>
                         <li><a href="{{ url('events') }}">Events</a></li>
+                        @can('viewCharacters')
+                            <li><a href="{{ url('characters') }}">Characters</a></li>
+                        @endcan
                         <li><a href="{{ url('gallery') }}">Gallery</a></li>
                         @if (Auth::guest())
                             <li><a href="{{ url('auth/login') }}">Login</a></li>
@@ -49,6 +53,9 @@
                     <ul class="right hide-on-med-and-down">
                         <li><a class="dropdown-button" href="{{ url('forum') }}" data-activates="forum-links" data-beloworigin="true" data-constrainwidth="false" data-hover="true">Forum&nbsp; <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
                         <li><a href="{{ url('events') }}">Events</a></li>
+                        @can('viewCharacters')
+                            <li><a href="{{ url('characters') }}">Characters</a></li>
+                        @endcan
                         <li><a href="{{ url('gallery') }}">Gallery</a></li>
                         @if (Auth::guest())
                             <li><a href="{{ url('auth/login') }}">Login</a></li>

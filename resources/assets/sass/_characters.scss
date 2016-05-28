@@ -1,0 +1,36 @@
+.character-panel {
+    padding: 0 0 20px 0;
+    border-radius: 3px;
+    background: color('grey', 'lighten-4');
+    text-align: center;
+
+    img {
+        display: block;
+        margin-bottom: 20px;
+        border-radius: 3px;
+    }
+
+    .class {
+        margin: 0;
+    }
+
+    .details {
+        margin-top: 10px;
+    }
+}
+
+body.characters {
+    .character {
+        a {
+            img {
+                opacity: 0.9;
+            }
+
+            &:hover {
+                img {
+                    opacity: 1.0;
+                }
+            }
+        }
+    }
+}

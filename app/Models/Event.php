@@ -46,16 +46,6 @@ class Event extends Model
     const DATETIME_FORMAT = '%A %d %B %Y, %l%P';
 
     /**
-     * Relationship: user
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
      * Scope: public only
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -84,7 +74,7 @@ class Event extends Model
      */
     public function getUrlAttribute()
     {
-        return route('event.show', ['id' => $this->id, 'title' => str_slug($this->title, '-')]);
+        return route('event.show', ['event' => $this->id, 'title' => str_slug($this->title, '-')]);
     }
 
     /**

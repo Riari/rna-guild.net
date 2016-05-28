@@ -4,12 +4,18 @@
             <a href="{{ $post->author->profile->url }}" class="author-name">
                 {!! $post->author->displayName !!}
             </a>
-            <br>
             <a href="{{ $post->author->profile->url }}">
                 @include('user.partials.avatar', ['user' => $post->author, 'class' => 'circular'])
             </a>
         </p>
         @include ('user.partials.rank-list', ['user' => $post->author])
+        @if (!is_null($post->author->mainCharacter))
+            <p class="grey-text center-align">
+                Main character:
+                <br>
+                <a href="{{ $post->author->mainCharacter->url }}">{{ $post->author->mainCharacter->name }}</a>
+            </p>
+        @endif
     </td>
     <td class="body">
         @if (!is_null($post->parent))

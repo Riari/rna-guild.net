@@ -3,8 +3,8 @@
 use App\Models\Traits\HasOwner;
 use Cache;
 use Illuminate\Database\Eloquent\Model;
-use TeamTeaTime\Filer\HasAttachments;
 use Slynova\Commentable\Traits\Commentable;
+use TeamTeaTime\Filer\HasAttachments;
 
 class UserProfile extends Model
 {

@@ -63,11 +63,11 @@
 @stop
 
 @section('bottom')
-    <style>
-    .multi-field-wrapper .multi-field:first-child a[data-remove] {
-        display: none;
-    }
-    </style>
+<style>
+.multi-field-wrapper .multi-field:first-child a[data-remove] {
+    display: none;
+}
+</style>
 <script>
 $('.multi-field-wrapper').each(function () {
     var max = $(this).data('max');

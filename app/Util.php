@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Calendar;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 
 class Util

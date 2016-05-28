@@ -89,6 +89,35 @@ $r->group(['prefix' => 'events', 'as' => 'event.'], function ($r) {
     );
 });
 
+// Characters
+$r->group(['prefix' => 'characters', 'as' => 'character.'], function ($r) {
+    $r->get('/', 'CharacterController@index');
+    $r->get(
+        '{character}-{name}',
+        ['as' => 'show', 'uses' => 'CharacterController@show']
+    );
+    $r->get(
+        'create',
+        ['as' => 'create', 'uses' => 'CharacterController@create']
+    );
+    $r->post(
+        'create',
+        ['as' => 'store', 'uses' => 'CharacterController@store']
+    );
+    $r->get(
+        '{character}/edit',
+        ['as' => 'edit', 'uses' => 'CharacterController@edit']
+    );
+    $r->patch(
+        '{character}',
+        ['as' => 'update', 'uses' => 'CharacterController@update']
+    );
+    $r->delete(
+        '{character}',
+        ['as' => 'delete', 'uses' => 'CharacterController@delete']
+    );
+});
+
 // Image gallery
 $r->group(['prefix' => 'gallery', 'as' => 'image-album.'], function ($r) {
     $r->get('/', 'ImageAlbumController@index');
@@ -168,5 +197,6 @@ $r->group(['prefix' => 'admin', 'namespace' => 'Admin'], function ($r) {
 // Model binding
 $r->model('album', \App\Models\ImageAlbum::class);
 $r->model('article', \App\Models\Article::class);
+$r->model('character', \App\Models\Character::class);
 $r->model('comment', \Slynova\Commentable\Models\Comment::class);
 $r->model('event', \App\Models\Event::class);

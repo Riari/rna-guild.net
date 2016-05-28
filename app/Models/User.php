@@ -54,6 +54,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Relationship: characters
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function characters()
+    {
+        return $this->hasMany(Character::class);
+    }
+
+    /**
      * Relationship: roles
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -96,6 +106,16 @@ class User extends Authenticatable
     public function getRoleListAttribute()
     {
         return implode(', ', $this->roles()->lists('name')->toArray());
+    }
+
+    /**
+     * Attribute: main character
+     *
+     * @return string
+     */
+    public function getMainCharacterAttribute()
+    {
+        return $this->characters()->where('main', 1)->first();
     }
 
     /**

@@ -2,9 +2,9 @@
 
 use Auth;
 use App\Models\ImageAlbum;
+use App\Support\Image;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
-use Image;
 use Notification;
 use Storage;
 
@@ -25,7 +25,7 @@ class ImageAlbumController extends Controller
     /**
      * Display an image album.
      *
-     * @param  ImageAlbum  $event
+     * @param  ImageAlbum  $album
      * @return \Illuminate\Http\Response
      */
     public function show(ImageAlbum $album)
@@ -79,6 +79,7 @@ class ImageAlbumController extends Controller
     /**
      * Display an image album editing page.
      *
+     * @param  ImageAlbum  $album
      * @return \Illuminate\Http\Response
      */
     public function edit(ImageAlbum $album)
@@ -90,6 +91,7 @@ class ImageAlbumController extends Controller
     /**
      * Update an image album.
      *
+     * @param  ImageAlbum  $album
      * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -135,6 +137,7 @@ class ImageAlbumController extends Controller
     /**
      * Delete an image album.
      *
+     * @param  ImageAlbum  $album
      * @return \Illuminate\Http\Response
      */
     public function delete(ImageAlbum $album)
@@ -160,19 +163,7 @@ class ImageAlbumController extends Controller
      */
     private function processImage(ImageAlbum $album, UploadedFile $image, $index, $caption)
     {
-        $destination = config('filer.path.absolute');
-        $path = "albums/{$album->id}";
-        $filename = "{$path}/{$index}.{$image->guessExtension()}";
-
-        if (!is_dir("{$destination}/{$path}")) {
-            mkdir("{$destination}/{$path}");
-        }
-
-        Image::make($image)
-            ->fit(1920, 1080, function ($constraint) {
-                $constraint->upsize();
-            })
-            ->save("{$destination}/{$filename}");
+        $filename = Image::process($image, [1920, 1080], "albums/{$album->id}", $index);
 
         $album->attach(
             $filename,
