@@ -11,7 +11,7 @@
                     {{ $notification->text }}
                     <span class="grey-text">{{ $notification->created_at->diffForHumans() }}</span>
                     @if (!$notification->read)
-                        <span class="teal new badge"></span>
+                        <span class="deep-orange accent-4 new badge"></span>
                     @endif
                 </a>
             @endforeach

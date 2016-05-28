@@ -48,7 +48,7 @@
                                 <a href="{{ url('account/notifications') }}">
                                     Notifications
                                     @if (Auth::user()->countNotificationsNotRead() > 0)
-                                        <span class="teal badge">{{ Auth::user()->countNotificationsNotRead() }}</span>
+                                        <span class="deep-orange accent-4 badge">{{ Auth::user()->countNotificationsNotRead() }}</span>
                                     @endif
                                 </a>
                             </li>
@@ -78,7 +78,7 @@
                                     &nbsp;Hello, <strong>{{ Auth::user()->name }}</strong>!&nbsp;
                                     <i class="fa fa-caret-down" aria-hidden="true"></i>
                                     @if (Auth::user()->countNotificationsNotRead() > 0)
-                                        <span class="teal new badge">{{ Auth::user()->countNotificationsNotRead() }}</span>
+                                        <span class="deep-orange accent-4 new badge">{{ Auth::user()->countNotificationsNotRead() }}</span>
                                     @endif
                                 </a>
                             </li>
@@ -102,7 +102,7 @@
                                 <a href="{{ url('account/notifications') }}">
                                     Notifications
                                     @if (Auth::user()->countNotificationsNotRead() > 0)
-                                        <span class="teal new badge">{{ Auth::user()->countNotificationsNotRead() }}</span>
+                                        <span class="deep-orange accent-4 new badge">{{ Auth::user()->countNotificationsNotRead() }}</span>
                                     @endif
                                 </a>
                             </li>
