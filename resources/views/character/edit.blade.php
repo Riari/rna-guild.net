@@ -25,17 +25,17 @@
                         <label for="name">Name</label>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <select name="class_id">
-                            @foreach ($classes as $id => $name)
-                                <option value="{{ $id }}" data-icon="{{ url('images/game/class/icon_' . strtolower($name) . '.png') }}" class="circle">{{ $name }}</option>
-                            @endforeach
-                        </select>
-                        <label>Class</label>
-                    </div>
-                </div>
             @endif
+            <div class="row">
+                <div class="input-field col s12">
+                    <select name="class_id">
+                        @foreach ($classes as $id => $name)
+                            <option value="{{ $id }}" data-icon="{{ url('images/game/class/icon_' . strtolower($name) . '.png') }}" class="circle" {{ $id == $character->class_id ? 'selected' : '' }}>{{ $name }}</option>
+                        @endforeach
+                    </select>
+                    <label>Class</label>
+                </div>
+            </div>
             <div class="row">
                 <div class="input-field col s12">
                     <input id="age" name="age" type="text" value="{{ !empty(old('age')) ? old('age') : $character->age }}">

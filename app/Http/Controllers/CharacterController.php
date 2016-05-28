@@ -46,7 +46,7 @@ class CharacterController extends Controller
     public function create()
     {
         $this->authorize('createCharacters');
-        return $this->edit(new Character)->with('classes', CharacterClass::pluck('name', 'id'));
+        return $this->edit(new Character);
     }
 
     /**
@@ -60,10 +60,7 @@ class CharacterController extends Controller
         $this->authorize('createCharacters');
         $this->validate(
             $request,
-            [
-                'name' => ['required', 'alpha_dash', 'min:3', 'max:16', 'unique:characters'],
-                'class_id' => ['required', 'exists:character_classes,id']
-            ]
+            ['name' => ['required', 'alpha_dash', 'min:3', 'max:16', 'unique:characters']]
             + $this->getRules($request)
         );
 
@@ -89,7 +86,8 @@ class CharacterController extends Controller
     public function edit(Character $character)
     {
         $this->authorize($character);
-        return view('character.edit', compact('character'));
+        $classes = CharacterClass::pluck('name', 'id');
+        return view('character.edit', compact('character', 'classes'));
     }
 
     /**
@@ -121,7 +119,7 @@ class CharacterController extends Controller
             }
         }
 
-        $character->update($request->only('age', 'occupation', 'description', 'main'));
+        $character->update($request->only('class_id', 'age', 'occupation', 'description', 'main'));
 
         Notification::success("Character updated successfully");
 
@@ -167,6 +165,7 @@ class CharacterController extends Controller
     private function getRules(Request $request)
     {
         return [
+            'class_id' => ['required', 'exists:character_classes,id'],
             'portrait' => ['mimes:jpeg,gif,png', 'max:8000']
         ];
     }
