@@ -60,7 +60,7 @@ class CharacterController extends Controller
         $this->authorize('createCharacters');
         $this->validate(
             $request,
-            ['name' => ['required', 'alpha_dash', 'min:3', 'max:16', 'unique:characters']]
+            ['name' => ['required', 'regex:/(?=[a-zA-Z_]+\d{0,4}$)^[A-Z][a-zA-Z0-9]*(?:_[A-Z])?[a-zA-Z0-9]*$/', 'min:3', 'max:16', 'unique:characters']]
             + $this->getRules($request)
         );
 
