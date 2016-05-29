@@ -17,7 +17,7 @@
             </p>
         @endif
     </td>
-    <td class="body">
+    <td class="body {{ !empty($post->author->profile->signature) ? 'with-signature' : '' }}">
         <span class="grey-text hide-on-med-and-up">
             {{ $post->posted }}
             <a href="{{ $post->author->profile->url }}" class="author-name">
@@ -51,9 +51,11 @@
                 </p>
             @endif
 
-            <blockquote class="signature">
-                {{ $post->author->profile->signature }}
-            </blockquote>
+            @if (!empty($post->author->profile->signature))
+                <blockquote class="signature">
+                    {{ $post->author->profile->signature }}
+                </blockquote>
+            @endif
         @endif
     </td>
 </tr>

@@ -46,8 +46,11 @@ body.forum {
 
         .body {
             position: relative;
-            padding-bottom: 65px;
             vertical-align: top;
+
+            &.with-signature {
+                padding-bottom: 65px;
+            }
 
             img:not(.avatar) {
                 border-radius: 3px;
