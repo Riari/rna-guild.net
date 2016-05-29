@@ -45,7 +45,26 @@ body.forum {
         }
 
         .body {
+            position: relative;
+            padding-bottom: 65px;
             vertical-align: top;
+
+            img:not(.avatar) {
+                border-radius: 3px;
+            }
+
+            .signature {
+                position: absolute;
+                bottom: 15px;
+                left: 5px;
+                right: 5px;
+                margin: 0;
+                padding: 15px 0 0 0;
+                border: none;
+                border-top: 2px solid #eceff1;
+                background: none;
+                color: color('blue-grey', 'lighten-1');
+            }
         }
     }
 

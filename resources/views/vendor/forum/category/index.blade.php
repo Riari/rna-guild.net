@@ -13,9 +13,9 @@
                     <br>
                     {{ $category->description }}
                 </th>
-                <th class="center-align" style="width:10%;">{{ trans_choice('forum::threads.thread', 2) }}</th>
-                <th class="center-align" style="width:10%;">{{ trans_choice('forum::posts.post', 2) }}</th>
-                <th class="right-align" style="width:20%;">{{ trans('forum::threads.newest') }}</th>
+                <th class="center-align hide-on-small-only" style="width:10%;">{{ trans_choice('forum::threads.thread', 2) }}</th>
+                <th class="center-align hide-on-small-only" style="width:10%;">{{ trans_choice('forum::posts.post', 2) }}</th>
+                <th class="right-align hide-on-small-only" style="width:20%;">{{ trans('forum::threads.newest') }}</th>
                 <th class="right-align" style="width:20%;">{{ trans('forum::posts.last') }}</th>
             </thead>
             <tbody>

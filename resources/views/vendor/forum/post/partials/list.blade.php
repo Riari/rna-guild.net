@@ -1,5 +1,5 @@
 <tr id="post-{{ $post->sequenceNumber }}" class="post {{ $post->trashed() ? 'deleted' : '' }}">
-    <td class="author-info center-align">
+    <td class="author-info center-align hide-on-small-only">
         <p class="center-align">
             <a href="{{ $post->author->profile->url }}" class="author-name">
                 {!! $post->author->displayName !!}
@@ -18,6 +18,16 @@
         @endif
     </td>
     <td class="body">
+        <span class="grey-text hide-on-med-and-up">
+            {{ $post->posted }}
+            <a href="{{ $post->author->profile->url }}" class="author-name">
+                <strong>
+                    @include('user.partials.avatar', ['user' => $post->author, 'class' => 'tiny circular'])
+                    {!! $post->author->displayName !!}
+                </strong>
+            </a>
+            said…
+        </span>
         @if (!is_null($post->parent))
             <p>
                 <strong>
@@ -35,14 +45,20 @@
         @else
             {!! Markdown::convertToHtml($post->content) !!}
 
-            <div class="grey-text">
+            @if ($post->hasBeenUpdated())
+                <p class="grey-text hide-on-med-and-up">
+                    <em>Edited {{ $post->updated }}</em>
+                </p>
+            @endif
+
+            <blockquote class="signature">
                 {{ $post->author->profile->signature }}
-            </div>
+            </blockquote>
         @endif
     </td>
 </tr>
 <tr>
-    <td>
+    <td class="hide-on-small-only">
         @if (!$post->trashed())
             @can ('edit', $post)
                 <a href="{{ Forum::route('post.edit', $post) }}">{{ trans('forum::general.edit') }}</a>
@@ -50,10 +66,16 @@
         @endif
     </td>
     <td class="grey-text">
-        {{ trans('forum::general.posted') }} {{ $post->posted }}
-        @if ($post->hasBeenUpdated())
-            | {{ trans('forum::general.last_updated') }} {{ $post->updated }}
-        @endif
+        <span class="hide-on-small-only">
+            {{ trans('forum::general.posted') }} {{ $post->posted }}@if ($post->hasBeenUpdated()), updated {{ $post->updated }}@endif
+        </span>
+        <span class="hide-on-med-and-up">
+            @if (!$post->trashed())
+                @can ('edit', $post)
+                    <a href="{{ Forum::route('post.edit', $post) }}">{{ trans('forum::general.edit') }}</a>
+                @endcan
+            @endif
+        </span>
         <span class="pull-right">
             <a href="{{ Forum::route('thread.show', $post) }}">#{{ $post->sequenceNumber }}</a>
             @if (!$post->trashed())

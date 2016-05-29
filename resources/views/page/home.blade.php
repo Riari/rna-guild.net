@@ -58,7 +58,7 @@
         @foreach ($articles as $article)
             @include('article.partials.list')
         @endforeach
-        {!! $articles->render() !!}
+        @include('partials.pagination', ['paginator' => $articles])
     </div>
     <div class="col s12 m12 l3">
         <h4>Latest forum threads</h4>

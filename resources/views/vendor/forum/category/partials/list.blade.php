@@ -7,9 +7,9 @@
         <span class="grey-text darken-1">{{ $category->description }}</span>
     </td>
     @if ($category->threadsEnabled)
-        <td class="center-align">{{ $category->threadCount }}</td>
-        <td class="center-align">{{ $category->postCount }}</td>
-        <td class="right-align">
+        <td class="center-align hide-on-small-only">{{ $category->threadCount }}</td>
+        <td class="center-align hide-on-small-only">{{ $category->postCount }}</td>
+        <td class="right-align hide-on-small-only">
             @if ($category->newestThread)
                 <a href="{{ Forum::route('thread.show', $category->newestThread) }}">
                     {{ $category->newestThread->title }}

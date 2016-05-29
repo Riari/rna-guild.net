@@ -4,7 +4,7 @@
             @foreach ($commentPaginator->items() as $comment)
                 @include('comment.partials.row')
             @endforeach
-            {!! $commentPaginator->render() !!}
+            @include('partials.pagination', ['paginator' => $commentPaginator])
         @else
             <p class="grey-text center-align">
                 {{ isset($noComments) ? $noComments : 'No comments yet.' }}

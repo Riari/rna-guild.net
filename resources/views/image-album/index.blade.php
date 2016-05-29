@@ -27,6 +27,6 @@
             </span>
         </div>
     @endforeach
-    {!! $paginator->render() !!}
+    @include('partials.pagination')
 </div>
 @stop

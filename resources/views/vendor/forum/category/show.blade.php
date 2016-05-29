@@ -8,9 +8,9 @@
                 <thead>
                     <tr>
                         <th>{{ trans_choice('forum::categories.category', 1) }}</th>
-                        <th class="center-align" style="width:10%;">{{ trans_choice('forum::threads.thread', 2) }}</th>
-                        <th class="center-align" style="width:10%;">{{ trans_choice('forum::posts.post', 2) }}</th>
-                        <th class="right-align" style="width:20%;">{{ trans('forum::threads.newest') }}</th>
+                        <th class="center-align hide-on-small-only" style="width:10%;">{{ trans_choice('forum::threads.thread', 2) }}</th>
+                        <th class="center-align hide-on-small-only" style="width:10%;">{{ trans_choice('forum::posts.post', 2) }}</th>
+                        <th class="right-align hide-on-small-only" style="width:20%;">{{ trans('forum::threads.newest') }}</th>
                         <th class="right-align" style="width:20%;">{{ trans('forum::posts.last') }}</th>
                     </tr>
                 </thead>
@@ -31,7 +31,7 @@
                 @endif
             </div>
             <div class="col s8 right-align">
-                {!! $category->threadsPaginated->render() !!}
+                @include('partials.pagination', ['paginator' => $category->threadsPaginated])
             </div>
         </div>
 
@@ -48,7 +48,7 @@
                 <thead>
                     <tr>
                         <th>{{ trans('forum::general.subject') }}</th>
-                        <th class="col-md-2 right-align">{{ trans('forum::general.replies') }}</th>
+                        <th class="col-md-2 right-align hide-on-small-only">{{ trans('forum::general.replies') }}</th>
                         <th class="col-md-2 right-align">{{ trans('forum::posts.last') }}</th>
                         @can ('manageThreads', $category)
                             <th class="col-md-1 right-align"><input type="checkbox" data-toggle-all></th>
@@ -88,7 +88,7 @@
                                 @if ($thread->trashed())
                                     <td colspan="2">&nbsp;</td>
                                 @else
-                                    <td class="right-align">
+                                    <td class="right-align hide-on-small-only">
                                         {{ $thread->replyCount }}
                                     </td>
                                     <td class="right-align">
@@ -141,7 +141,7 @@
                 @endif
             </div>
             <div class="col s8 right-align">
-                {!! $category->threadsPaginated->render() !!}
+                @include('partials.pagination', ['paginator' => $category->threadsPaginated])
             </div>
         </div>
 

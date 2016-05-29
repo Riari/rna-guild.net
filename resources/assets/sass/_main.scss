@@ -165,7 +165,9 @@ img.avatar {
             background: #fff;
 
             nav.breadcrumbs {
+                height: auto;
                 width: auto;
+                min-height: 56px;
                 padding: 0 20px;
                 margin: -40px -40px 40px -40px;
                 border-top-left-radius: 3px;

@@ -25,14 +25,14 @@
 
         @can ('reply', $thread)
             <div class="row">
-                <div class="col s4">
+                <div class="col s12 l6">
                     <div class="btn-group" role="group">
                         <a href="{{ Forum::route('post.create', $thread) }}" class="waves-effect waves-light btn-large">{{ trans('forum::general.new_reply') }}</a>
                         <a href="#quick-reply" class="waves-effect waves-light btn-large">{{ trans('forum::general.quick_reply') }}</a>
                     </div>
                 </div>
-                <div class="col s8 right-align">
-                    {!! $thread->postsPaginated->render() !!}
+                <div class="col s12 l6 right-align">
+                    @include('partials.pagination', ['paginator' => $thread->postsPaginated])
                 </div>
             </div>
         @endcan
@@ -64,7 +64,7 @@
             @endcan
         @endif
 
-        {!! $thread->postsPaginated->render() !!}
+        @include('partials.pagination', ['paginator' => $thread->postsPaginated])
 
         @can ('reply', $thread)
             <h3>{{ trans('forum::general.quick_reply') }}</h3>
