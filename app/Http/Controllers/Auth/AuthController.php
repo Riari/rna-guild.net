@@ -185,14 +185,14 @@ class AuthController extends Controller
         $user->profile()->create([]);
 
         // Create an activation token
-        $activation = UserConfirmation::createForUser($user);
+        $confirmation = UserConfirmation::createForUser($user);
 
-        // Send it with the activation email
-        Mail::send('auth.emails.activation', compact('user', 'activation'), function ($m) use ($user) {
-            $m->to($user->email, $user->name)->subject('RNA account activation');
+        // Send it with the confirmation email
+        Mail::send('auth.emails.confirmation', compact('user', 'confirmation'), function ($m) use ($user) {
+            $m->to($user->email, $user->name)->subject('RNA account confirmation');
         });
 
-        Notification::success("Thanks for registering, {$user->name}! An account activation link has been sent to {$user->email}.");
+        Notification::success("Thanks for registering, {$user->name}! An account confirmation link has been sent to {$user->email}.");
 
         // If there's a pending user auth, create it
         if (Session::has('pending_user_auth')) {
@@ -206,43 +206,43 @@ class AuthController extends Controller
     }
 
     /**
-     * Show the account activation form.
+     * Show the account confirmation form.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function getActivation(Request $request)
+    public function getConfirmation(Request $request)
     {
-        $activation = UserConfirmation::forToken($request->route('token'))->first();
+        $confirmation = UserConfirmation::forToken($request->route('token'))->first();
 
-        if (is_null($activation)) {
+        if (is_null($confirmation)) {
             Notification::info("Invalid token. Maybe the link you followed is old?");
             return redirect('/');
         }
 
-        return view('auth.activation', compact('activation'));
+        return view('auth.confirmation', compact('confirmation'));
     }
 
     /**
-     * Handle an account activation request.
+     * Handle an account confirmation request.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postActivation(Request $request)
+    public function postConfirmation(Request $request)
     {
-        $activation = UserConfirmation::forToken($request->input('token'))->first();
+        $confirmation = UserConfirmation::forToken($request->input('token'))->first();
 
-        if (is_null($activation)) {
+        if (is_null($confirmation)) {
             Notification::info("Invalid token. Maybe the link you followed is old?");
             return redirect('/');
         }
 
-        $activation->user->confirm();
-        $activation->delete();
+        $confirmation->user->confirm();
+        $confirmation->delete();
 
-        Notification::success("Account {$activation->user->name}/{$activation->user->email} successfully confirmed. You are now logged in. :D");
-        Auth::login($activation->user);
+        Notification::success("Account {$confirmation->user->name}/{$confirmation->user->email} successfully confirmed. You are now logged in. :D");
+        Auth::login($confirmation->user);
 
         return redirect('/');
     }

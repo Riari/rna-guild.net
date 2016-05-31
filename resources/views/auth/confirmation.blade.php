@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Account activation')
+@section('title', 'Account confirmation')
 
 @section('content')
 <div class="row">
@@ -8,9 +8,9 @@
         <form method="POST" action="{{ url('auth/confirm') }}">
             {!! csrf_field() !!}
 
-            <input type="hidden" name="token" value="{{ $activation->token }}">
+            <input type="hidden" name="token" value="{{ $confirmation->token }}">
 
-            <p>Confirm the account for <strong>{{ $activation->user->email }}</strong>?</p>
+            <p>Confirm the account for <strong>{{ $confirmation->user->email }}</strong>?</p>
 
             <div class="row">
                 <div class="input-field col s12 right-align">

@@ -17,14 +17,14 @@ $r->group(['prefix' => 'auth'], function ($r) {
     $r->get('register', 'Auth\AuthController@getRegister');
     $r->post('register', 'Auth\AuthController@postRegister');
 
-    // Activation
+    // Confirmation
     $r->get(
         'confirm/{token}',
-        ['as' => 'auth.get.activation', 'uses' => 'Auth\AuthController@getActivation']
+        ['as' => 'auth.get.confirmation', 'uses' => 'Auth\AuthController@getConfirmation']
     );
     $r->post(
         'confirm',
-        ['as' => 'auth.post.activation', 'uses' => 'Auth\AuthController@postActivation']
+        ['as' => 'auth.post.confirmation', 'uses' => 'Auth\AuthController@postConfirmation']
     );
 
     // Login
