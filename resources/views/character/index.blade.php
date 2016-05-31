@@ -5,15 +5,15 @@
 @section('title', 'Member Characters')
 
 @section('content')
-<div class="row">
-    <div class="col s12">
-        @can('createCharacters')
-            <a href="{{ route('character.create') }}" class="waves-effect waves-light btn btn-large">
-                Add a character
-            </a>
-        @endcan
+@can('createCharacters')
+    <div class="row">
+        <div class="col s12">
+                <a href="{{ route('character.create') }}" class="waves-effect waves-light btn btn-large">
+                    Add a character
+                </a>
+        </div>
     </div>
-</div>
+@endcan
 <div class="row">
     @foreach ($paginator->items() as $character)
         <div class="col s6 m4 l2 character center-align">
