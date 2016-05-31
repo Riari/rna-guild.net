@@ -56,17 +56,29 @@
                     </select>
                     <label>Role(s)</label>
                     <div class="alert info">
-                        Tip: Users with the 'New user' role have read only access to limited parts of the site.<br>
-                        Guild Master, Officer and Webmaster roles grant admin rights.
+                        Tip: Guild Master, Officer and Webmaster roles grant admin rights.
                     </div>
                 </div>
             </div>
+            @if ($user->exists)
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="hidden" name="confirmed" value="0">
+                        <input type="checkbox" class="filled-in" id="confirmed" name="confirmed" value="1" {{ (old('confirmed') || $user->confirmed) ? 'checked' : '' }}>
+                        <label for="confirmed">Confirm</label>
+                    </div>
+                </div>
+            @endif
             <div class="row">
                 <div class="input-field col s12">
-                    <input type="hidden" name="activated" value="0">
-                    <input type="checkbox" class="filled-in" id="activated" name="activated" value="1" {{ (old('activated') || $user->activated) ? 'checked' : '' }}>
-                    <label for="activated">Activate (non-activated users have limited access)</label>
+                    <input type="hidden" name="approved" value="0">
+                    <input type="checkbox" class="filled-in" id="approved" name="approved" value="1" {{ (old('approved') || $user->approved) ? 'checked' : '' }}>
+                    <label for="approved">Approve</label>
                 </div>
+            </div>
+
+            <div class="alert info">
+                Tip: Confirmation status indicates whether or not the user's email address is confirmed, and approval status (which cannot be set or changed by the user) indicates that the user is a recognised member or friend of RNA. Both are required for the user to gain proper access to the site.
             </div>
 
             <div class="row">

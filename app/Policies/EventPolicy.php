@@ -17,7 +17,7 @@ class EventPolicy
      */
     public function addComment(User $user, Event $event)
     {
-        return !$user->isNew;
+        return $user->isActive;
     }
 
     /**
@@ -29,6 +29,6 @@ class EventPolicy
      */
     public function view(User $user, Event $event)
     {
-        return !$user->isNew;
+        return $user->isActive;
     }
 }

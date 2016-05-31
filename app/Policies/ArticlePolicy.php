@@ -17,6 +17,6 @@ class ArticlePolicy
      */
     public function addComment(User $user, Article $article)
     {
-        return !$user->isNew;
+        return $user->isActive;
     }
 }

@@ -3,7 +3,7 @@
 use App\Models\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 
-class UserActivation extends Model
+class UserConfirmation extends Model
 {
     use HasOwner;
 
@@ -38,7 +38,7 @@ class UserActivation extends Model
     }
 
     /**
-     * Helper: create an activation for the given user
+     * Helper: create a confirmation for the given user
      *
      * @param  User  $user
      * @return static
@@ -47,7 +47,7 @@ class UserActivation extends Model
     {
         do {
             $token = str_random(32);
-        } while (static::forToken($token)->first() instanceof UserActivation);
+        } while (static::forToken($token)->first() instanceof UserConfirmation);
 
         return static::create([
             'user_id' => $user->id,

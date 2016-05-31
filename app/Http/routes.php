@@ -19,11 +19,11 @@ $r->group(['prefix' => 'auth'], function ($r) {
 
     // Activation
     $r->get(
-        'activate/{token}',
+        'confirm/{token}',
         ['as' => 'auth.get.activation', 'uses' => 'Auth\AuthController@getActivation']
     );
     $r->post(
-        'activate',
+        'confirm',
         ['as' => 'auth.post.activation', 'uses' => 'Auth\AuthController@postActivation']
     );
 

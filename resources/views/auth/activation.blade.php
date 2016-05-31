@@ -5,12 +5,12 @@
 @section('content')
 <div class="row">
     <div class="col m6 offset-m3">
-        <form method="POST" action="{{ url('auth/activate') }}">
+        <form method="POST" action="{{ url('auth/confirm') }}">
             {!! csrf_field() !!}
 
             <input type="hidden" name="token" value="{{ $activation->token }}">
 
-            <p>Activate the account for <strong>{{ $activation->user->email }}</strong>?</p>
+            <p>Confirm the account for <strong>{{ $activation->user->email }}</strong>?</p>
 
             <div class="row">
                 <div class="input-field col s12 right-align">

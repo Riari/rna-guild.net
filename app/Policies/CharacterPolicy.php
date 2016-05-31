@@ -17,7 +17,7 @@ class CharacterPolicy
      */
     public function addComment(User $user, Character $character)
     {
-        return !$user->isNew;
+        return $user->isActive;
     }
 
     /**

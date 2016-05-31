@@ -14,7 +14,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'activated',
+        'name', 'email', 'password', 'confirmed', 'approved',
     ];
 
     /**
@@ -84,14 +84,46 @@ class User extends Authenticatable
     }
 
     /**
-     * Scope: activated
+     * Scope: confirmed
      *
      * @param  \Illuminate\Database\Query\Builder
      * @return \Illuminate\Database\Query\Builder
      */
-    public function scopeActivated($query)
+    public function scopeConfirmed($query)
     {
-        return $query->where('activated', 1);
+        return $query->where('confirmed', 1);
+    }
+
+    /**
+     * Scope: approved
+     *
+     * @param  \Illuminate\Database\Query\Builder
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function scopeApproved($query)
+    {
+        return $query->where('approved', 1);
+    }
+
+    /**
+     * Scope: active (approved + confirmed)
+     *
+     * @param  \Illuminate\Database\Query\Builder
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function scopeActive($query)
+    {
+        return $query->where(['confirmed' => 1, 'approved' => 1]);
+    }
+
+    /**
+     * Attribute: is active (both confirmed and approved)
+     *
+     * @return string
+     */
+    public function getIsActiveAttribute()
+    {
+        return $this->confirmed && $this->approved;
     }
 
     /**
@@ -126,16 +158,6 @@ class User extends Authenticatable
     public function getMainCharacterAttribute()
     {
         return $this->characters()->where('main', 1)->first();
-    }
-
-    /**
-     * Attribute: determine if the user is considered to be new
-     *
-     * @return bool
-     */
-    public function getIsNewAttribute()
-    {
-        return $this->hasRole(Setting::get('new_user_role', 'New user'));
     }
 
     /**
@@ -182,32 +204,17 @@ class User extends Authenticatable
     }
 
     /**
-     * Helper: activate the user
+     * Helper: confirm the user if applicable
      *
      * @return void
      */
-    public function activate()
+    public function confirm()
     {
-        if ($this->activated) {
+        if ($this->confirmed) {
             return;
         }
 
-        $this->activated = 1;
-        $this->save();
-    }
-
-    /**
-     * Helper: deactivate the user
-     *
-     * @return void
-     */
-    public function deactivate()
-    {
-        if (!$this->activated) {
-            return;
-        }
-
-        $this->activated = 0;
+        $this->confirmed = 1;
         $this->save();
     }
 }

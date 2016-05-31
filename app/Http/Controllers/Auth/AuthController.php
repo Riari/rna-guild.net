@@ -4,7 +4,7 @@ use Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use App\Models\User;
-use App\Models\UserActivation;
+use App\Models\UserConfirmation;
 use App\Models\UserAuth;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
@@ -118,9 +118,9 @@ class AuthController extends Controller
      */
     protected function authenticated(Request $request, User $user)
     {
-        if (!$user->activated) {
+        if (!$user->confirmed) {
             Auth::logout();
-            Notification::warning("Your account is not active. :( Check your emails for the activation email that was sent, or ask an officer to activate your account for you.");
+            Notification::warning("Your account is not active. :( Check your emails for the activation email that was sent, or ask an officer to confirm your account for you.");
             return back();
         }
 
@@ -185,7 +185,7 @@ class AuthController extends Controller
         $user->profile()->create([]);
 
         // Create an activation token
-        $activation = UserActivation::createForUser($user);
+        $activation = UserConfirmation::createForUser($user);
 
         // Send it with the activation email
         Mail::send('auth.emails.activation', compact('user', 'activation'), function ($m) use ($user) {
@@ -213,7 +213,7 @@ class AuthController extends Controller
      */
     public function getActivation(Request $request)
     {
-        $activation = UserActivation::forToken($request->route('token'))->first();
+        $activation = UserConfirmation::forToken($request->route('token'))->first();
 
         if (is_null($activation)) {
             Notification::info("Invalid token. Maybe the link you followed is old?");
@@ -231,17 +231,17 @@ class AuthController extends Controller
      */
     public function postActivation(Request $request)
     {
-        $activation = UserActivation::forToken($request->input('token'))->first();
+        $activation = UserConfirmation::forToken($request->input('token'))->first();
 
         if (is_null($activation)) {
             Notification::info("Invalid token. Maybe the link you followed is old?");
             return redirect('/');
         }
 
-        $activation->user->activate();
+        $activation->user->confirm();
         $activation->delete();
 
-        Notification::success("Account {$activation->user->name}/{$activation->user->email} successfully activated. You are now logged in. :D");
+        Notification::success("Account {$activation->user->name}/{$activation->user->email} successfully confirmed. You are now logged in. :D");
         Auth::login($activation->user);
 
         return redirect('/');

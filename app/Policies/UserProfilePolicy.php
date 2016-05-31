@@ -17,6 +17,6 @@ class UserProfilePolicy
      */
     public function addComment(User $user, UserProfile $profile)
     {
-        return !$user->isNew;
+        return $user->isActive;
     }
 }

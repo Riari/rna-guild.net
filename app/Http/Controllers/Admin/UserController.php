@@ -16,7 +16,8 @@ class UserController extends Controller
         'email' => ['required', 'email', 'max:255'],
         'password' => ['min:6', 'confirmed'],
         'roles' => ['required', 'array'],
-        'activated' => ['required', 'boolean'],
+        'confirmed' => ['required', 'boolean'],
+        'approved' => ['required', 'boolean'],
     ];
 
     /**
@@ -55,7 +56,8 @@ class UserController extends Controller
             'password' => ['required']
         ]);
 
-        $user = User::create($request->only('name', 'email', 'activated') + [
+        $user = User::create($request->only('name', 'email', 'approved') + [
+            'confirmed' => 1,
             'password' => bcrypt($request->input('password'))
         ]);
 
@@ -100,7 +102,7 @@ class UserController extends Controller
     {
         $this->validate($request, $this->rules);
 
-        $user->fill($request->only('name', 'email', 'activated'));
+        $user->fill($request->only('name', 'email', 'confirmed', 'approved'));
 
         if ($request->has('password')) {
             $user->password = bcrypt($request->input('password'));

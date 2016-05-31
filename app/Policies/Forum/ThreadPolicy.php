@@ -38,7 +38,7 @@ class ThreadPolicy extends \Riari\Forum\Policies\ThreadPolicy
      */
     public function reply($user, Thread $thread)
     {
-        return !$user->isNew;
+        return $user->isActive;
     }
 
     /**

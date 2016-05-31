@@ -15,7 +15,7 @@ class GeneralPolicy
      */
     public function createImageAlbums(User $user)
     {
-        return !$user->isNew;
+        return $user->isActive;
     }
 
     /**
@@ -26,6 +26,6 @@ class GeneralPolicy
      */
     public function createCharacters(User $user)
     {
-        return !$user->isNew;
+        return $user->isActive;
     }
 }

@@ -17,7 +17,7 @@ class ImageAlbumPolicy
      */
     public function addComment(User $user, ImageAlbum $album)
     {
-        return !$user->isNew;
+        return $user->isActive;
     }
 
     /**

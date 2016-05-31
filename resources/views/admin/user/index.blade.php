@@ -36,8 +36,8 @@
                     @endif
                 </td>
                 <td>{{ $user->email }}</td>
-                <td class="{{ !$user->activated ? 'red-text' : 'teal-text' }}">
-                    {{ $user->activated ? 'Activated' : 'Not activated' }}
+                <td class="{{ !$user->confirmed ? 'red-text' : 'teal-text' }}">
+                    {{ $user->confirmed ? 'Confirmed' : 'Not confirmed' }}
                 </td>
                 <td>{{ $user->roleList }}</td>
                 <td>{{ $user->created_at }}</td>
