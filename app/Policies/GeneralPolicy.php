@@ -28,15 +28,4 @@ class GeneralPolicy
     {
         return !$user->isNew;
     }
-
-    /**
-     * Determine if the given user is allowed to view characters.
-     *
-     * @param  User  $user
-     * @return bool
-     */
-    public function viewCharacters(User $user)
-    {
-        return !$user->isNew;
-    }
 }

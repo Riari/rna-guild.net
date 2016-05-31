@@ -19,7 +19,6 @@ class CharacterController extends Controller
      */
     public function index(Request $request)
     {
-        $this->authorize('viewCharacters');
         $paginator = Character::orderBy('name')->paginate(24);
         return view('character.index', compact('paginator'));
     }
@@ -32,7 +31,6 @@ class CharacterController extends Controller
      */
     public function show(Character $character)
     {
-        $this->authorize('viewCharacters');
         return view('character.show', compact('character') + [
             'commentPaginator' => $character->comments()->orderBy('created_at', 'desc')->paginate()
         ]);
