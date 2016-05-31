@@ -77,7 +77,6 @@
                 </li>
             @endforeach
         </ul>
-        <hr>
         <h4>Latest forum replies</h4>
         <ul class="collection">
             @foreach ($newPosts as $post)
