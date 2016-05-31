@@ -31,8 +31,8 @@
                 <td>{{ $user->id }}</td>
                 <td>
                     {{ $user->name }}
-                    @if ($user->isNew)
-                        &nbsp; <strong class="red-text">New</strong>
+                    @if (!$user->approved)
+                        &nbsp; <strong class="red-text">Unapproved</strong>
                     @endif
                 </td>
                 <td>{{ $user->email }}</td>
