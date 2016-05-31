@@ -120,7 +120,7 @@ class AuthController extends Controller
     {
         if (!$user->activated) {
             Auth::logout();
-            Notification::warning("Your account is not active. :(");
+            Notification::warning("Your account is not active. :( Check your emails for the activation email that was sent, or ask an officer to activate your account for you.");
             return back();
         }
 
@@ -182,7 +182,7 @@ class AuthController extends Controller
         $user->roles()->attach(Setting::get('default_role', 3));
 
         // Give the user a profile
-        UserProfile::create(['user_id' => $user->id]);
+        $user->profile()->create([]);
 
         // Create an activation token
         $activation = UserActivation::createForUser($user);
@@ -199,7 +199,7 @@ class AuthController extends Controller
             $socialiteUser = Session::pull('pending_user_auth');
             $provider = Session::pull('pending_user_auth_provider');
             $auth = UserAuth::createFromSocialite($user, $provider, $socialiteUser);
-            Notification::success("Your TRN account has been linked to {$provider}.");
+            Notification::success("Your RNA account has been linked to {$provider}.");
         }
 
         return redirect('/');

@@ -15,7 +15,8 @@ class AdminController extends Controller
         $links = [
             'article'           => 'Articles',
             'event'             => 'Events',
-            'forum/category'    => 'Forum Categories'
+            'forum/category'    => 'Forum Categories',
+            'user'              => 'Users',
         ];
 
         return view('admin.dashboard', compact('links'));
@@ -30,7 +31,8 @@ class AdminController extends Controller
      */
     public function getDeleteResource($model, $id)
     {
-        return view('admin.delete-resource', compact('model', 'id'));
+        $resource = $this->resolve($model, $id);
+        return view('admin.delete-resource', compact('resource', 'model', 'id'));
     }
 
     /**
@@ -44,11 +46,23 @@ class AdminController extends Controller
         $model = $request->route('model');
         $id = $request->route('id');
 
-        $class = "\App\Models\\{$model}";
-        $resource = (new $class)->findOrFail($id);
+        $resource = $this->resolve($model, $id);
         $resource->delete();
 
         Notification::success("{$model} #{$id} deleted.");
         return redirect('admin');
+    }
+
+    /**
+     * Resolve a resource using the given model name and ID.
+     *
+     * @param  string  $model
+     * @param  int  $id
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    private function resolve($model, $id)
+    {
+        $class = "\App\Models\\{$model}";
+        return (new $class)->findOrFail($id);
     }
 }

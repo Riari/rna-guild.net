@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', "Delete {$model}")
+@section('title', "Delete {$resource->friendlyName}")
 
 @section('content')
 <div class="row">
@@ -9,7 +9,7 @@
             {!! csrf_field() !!}
             {!! method_field('DELETE') !!}
 
-            <p>Delete {{ $model }} #{{ $id }}?</p>
+            <p>Delete {{ $resource->friendlyName }} #{{ $id }}?</p>
 
             <div class="row">
                 <div class="input-field col s12 right-align">

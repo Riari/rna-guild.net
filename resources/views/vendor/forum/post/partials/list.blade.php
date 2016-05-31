@@ -8,7 +8,7 @@
                 @include('user.partials.avatar', ['user' => $post->author, 'class' => 'circular'])
             </a>
         </p>
-        @include ('user.partials.rank-list', ['user' => $post->author])
+        @include ('user.partials.role-list', ['user' => $post->author])
         @if (!is_null($post->author->mainCharacter))
             <p class="grey-text center-align">
                 Main character:

@@ -27,6 +27,13 @@ class User extends Authenticatable
     ];
 
     /**
+     * User-friendly model name.
+     *
+     * @return string
+     */
+    public $friendlyName = 'User';
+
+    /**
      * Relationship: profile
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

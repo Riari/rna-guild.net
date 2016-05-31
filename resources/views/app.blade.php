@@ -91,6 +91,7 @@
                                 <li><a href="{{ url('admin/article') }}">Articles</a></li>
                                 <li><a href="{{ url('admin/event') }}">Events</a></li>
                                 <li><a href="{{ url('admin/forum/category') }}">Forum Categories</a></li>
+                                <li><a href="{{ url('admin/user') }}">Users</a></li>
                             </ul>
                         @endcan
                         <ul id="user-links" class="dropdown-content">

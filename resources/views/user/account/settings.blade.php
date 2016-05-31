@@ -12,9 +12,9 @@
         <strong>Email address:</strong> {{ Auth::user()->email }}<br>
         <strong>Joined:</strong> {{ Auth::user()->created_at->diffForHumans() }}
 
-        <h3>Rank</h3>
+        <h3>Roles</h3>
 
-        @include('user.partials.rank-list', ['user' => Auth::user()])
+        @include('user.partials.role-list', ['user' => Auth::user()])
 
         <h3>Third party logins</h3>
 

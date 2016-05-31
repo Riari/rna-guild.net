@@ -189,6 +189,9 @@ $r->group(['prefix' => 'admin', 'namespace' => 'Admin'], function ($r) {
     // Dashboard
     $r->get('/', 'AdminController@getDashboard');
 
+    // Users
+    $r->resource('user', 'UserController');
+
     // Articles
     $r->resource('article', 'ArticleController');
 
@@ -214,3 +217,4 @@ $r->model('article', \App\Models\Article::class);
 $r->model('character', \App\Models\Character::class);
 $r->model('comment', \Slynova\Commentable\Models\Comment::class);
 $r->model('event', \App\Models\Event::class);
+$r->model('user', \App\Models\User::class);
