@@ -36,7 +36,7 @@
                         <li><a href="{{ url('characters') }}">Characters</a></li>
                         <li><a href="{{ url('gallery') }}">Gallery</a></li>
                         @if (Auth::guest())
-                            <li><a href="{{ url('auth/login') }}">Login</a></li>
+                            <li><a href="{{ url('auth/login') }}">Log in</a></li>
                             <li><a href="{{ url('auth/register') }}">Register</a></li>
                         @else
                             @can('admin')
@@ -62,7 +62,7 @@
                         <li><a href="{{ url('characters') }}">Characters</a></li>
                         <li><a href="{{ url('gallery') }}">Gallery</a></li>
                         @if (Auth::guest())
-                            <li><a href="{{ url('auth/login') }}">Login</a></li>
+                            <li><a href="{{ url('auth/login') }}">Log in</a></li>
                             <li><a href="{{ url('auth/register') }}">Register</a></li>
                         @else
                             @can('admin')
