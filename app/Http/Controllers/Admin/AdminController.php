@@ -23,19 +23,6 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the resource deletion page.
-     *
-     * @param  string  $model
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function getDeleteResource($model, $id)
-    {
-        $resource = $this->resolve($model, $id);
-        return view('admin.delete-resource', compact('resource', 'model', 'id'));
-    }
-
-    /**
      * Handle a resource deletion request.
      *
      * @param  Request  $request

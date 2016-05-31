@@ -4,7 +4,7 @@
 
 @section('breadcrumbs')
 @parent
-<span class="breadcrumb">Events</span>
+<a href="{{ url('admin/event') }}" class="breadcrumb">Events</a>
 @append
 
 @section('content')
@@ -35,7 +35,8 @@
                 <td>{{ $event->starts }}</td>
                 <td>{{ $event->ends }}</td>
                 <td class="right-align">
-                    <a href="{{ route('admin.event.edit', $event->id) }}">Edit</a> &nbsp; <a href="{{ route('admin.resource.delete', ['Event', $event->id]) }}">Delete</a>
+                    <a href="{{ route('admin.event.edit', $event->id) }}">Edit</a>
+                    @include('admin.partials.delete-link', ['model' => 'Event', 'id' => $event->id, 'text' => "Are you sure you want to delete {$event->title}?"])
                 </td>
             </tr>
         @endforeach

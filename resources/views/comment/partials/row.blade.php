@@ -10,12 +10,7 @@
                         <a href="{{ route('comment.edit', compact('comment')) }}">Edit</a>
                     @endcan
                     @can ('delete', $comment)
-                        <form class="inline" method="post" action="{{ route('comment.delete', compact('comment')) }}">
-                            {!! csrf_field() !!}
-                            {!! method_field('delete') !!}
-
-                            &nbsp; <button type="submit" data-confirm data-text="Are you sure you want to delete {{ $comment->user->name }}'s comment?" class="btn btn-link">Delete</button>
-                        </form>
+                        @include('partials.delete-link', ['action' => route('comment.delete', compact('comment')), 'text' => "Are you sure you want to delete {$comment->user->name}'s comment?"])
                     @endcan
                 </div>
                 <a href="{{ $comment->user->profile->url }}">

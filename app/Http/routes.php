@@ -204,11 +204,10 @@ $r->group(['prefix' => 'admin', 'namespace' => 'Admin'], function ($r) {
     });
 
     // Resource deletion
-    $r->get(
-        '{model}/{id}/delete',
-        ['as' => 'admin.resource.delete', 'uses' => 'AdminController@getDeleteResource']
+    $r->delete(
+        '{model}/{id}',
+        ['as' => 'admin.resource.delete', 'uses' => 'AdminController@postDeleteResource']
     );
-    $r->delete('{model}/{id}', 'AdminController@postDeleteResource');
 });
 
 // Model binding

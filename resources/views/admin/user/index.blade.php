@@ -4,7 +4,7 @@
 
 @section('breadcrumbs')
 @parent
-<span class="breadcrumb">Users</span>
+<a href="{{ url('admin/user') }}" class="breadcrumb">Users</a>
 @append
 
 @section('content')
@@ -42,7 +42,8 @@
                 <td>{{ $user->roleList }}</td>
                 <td>{{ $user->created_at }}</td>
                 <td class="right-align">
-                    <a href="{{ route('admin.user.edit', $user->id) }}">Edit</a> &nbsp; <a href="{{ route('admin.resource.delete', ['User', $user->id]) }}">Delete</a>
+                    <a href="{{ route('admin.user.edit', $user->id) }}">Edit</a>
+                    @include('admin.partials.delete-link', ['model' => 'User', 'id' => $user->id, 'text' => "Are you sure you want to delete {$user->name}? All of their content on the site will be removed if you do this!"])
                 </td>
             </tr>
         @endforeach

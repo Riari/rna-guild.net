@@ -16,12 +16,7 @@
                 <a href="{{ route('image-album.edit', compact('album')) }}">Edit</a>
             @endcan
             @can('delete', $album)
-                <form class="inline" method="post" action="{{ route('image-album.delete', compact('album')) }}">
-                    {!! csrf_field() !!}
-                    {!! method_field('delete') !!}
-
-                    &nbsp; <button type="submit" data-confirm data-text="Are you sure you want to delete this album? All of its images and comments will be permanently removed." class="btn btn-link">Delete</button>
-                </form>
+                @include('partials.delete-link', ['action' => route('image-album.delete', compact('album')), 'text' => "Are you sure you want to delete this album? All of its images and comments will be permanently removed."])
             @endcan
         </div>
 

@@ -5,7 +5,7 @@
 @section('breadcrumbs')
 @parent
 <span class="breadcrumb">Forum</span>
-<span class="breadcrumb">Categories</span>
+<a href="{{ url('admin/forum/category') }}" class="breadcrumb">Categories</a>
 @append
 
 @section('content')
@@ -29,7 +29,7 @@
                 <td class="right-align">
                     <a href="#">Edit</a>
                     @if ($category->children->isEmpty() && $category->threads->isEmpty())
-                        &nbsp; <a href="{{ route('admin.resource.delete', ['Forum\\Category', $category->id])}}">Delete</a>
+                        @include('admin.partials.delete-link', ['model' => 'Forum\Category', 'id' => $category->id, 'text' => "Are you sure you want to delete {$category->title}?"])
                     @endif
                 </td>
             </tr>
