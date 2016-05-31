@@ -25,7 +25,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col s12 m12 l3">
+    <div class="col s12 m4 l3">
         <div class="character-panel">
             <img src="{{ $character->portraitUrl }}" alt="{{ $character->name }}'s portrait" class="portrait">
             <h5 class="class grey-text">
@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-    <div class="col s12 m12 l9">
+    <div class="col s12 m8 l9">
         {!! Markdown::convertToHtml($character->description) !!}
     </div>
 </div>
