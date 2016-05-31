@@ -60,17 +60,15 @@
                     </div>
                 </div>
             </div>
-            @if ($user->exists)
-                <div class="row">
-                    <div class="input-field col s12">
+            <div class="row">
+                @if ($user->exists)
+                    <div class="input-field col s6">
                         <input type="hidden" name="confirmed" value="0">
                         <input type="checkbox" class="filled-in" id="confirmed" name="confirmed" value="1" {{ (old('confirmed') || $user->confirmed) ? 'checked' : '' }}>
                         <label for="confirmed">Confirm</label>
                     </div>
-                </div>
-            @endif
-            <div class="row">
-                <div class="input-field col s12">
+                @endif
+                <div class="input-field col s6">
                     <input type="hidden" name="approved" value="0">
                     <input type="checkbox" class="filled-in" id="approved" name="approved" value="1" {{ (old('approved') || $user->approved) ? 'checked' : '' }}>
                     <label for="approved">Approve</label>
