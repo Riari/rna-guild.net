@@ -32,12 +32,11 @@
                 {{ $character->gameClass->name }}
             </h5>
             <img src="{{ $character->gameClass->iconUrl }}">
-            @if ($character->age || $character->occupation)
-                <div class="details grey-text">
-                    @if ($character->age)<strong>Age:</strong> {{ $character->age }}<br>@endif
-                    @if ($character->occupation)<strong>Occupation:</strong> {{ $character->occupation }}<br>@endif
-                </div>
-            @endif
+            <div class="details grey-text">
+                @if ($character->age)<strong>Age:</strong> {{ $character->age }}<br>@endif
+                @if ($character->occupation)<strong>Occupation:</strong> {{ $character->occupation }}<br>@endif
+                <strong>Played by:</strong> <a href="{{ $character->user->profile->url }}">{{ $character->user->displayName }}</a>
+            </div>
         </div>
     </div>
     <div class="col s12 m12 l9">

@@ -22,7 +22,15 @@
                     {{ $character->name }}
                 </a>
             </h4>
-            <p><a href="{{ $character->user->profile->url }}">{{ $character->user->profile->family_name }}</a></p>
+            <p>
+                <a href="{{ $character->user->profile->url }}">
+                    @if (empty($character->user->profile->family_name))
+                        {{ $character->user->name }}
+                    @else
+                        {{ $character->user->profile->family_name }}
+                    @endif
+                </a>
+            </p>
             <div class="character-panel">
                 <a href="{{ $character->url }}">
                     <img src="{{ $character->portraitUrl }}" alt="{{ $character->name }}'s portrait" class="portrait">
