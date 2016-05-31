@@ -12,7 +12,7 @@
 @section('content')
 <div class="row">
     <div class="col s12 m6 l3">
-        <h3>Rank</h3>
+        <h3>Role(s)</h3>
 
         @foreach ($user->roles as $role)
             <strong style="color:{{ $role->colour }}">{{ $role->name }}</strong><br>

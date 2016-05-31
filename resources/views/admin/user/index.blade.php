@@ -20,7 +20,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Status</th>
-            <th>Rank(s)</th>
+            <th>Role(s)</th>
             <th>Created</th>
             <th></th>
         </tr>
