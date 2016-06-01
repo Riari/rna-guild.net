@@ -23,7 +23,7 @@ class EventController extends Controller
     public function index()
     {
         return view('admin.event.index', [
-            'events' => Event::orderBy('created_at', 'desc')->get()
+            'paginator' => Event::orderBy('created_at', 'desc')->paginate()
         ]);
     }
 

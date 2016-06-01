@@ -26,7 +26,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($events as $event)
+        @foreach ($paginator->items() as $event)
             <tr>
                 <td>{{ $event->id }}</td>
                 <td><a href="{{ $event->url }}">{{ $event->title }}</a></td>
@@ -42,4 +42,5 @@
         @endforeach
     </tbody>
 </table>
+@include('partials.pagination')
 @stop

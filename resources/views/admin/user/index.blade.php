@@ -26,7 +26,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($users as $user)
+        @foreach ($paginator->items() as $user)
             <tr>
                 <td>{{ $user->id }}</td>
                 <td>
@@ -36,12 +36,13 @@
                     @endif
                 </td>
                 <td>{{ $user->email }}</td>
-                <td class="{{ !$user->confirmed ? 'red-text' : 'teal-text' }}">
-                    {{ $user->confirmed ? 'Confirmed' : 'Not confirmed' }}
+                <td class="{{ !$user->confirmed ? 'orange-text' : 'teal-text' }}">
+                    {{ $user->confirmed ? 'Confirmed' : 'Unconfirmed' }}
                 </td>
                 <td>{{ $user->roleList }}</td>
                 <td>{{ $user->created_at }}</td>
                 <td class="right-align">
+                    <a href="{{ $user->profile->url }}">View profile</a> &nbsp;
                     <a href="{{ route('admin.user.edit', $user->id) }}">Edit</a>
                     @include('admin.partials.delete-link', ['model' => 'User', 'id' => $user->id, 'text' => "Are you sure you want to delete {$user->name}? All of their content on the site will be removed if you do this!"])
                 </td>
@@ -49,4 +50,5 @@
         @endforeach
     </tbody>
 </table>
+@include('partials.pagination')
 @stop

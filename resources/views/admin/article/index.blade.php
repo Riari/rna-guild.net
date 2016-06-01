@@ -25,7 +25,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($articles as $article)
+        @foreach ($paginator->items() as $article)
             <tr>
                 <td>{{ $article->id }}</td>
                 <td>{{ $article->title }}</td>
@@ -40,4 +40,5 @@
         @endforeach
     </tbody>
 </table>
+@include('partials.pagination')
 @stop

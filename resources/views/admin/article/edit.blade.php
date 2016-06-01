@@ -4,7 +4,7 @@
 
 @section('breadcrumbs')
 @parent
-<span class="breadcrumb">Articles</span>
+<a href="{{ url('admin/article') }}" class="breadcrumb">Articles</a>
 <span class="breadcrumb">
     @if ($article->exists)
         Edit
