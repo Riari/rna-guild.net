@@ -16,8 +16,8 @@ class UserController extends Controller
         'email' => ['required', 'email', 'max:255'],
         'password' => ['min:6', 'confirmed'],
         'roles' => ['required', 'array'],
-        'confirmed' => ['required', 'boolean'],
-        'approved' => ['required', 'boolean'],
+        'confirmed' => ['boolean'],
+        'approved' => ['boolean'],
     ];
 
     /**
@@ -56,8 +56,9 @@ class UserController extends Controller
             'password' => ['required']
         ]);
 
-        $user = User::create($request->only('name', 'email', 'approved') + [
+        $user = User::create($request->only('name', 'email') + [
             'confirmed' => 1,
+            'approved' => 1,
             'password' => bcrypt($request->input('password'))
         ]);
 
@@ -100,7 +101,10 @@ class UserController extends Controller
      */
     public function update(User $user, Request $request)
     {
-        $this->validate($request, $this->rules);
+        $this->validate($request, $this->rules + [
+            'confirmed' => ['required'],
+            'approved' => ['required']
+        ]);
 
         $user->fill($request->only('name', 'email', 'confirmed', 'approved'));
 

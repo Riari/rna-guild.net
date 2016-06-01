@@ -4,7 +4,7 @@
 
 @section('breadcrumbs')
 @parent
-<span class="breadcrumb">Users</span>
+<a href="{{ url('admin/user') }}" class="breadcrumb">Users</a>
 <span class="breadcrumb">
     @if ($user->exists)
         Edit
@@ -60,24 +60,28 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                @if ($user->exists)
+            @if ($user->exists)
+                <div class="row">
                     <div class="input-field col s6">
                         <input type="hidden" name="confirmed" value="0">
                         <input type="checkbox" class="filled-in" id="confirmed" name="confirmed" value="1" {{ (old('confirmed') || $user->confirmed) ? 'checked' : '' }}>
                         <label for="confirmed">Confirm</label>
                     </div>
-                @endif
-                <div class="input-field col s6">
-                    <input type="hidden" name="approved" value="0">
-                    <input type="checkbox" class="filled-in" id="approved" name="approved" value="1" {{ (old('approved') || $user->approved) ? 'checked' : '' }}>
-                    <label for="approved">Approve</label>
+                    <div class="input-field col s6">
+                        <input type="hidden" name="approved" value="0">
+                        <input type="checkbox" class="filled-in" id="approved" name="approved" value="1" {{ (old('approved') || $user->approved) ? 'checked' : '' }}>
+                        <label for="approved">Approve</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="alert info">
-                Tip: Confirmation status indicates whether or not the user's email address is confirmed, and approval status (which cannot be set or changed by the user) indicates that the user is a recognised member or friend of RNA. Both are required for the user to gain proper access to the site.
-            </div>
+                <div class="alert info">
+                    A user must be both <strong>confirmed</strong> and <strong>approved</strong> to gain proper access to the site:
+                    <ul>
+                        <li><strong>Confirm</strong> indicates whether or not the user's email address is confirmed.</li>
+                        <li><strong>Approve</strong> indicates that the user is a recognised member or friend of RNA.</li>
+                    </ul>
+                </div>
+            @endif
 
             <div class="row">
                 <div class="input-field col s12 right-align">
