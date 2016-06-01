@@ -181,3 +181,11 @@ nav {
     padding: 12px 30px;
     line-height: 30px;
 }
+
+.card {
+    &.large, &.medium, &.small {
+        .card-content {
+            max-height: 100%;
+        }
+    }
+}

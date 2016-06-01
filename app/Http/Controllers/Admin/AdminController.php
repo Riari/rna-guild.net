@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers\Admin;
 
+use App\Models\Article;
+use App\Models\Event;
+use App\Models\Forum\Category as ForumCategory;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Notification;
 
@@ -12,14 +16,15 @@ class AdminController extends Controller
      */
     public function getDashboard()
     {
-        $links = [
-            'article'           => 'Articles',
-            'event'             => 'Events',
-            'forum/category'    => 'Forum Categories',
-            'user'              => 'Users',
-        ];
-
-        return view('admin.dashboard', compact('links'));
+        return view('admin.dashboard', [
+            'articles' => Article::count(),
+            'events' => Event::count(),
+            'eventsUpcoming' => Event::upcoming()->count(),
+            'forumCategories' => ForumCategory::count(),
+            'users' => User::count(),
+            'usersUnconfirmed' => User::unconfirmed()->count(),
+            'usersUnapproved' => User::unapproved()->count()
+        ]);
     }
 
     /**

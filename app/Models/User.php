@@ -95,6 +95,17 @@ class User extends Authenticatable
     }
 
     /**
+     * Scope: unconfirmed
+     *
+     * @param  \Illuminate\Database\Query\Builder
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function scopeUnconfirmed($query)
+    {
+        return $query->where('confirmed', 0);
+    }
+
+    /**
      * Scope: approved
      *
      * @param  \Illuminate\Database\Query\Builder
@@ -103,6 +114,17 @@ class User extends Authenticatable
     public function scopeApproved($query)
     {
         return $query->where('approved', 1);
+    }
+
+    /**
+     * Scope: unapproved
+     *
+     * @param  \Illuminate\Database\Query\Builder
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function scopeUnapproved($query)
+    {
+        return $query->where('approved', 0);
     }
 
     /**
