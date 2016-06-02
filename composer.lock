@@ -1358,16 +1358,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.2.32",
+            "version": "v5.2.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "f688217113f70b01d0e127da9035195415812bef"
+                "reference": "d2b6b0fe32fab610d356c22e74a6ffd101b0f513"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/f688217113f70b01d0e127da9035195415812bef",
-                "reference": "f688217113f70b01d0e127da9035195415812bef",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/d2b6b0fe32fab610d356c22e74a6ffd101b0f513",
+                "reference": "d2b6b0fe32fab610d356c22e74a6ffd101b0f513",
                 "shasum": ""
             },
             "require": {
@@ -1483,20 +1483,20 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-05-17 13:24:40"
+            "time": "2016-05-30 17:42:01"
         },
         {
             "name": "laravel/socialite",
-            "version": "v2.0.15",
+            "version": "v2.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "edd00ab96933e3ef053533cce81e958fb26921af"
+                "reference": "81d39cde2226f7548d8d1aa99405278c87e50737"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/edd00ab96933e3ef053533cce81e958fb26921af",
-                "reference": "edd00ab96933e3ef053533cce81e958fb26921af",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/81d39cde2226f7548d8d1aa99405278c87e50737",
+                "reference": "81d39cde2226f7548d8d1aa99405278c87e50737",
                 "shasum": ""
             },
             "require": {
@@ -1537,7 +1537,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2016-03-21 14:30:30"
+            "time": "2016-05-27 12:42:05"
         },
         {
             "name": "league/commonmark",
@@ -2330,16 +2330,16 @@
         },
         {
             "name": "riari/laravel-forum",
-            "version": "3.1.0",
+            "version": "3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Riari/laravel-forum.git",
-                "reference": "cb66463b3c420fdb4e4fe6c1ff733c92a463fe5b"
+                "reference": "560923eae6fc21b2a467a5ca1a0a82df33aa0dea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Riari/laravel-forum/zipball/cb66463b3c420fdb4e4fe6c1ff733c92a463fe5b",
-                "reference": "cb66463b3c420fdb4e4fe6c1ff733c92a463fe5b",
+                "url": "https://api.github.com/repos/Riari/laravel-forum/zipball/560923eae6fc21b2a467a5ca1a0a82df33aa0dea",
+                "reference": "560923eae6fc21b2a467a5ca1a0a82df33aa0dea",
                 "shasum": ""
             },
             "require": {
@@ -2374,20 +2374,20 @@
                 "laravel-4",
                 "laravel-5"
             ],
-            "time": "2016-05-24 14:00:38"
+            "time": "2016-05-26 11:00:19"
         },
         {
             "name": "riari/laravel-forum-frontend",
-            "version": "1.1.0",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Riari/laravel-forum-frontend.git",
-                "reference": "b068a51cd5f568c5766d93707a68241c94809229"
+                "reference": "1bcfca5ab5ab30e6f46126cac9c4453628f490c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Riari/laravel-forum-frontend/zipball/b068a51cd5f568c5766d93707a68241c94809229",
-                "reference": "b068a51cd5f568c5766d93707a68241c94809229",
+                "url": "https://api.github.com/repos/Riari/laravel-forum-frontend/zipball/1bcfca5ab5ab30e6f46126cac9c4453628f490c3",
+                "reference": "1bcfca5ab5ab30e6f46126cac9c4453628f490c3",
                 "shasum": ""
             },
             "require": {
@@ -2419,7 +2419,7 @@
                 "laravel-4",
                 "laravel-5"
             ],
-            "time": "2016-05-24 17:40:54"
+            "time": "2016-06-01 10:23:01"
         },
         {
             "name": "rtconner/laravel-tagging",
@@ -2694,16 +2694,16 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.0.6",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "807dde98589f9b2b00624dca326740380d78dbbc"
+                "reference": "0343b2cedd0edb26cdc791212a8eb645c406018b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/807dde98589f9b2b00624dca326740380d78dbbc",
-                "reference": "807dde98589f9b2b00624dca326740380d78dbbc",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/0343b2cedd0edb26cdc791212a8eb645c406018b",
+                "reference": "0343b2cedd0edb26cdc791212a8eb645c406018b",
                 "shasum": ""
             },
             "require": {
@@ -2723,7 +2723,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -2750,7 +2750,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2016-05-05 06:56:13"
+            "time": "2016-04-12 18:27:47"
         },
         {
             "name": "symfony/finder",
@@ -3356,16 +3356,16 @@
         },
         {
             "name": "teamteatime/laravel-filer",
-            "version": "1.0.0",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Team-Tea-Time/laravel-filer.git",
-                "reference": "c587fe039dc4fcdf3228641bc57588529251d88a"
+                "reference": "a72e391a9b5a346c1f0c7647642f8e15d5f6a011"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Team-Tea-Time/laravel-filer/zipball/c587fe039dc4fcdf3228641bc57588529251d88a",
-                "reference": "c587fe039dc4fcdf3228641bc57588529251d88a",
+                "url": "https://api.github.com/repos/Team-Tea-Time/laravel-filer/zipball/a72e391a9b5a346c1f0c7647642f8e15d5f6a011",
+                "reference": "a72e391a9b5a346c1f0c7647642f8e15d5f6a011",
                 "shasum": ""
             },
             "require": {
@@ -3398,7 +3398,7 @@
                 "laravel",
                 "laravel-5"
             ],
-            "time": "2016-05-24 16:32:50"
+            "time": "2016-06-02 16:49:09"
         },
         {
             "name": "vlucas/phpdotenv",

@@ -6,36 +6,9 @@ use Illuminate\Http\Exception\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Notification;
-use Riari\Forum\API\Dispatcher;
-use Riari\Forum\Contracts\API\ReceiverContract;
 
-class CategoryController extends Controller implements ReceiverContract
+class CategoryController extends Controller
 {
-    /**
-     * @var Dispatcher
-     */
-    protected $dispatcher;
-
-    /**
-     * Create an admin forum category controller instance.
-     */
-    public function __construct()
-    {
-        $this->dispatcher = new Dispatcher($this);
-    }
-
-    /**
-     * Return a prepared API dispatcher instance.
-     *
-     * @param  string  $route
-     * @param  array  $parameters
-     * @return Dispatcher
-     */
-    protected function api($route, $parameters = [])
-    {
-        return $this->dispatcher->route("forum.api.{$route}", $parameters);
-    }
-
     /**
      * Display an index of forum categories.
      *
@@ -55,21 +28,8 @@ class CategoryController extends Controller implements ReceiverContract
      */
     public function create()
     {
-        return $this->edit(new Category);
-    }
-
-    /**
-     * Store a new category.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        $category = $this->api('category.store')->parameters($request->all())->post();
-
-        Notification::success("Forum category created");
-
-        return redirect('admin/forum/category');
+        $categories = Category::where('category_id', 0)->orderBy('weight', 'asc')->get();
+        return view('admin.forum.category.create', compact('categories'));
     }
 
     /**
@@ -98,24 +58,5 @@ class CategoryController extends Controller implements ReceiverContract
         Notification::success("Forum structure updated");
 
         return redirect('admin/forum/category');
-    }
-
-    /**
-     * Handle a response from the dispatcher for the given request.
-     *
-     * @param  Request  $request
-     * @param  Response  $response
-     * @return Response|mixed
-     */
-    public function handleResponse(Request $request, Response $response)
-    {
-        if ($response->getStatusCode() == 422) {
-            $errors = $response->getOriginalContent()['validation_errors'];
-            throw new HttpResponseException(
-                redirect()->back()->withInput($request->input())->withErrors($errors)
-            );
-        }
-
-        return $response->isNotFound() ? abort(404) : $response->getOriginalContent();
     }
 }

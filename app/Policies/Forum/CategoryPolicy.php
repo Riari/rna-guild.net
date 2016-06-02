@@ -89,6 +89,18 @@ class CategoryPolicy extends \Riari\Forum\Policies\CategoryPolicy
     }
 
     /**
+     * Permission: View category. Only takes effect for 'private' categories.
+     *
+     * @param  object  $user
+     * @param  Category  $category
+     * @return bool
+     */
+    public function view($user, Category $category)
+    {
+        return $user->isActive;
+    }
+
+    /**
      * Permission: Delete category.
      *
      * @param  object  $user
