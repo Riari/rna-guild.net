@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Support\Traits\ResolvesModels;
 use Auth;
 use Illuminate\Http\Request;
 use Notification;
@@ -8,6 +9,8 @@ use Slynova\Commentable\Models\Comment;
 
 class CommentController extends Controller
 {
+    use ResolvesModels;
+
     /**
      * Add a new comment.
      *
@@ -94,18 +97,5 @@ class CommentController extends Controller
         Notification::success("Comment removed.");
 
         return redirect()->back();
-    }
-
-    /**
-     * Retrieve a model by name and ID.
-     *
-     * @param  string  $name
-     * @param  int  $id
-     * @return \Illuminate\Database\Eloquent\Model
-     */
-    private function getModel($name, $id)
-    {
-        $class = "\\App\\Models\\{$name}";
-        return (new $class)->findOrFail($id);
     }
 }

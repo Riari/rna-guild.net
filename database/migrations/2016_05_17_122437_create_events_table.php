@@ -12,19 +12,19 @@ class CreateEventsTable extends Migration
      */
     public function up()
     {
-		Schema::create('events', function ($table) {
-			$table->increments('id')->unsigned();
-			$table->integer('user_id')->unsigned();
-			$table->foreign('user_id')->references('id')->on('users');
-			$table->string('title');
-			$table->text('description');
-			$table->string('location')->nullable();
+        Schema::create('events', function ($table) {
+            $table->increments('id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('title');
+            $table->text('description');
+            $table->string('location')->nullable();
             $table->boolean('all_day');
             $table->boolean('public');
             $table->timestamp('starts')->nullable();
             $table->timestamp('ends')->nullable();
-			$table->timestamps();
-		});
+            $table->timestamps();
+        });
     }
 
     /**
@@ -34,6 +34,6 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
-		Schema::drop('events');
+        Schema::drop('events');
     }
 }

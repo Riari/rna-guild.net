@@ -1,9 +1,6 @@
 {
-  "name": "trn",
+  "name": "rna",
   "version": "1.0.0",
-  "authors": [
-    "Rick Mann <hello@ricko.me>"
-  ],
   "moduleType": [
     "node"
   ],

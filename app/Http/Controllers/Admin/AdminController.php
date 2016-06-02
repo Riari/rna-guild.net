@@ -4,11 +4,14 @@ use App\Models\Article;
 use App\Models\Event;
 use App\Models\Forum\Category as ForumCategory;
 use App\Models\User;
+use App\Support\Traits\ResolvesModels;
 use Illuminate\Http\Request;
 use Notification;
 
 class AdminController extends Controller
 {
+    use ResolvesModels;
+
     /**
      * Show the admin dashboard.
      *
@@ -43,18 +46,5 @@ class AdminController extends Controller
 
         Notification::success("{$model} #{$id} deleted.");
         return redirect('admin');
-    }
-
-    /**
-     * Resolve a resource using the given model name and ID.
-     *
-     * @param  string  $model
-     * @param  int  $id
-     * @return \Illuminate\Database\Eloquent\Model
-     */
-    private function resolve($model, $id)
-    {
-        $class = "\App\Models\\{$model}";
-        return (new $class)->findOrFail($id);
     }
 }

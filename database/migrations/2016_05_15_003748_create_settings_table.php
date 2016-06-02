@@ -12,10 +12,10 @@ class CreateSettingsTable extends Migration
      */
     public function up()
     {
-		Schema::create('settings', function(Blueprint $table) {
-			$table->string('key')->unique();
-			$table->string('value');
-		});
+        Schema::create('settings', function(Blueprint $table) {
+            $table->string('key')->unique();
+            $table->string('value');
+        });
     }
 
     /**
