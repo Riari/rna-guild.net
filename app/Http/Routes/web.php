@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
 // Auth
 $r->group(['prefix' => 'auth'], function ($r) {
     // Registration
@@ -201,6 +190,10 @@ $r->group(['prefix' => 'admin', 'namespace' => 'Admin'], function ($r) {
     // Forum
     $r->group(['prefix' => 'forum', 'namespace' => 'Forum'], function ($r) {
         $r->resource('category', 'CategoryController');
+        $r->post(
+            'reorder',
+            ['as' => 'admin.forum.category.reorder', 'uses' => 'CategoryController@reorder']
+        );
     });
 
     // Resource deletion

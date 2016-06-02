@@ -20,6 +20,7 @@
     "simplemde": "~1.10.1",
     "sweetalert2": "^3.0.1",
     "unslider": "~2.0.3",
-    "vue": "~1.0.17"
+    "vue": "~1.0.17",
+    "jquery-sortable": "^0.9.13"
   }
 }

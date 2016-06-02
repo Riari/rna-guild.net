@@ -62,6 +62,26 @@ if ($('.slider').find('img').length > 1) {
     });
 }
 
+// Sortable
+$('[data-sortable]').sortable({
+    onDrop: function ($item, container, _super) {
+        $('[data-sortable] li').each(function () {
+            var parentId = 0;
+            var parent = $(this).parent('ol').parent('li');
+
+            if (parent.length) {
+                var parentId = parent.data('id');
+            }
+
+            $(this).children('input[data-sorting]').val(parentId);
+        });
+
+        $('button[type="submit"][data-sortable-submit]').removeClass('disabled').prop('disabled', false);
+
+        _super($item, container);
+    }
+});
+
 // Datetime picker inputs
 $('.datetimepicker').datetimepicker();
 

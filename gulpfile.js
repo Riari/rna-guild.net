@@ -38,6 +38,7 @@ elixir(function(mix) {
             path('fullcalendar/dist/fullcalendar.js'),
             path('datetimepicker/build/jquery.datetimepicker.full.js'),
             path('unslider/dist/js/unslider-min.js'),
+            path('jquery-sortable/source/js/jquery-sortable-min.js'),
             path('js/vendor/materialize-tags.js', 'assets'),
             path('js/vendor/editor.js', 'assets'),
             path('js/vendor/marked.js', 'assets'),
