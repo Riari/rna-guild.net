@@ -42,6 +42,8 @@
 @stop
 
 @section('after_content')
-@include('comment.partials.add', ['model' => 'ImageAlbum', 'id' => $album->id])
+@can('addComment', $album)
+    @include('comment.partials.add', ['model' => 'ImageAlbum', 'id' => $album->id])
+@endcan
 @include('comment.partials.list')
 @stop

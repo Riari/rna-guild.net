@@ -39,6 +39,8 @@
 @endsection
 
 @section('after_content')
-@include('comment.partials.add', ['model' => 'UserProfile', 'id' => $user->profile->id])
+@can('addComment', $user->profile)
+    @include('comment.partials.add', ['model' => 'UserProfile', 'id' => $user->profile->id])
+@endcan
 @include('comment.partials.list', ['noComments' => "{$user->name} has no comments yet. :&#40;"])
 @stop

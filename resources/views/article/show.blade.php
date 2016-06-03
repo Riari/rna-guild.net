@@ -21,6 +21,8 @@ Published by
 @stop
 
 @section('after_content')
-@include('comment.partials.add', ['model' => 'Article', 'id' => $article->id])
+@can('addComment', $article)
+    @include('comment.partials.add', ['model' => 'Article', 'id' => $article->id])
+@endcan
 @include('comment.partials.list')
 @stop

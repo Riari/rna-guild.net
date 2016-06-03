@@ -31,10 +31,14 @@ class EmailNotificationSender implements Sender
      */
     public function send(NotifynderSender $sender)
     {
-        $notification = $sender->sendOne($this->notification);
+        // Only send the notification if the triggering and receiving users are
+        // different
+        if ($this->notification['from_id'] != $this->notification['to_id']) {
+            $notification = $sender->sendOne($this->notification);
 
-        if ($notification->to->preference('email_notifications')) {
-            $this->sendEmail($notification);
+            if ($notification->to->preference('email_notifications')) {
+                $this->sendEmail($notification);
+            }
         }
     }
 
