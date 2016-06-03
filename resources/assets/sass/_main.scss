@@ -133,7 +133,7 @@ img.avatar {
     #splash {
         flex: 0 0 auto;
         padding: 80px 0 140px 0;
-        background: url('/images/splash.jpg') no-repeat 50%;
+        background: url('/images/splash.jpg?v=1') no-repeat 50%;
         color: $primary-color;
         text-align: center;
 
@@ -169,7 +169,7 @@ img.avatar {
                 width: auto;
                 min-height: 56px;
                 padding: 0 20px;
-                margin: -40px -40px 40px -40px;
+                margin: -42px -40px 40px -40px;
                 border-top-left-radius: 3px;
                 border-top-right-radius: 3px;
                 background: $primary-color;
