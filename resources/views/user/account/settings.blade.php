@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col s12 m6 l4 offset-l2">
+    <div class="col s12 m4 l4">
         <h3>Account details</h3>
 
         <strong>Name:</strong> {{ Auth::user()->name }}<br>
@@ -31,10 +31,11 @@
             @endforeach
         </ul>
     </div>
-    <div class="col s12 m6 l4">
-        <h3>Credentials</h3>
-        <form method="post" action="{{ route('account.settings') }}">
-            {!! csrf_field() !!}
+    <form method="post" action="{{ route('account.settings') }}">
+        {!! csrf_field() !!}
+
+        <div class="col s12 m4 l4">
+            <h3>Credentials</h3>
 
             <div class="row">
                 <div class="input-field col s12">
@@ -60,11 +61,18 @@
                     <label for="password_confirmation">Password (confirm)</label>
                 </div>
             </div>
-
-            <div class="right-align">
-                <button type="submit" class="waves-effect waves-light btn-large">Save</button>
+        </div>
+        <div class="col s12 m4 l4">
+            <h3>Notification preferences</h3>
+            <div class="input-field">
+                <input type="hidden" name="preferences[comment_notifications]" value="0">
+                <input type="checkbox" class="filled-in" id="comment_notifications" name="preferences[comment_notifications]" value="1" {{ (old('preferences.comment_notifications') || Auth::user()->preference('comment_notifications')) ? 'checked' : '' }}>
+                <label for="comment_notifications">Notify me of comments added to my content</label>
             </div>
-        </form>
-    </div>
+        </div>
+        <div class="col s12 right-align">
+            <button type="submit" class="waves-effect waves-light btn-large">Save changes</button>
+        </div>
+    </form>
 </div>
 @endsection

@@ -26,7 +26,7 @@ class CommentController extends Controller
             'redirect_to'   => 'url',
         ]);
 
-        $model = $this->getModel($request->route('model'), $request->route('id'));
+        $model = $this->resolve($request->route('model'), $request->route('id'));
         $this->authorize('addComment', $model);
 
         $comment = new Comment;
@@ -35,12 +35,14 @@ class CommentController extends Controller
 
         $model->comments()->save($comment);
 
-        Notifynder::category('comment.added')
-                   ->from($comment->user_id)
-                   ->to($model->user_id)
-                   ->url("{$model->url}#comments")
-                   ->extra(['model_name' => $model->friendlyName])
-                   ->send();
+        if ($model->user->preference('comment_notifications')) {
+            Notifynder::category('comment.added')
+                       ->from($comment->user)
+                       ->to($model->user)
+                       ->url("{$model->url}#comments")
+                       ->extra(['model_name' => $model->friendlyName])
+                       ->send();
+        }
 
         Notification::success("Comment added.");
 

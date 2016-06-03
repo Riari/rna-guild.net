@@ -1,8 +1,8 @@
 <?php namespace App\Models;
 
-use App\Models\Setting;
 use Fenos\Notifynder\Notifable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Redis;
 
 class User extends Authenticatable
 {
@@ -238,5 +238,32 @@ class User extends Authenticatable
 
         $this->confirmed = 1;
         $this->save();
+    }
+
+    /**
+     * Helper: get or set a user preference
+     *
+     * @param  string  $key
+     * @param  mixed  $value
+     * @return mixed
+     */
+    public function preference($key, $value = null)
+    {
+        $key = "user:{$this->id}:{$key}";
+
+        return is_null($value) ? Redis::get($key) : Redis::set($key, $value);
+    }
+
+    /**
+     * Helper: set multiple user preferences
+     *
+     * @param  array  $preferences
+     * @return void
+     */
+    public function updatePreferences($preferences)
+    {
+        foreach ($preferences as $key => $value) {
+            $this->preference($key, $value);
+        }
     }
 }

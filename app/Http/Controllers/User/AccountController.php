@@ -41,17 +41,20 @@ class AccountController extends Controller
     public function postSettings(Request $request)
     {
         $this->validate($request, [
-            'current_password' => 'required',
-            'password' => 'confirmed|min:6'
+            'current_password' => 'required_with:email,password',
+            'password' => 'confirmed|min:6',
+            'preferences' => 'array'
         ]);
 
         $user = $request->user();
 
-        if (!Hash::check($request->input('current_password'), $user->password)) {
+        // Check the current password if a change requires it
+        if ($request->has(['email', 'password']) && !Hash::check($request->input('current_password'), $user->password)) {
             Notification::error("Incorrect current password entered. Please try again.");
             return redirect('account/settings');
         }
 
+        // Update the email address if given
         if ($request->has('email')) {
             $email = $request->input('email');
             Mail::send('user.account.emails.email-changed', compact('user', 'email'), function ($m) use ($user) {
@@ -61,6 +64,7 @@ class AccountController extends Controller
             Notification::success("Email address updated.");
         }
 
+        // Update the password if given
         if ($request->has('password')) {
             $user->password = bcrypt($request->input('password'));
             Notification::success("Password updated.");
@@ -70,6 +74,10 @@ class AccountController extends Controller
         }
 
         $user->save();
+
+        // Update the preferences
+        $user->updatePreferences($request->input('preferences'));
+        Notification::success("Preferences updated.");
 
         return redirect('account/settings');
     }

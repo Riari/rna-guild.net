@@ -2,14 +2,15 @@
 
 use Auth;
 use App\Http\Controllers\Controller;
-use App\Models\Setting;
 use App\Models\User;
 use App\Models\UserConfirmation;
 use App\Models\UserAuth;
 use App\Models\UserProfile;
+use App\Support\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Support\Facades\Redis;
 use Mail;
 use Notification;
 use Session;
@@ -179,7 +180,7 @@ class AuthController extends Controller
         ]);
 
         // Given them the default role
-        $user->roles()->attach(Setting::get('default_role', 3));
+        $user->roles()->attach(Redis::get('site:default_role'));
 
         // Give the user a profile
         $user->profile()->create([]);
