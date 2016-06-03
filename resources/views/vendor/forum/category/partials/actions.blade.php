@@ -49,12 +49,18 @@
                         <label for="weight">{{ trans('forum::general.weight') }}</label>
                     </div>
                 </div>
-                <div class="row hide" data-depends="rename">
-                    <div class="input-field col s12">
-                        <input type="text" id="new-title" name="title" value="{{ $category->title }}" class="form-control">
-                        <label for="new-title">{{ trans('forum::general.title') }}</label>
-                        <input type="text" id="new-description" name="description" value="{{ $category->description }}" class="form-control">
-                        <label for="new-description">{{ trans('forum::general.description') }}</label>
+                <div class="hide" data-depends="rename">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" id="new-title" name="title" value="{{ $category->title }}" class="form-control">
+                            <label for="new-title">{{ trans('forum::general.title') }}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" id="new-description" name="description" value="{{ $category->description }}" class="form-control">
+                            <label for="new-description">{{ trans('forum::general.description') }}</label>
+                        </div>
                     </div>
                 </div>
             </div>
