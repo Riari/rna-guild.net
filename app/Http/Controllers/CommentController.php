@@ -41,7 +41,7 @@ class CommentController extends Controller
                        ->to($model->user)
                        ->url("{$model->url}#comments")
                        ->extra(['model_name' => $model->friendlyName])
-                       ->send();
+                       ->sendWithEmail();
         }
 
         Notification::success("Comment added.");

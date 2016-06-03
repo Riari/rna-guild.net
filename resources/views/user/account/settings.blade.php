@@ -69,6 +69,11 @@
                 <input type="checkbox" class="filled-in" id="comment_notifications" name="preferences[comment_notifications]" value="1" {{ (old('preferences.comment_notifications') || Auth::user()->preference('comment_notifications', 1)) ? 'checked' : '' }}>
                 <label for="comment_notifications">Notify me of comments added to my content</label>
             </div>
+            <div class="input-field">
+                <input type="hidden" name="preferences[email_notifications]" value="0">
+                <input type="checkbox" class="filled-in" id="email_notifications" name="preferences[email_notifications]" value="1" {{ (old('preferences.email_notifications') || Auth::user()->preference('email_notifications')) ? 'checked' : '' }}>
+                <label for="email_notifications">Enable notifications by email</label>
+            </div>
         </div>
         <div class="col s12 right-align">
             <button type="submit" class="waves-effect waves-light btn-large">Save changes</button>

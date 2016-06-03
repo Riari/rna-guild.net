@@ -3,9 +3,11 @@
 @section('body')
 <p>Hello {{ $user->name }},</p>
 
-<p>{{ $notification->text }}:</p>
+<p>{{ $notification->notifyBody }}:</p>
 
 <p><a href="{{ $notification->url }}">{{ $notification->url }}</a></p>
+
+<p style="color:#aaa;">(You received this email because you have 'Enable notifications via email' set in your account settings: <a href="{{ url('account/settings') }}" style="color:666;">{{ url('account/settings') }}</a>)
 
 <p>
     Sincerely,<br>

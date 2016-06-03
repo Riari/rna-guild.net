@@ -1,6 +1,8 @@
 <?php namespace App\Providers;
 
+use App\Support\Notifynder\EmailNotificationSender;
 use Illuminate\Support\ServiceProvider;
+use Notifynder;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Notifynder::extend('sendWithEmail', function ($notification) {
+            return new EmailNotificationSender($notification);
+        });
     }
 
     /**
