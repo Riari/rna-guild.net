@@ -9,19 +9,14 @@
 @append
 
 @section('content')
-<div class="row">
-    <div class="col s12 m8 l9">
-        <div class="alert info">
-            Tip: Existing categories can be modified and deleted (if they're empty) when viewing them directly.<br>
-            Here, you can create new categories and re-structure existing ones by dragging them (remember to hit 'Save order' below the list after doing so).
-        </div>
-    </div>
-    <div class="col s12 m4 l3 right-align">
-        <a href="{{ route('admin.forum.category.create') }}" class="waves-effect waves-light btn btn-large">Create category</a>
-    </div>
+<div class="alert info">
+    Tip: Click a category name to view the category and make changes to it, or drag a category to change its position in the list.
 </div>
 <form method="post" action="{{ route('admin.forum.category.reorder') }}">
     {!! csrf_field() !!}
+
+    <button type="submit" class="waves-effect waves-light btn-large disabled pull-right" disabled data-sortable-submit>Save order</button>
+    <a href="{{ route('admin.forum.category.create') }}" class="waves-effect waves-light btn btn-large">Create category</a>
 
     <ol data-sortable>
         @foreach ($categories as $category)

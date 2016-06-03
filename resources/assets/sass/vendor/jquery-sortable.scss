@@ -10,7 +10,7 @@ ol[data-sortable] {
         padding: 15px;
         margin: 5px 0;
         border-radius: 3px;
-        background: transparentize($secondary-color, 0.9);
+        border: 2px solid color('grey', 'lighten-3');
 
         &.dragged {
             position: absolute;
@@ -19,25 +19,13 @@ ol[data-sortable] {
         }
 
         &:hover {
-            background: transparentize($secondary-color, 0.8);
+            border-color: color('grey', 'lighten-1');
         }
 
         &.placeholder {
             position: relative;
             padding: 0;
-
-            &::before {
-                content: " ";
-                display: block;
-                position: absolute;
-                top: -8px;
-                left: -13px;
-                width: 0;
-                height: 0;
-                border-top: 6px solid transparent;
-                border-left: 12px solid $link-color;
-                border-bottom: 6px solid transparent;
-            }
+            border-color: $link-color;
         }
 
         ol {
