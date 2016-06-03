@@ -66,7 +66,7 @@
             <h3>Notification preferences</h3>
             <div class="input-field">
                 <input type="hidden" name="preferences[comment_notifications]" value="0">
-                <input type="checkbox" class="filled-in" id="comment_notifications" name="preferences[comment_notifications]" value="1" {{ (old('preferences.comment_notifications') || Auth::user()->preference('comment_notifications')) ? 'checked' : '' }}>
+                <input type="checkbox" class="filled-in" id="comment_notifications" name="preferences[comment_notifications]" value="1" {{ (old('preferences.comment_notifications') || Auth::user()->preference('comment_notifications', 1)) ? 'checked' : '' }}>
                 <label for="comment_notifications">Notify me of comments added to my content</label>
             </div>
         </div>

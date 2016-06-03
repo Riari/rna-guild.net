@@ -242,16 +242,23 @@ class User extends Authenticatable
 
     /**
      * Helper: get or set a user preference
+     * If !$persist, $value is used as a default in case the key doesn't exist.
      *
      * @param  string  $key
      * @param  mixed  $value
+     * @param  bool  $persist
      * @return mixed
      */
-    public function preference($key, $value = null)
+    public function preference($key, $value = null, $persist = false)
     {
         $key = "user:{$this->id}:{$key}";
 
-        return is_null($value) ? Redis::get($key) : Redis::set($key, $value);
+        if ($persist) {
+            Redis::set($key, $value);
+        } else {
+            $data = Redis::get($key);
+            return is_null($data) ? $value : $data;
+        }
     }
 
     /**
@@ -263,7 +270,7 @@ class User extends Authenticatable
     public function updatePreferences($preferences)
     {
         foreach ($preferences as $key => $value) {
-            $this->preference($key, $value);
+            $this->preference($key, $value, true);
         }
     }
 }

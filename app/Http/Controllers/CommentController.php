@@ -35,7 +35,7 @@ class CommentController extends Controller
 
         $model->comments()->save($comment);
 
-        if ($model->user->preference('comment_notifications')) {
+        if ($model->user->preference('comment_notifications', 1)) {
             Notifynder::category('comment.added')
                        ->from($comment->user)
                        ->to($model->user)
