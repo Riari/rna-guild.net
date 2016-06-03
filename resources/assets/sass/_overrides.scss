@@ -3,6 +3,12 @@ nav {
     z-index: 1000;
     background: transparentize($primary-color, 0.1);
 
+    a.brand-logo {
+        img {
+            display: block;
+        }
+    }
+
     .avatar.tiny {
         margin-top: -2px;
     }
