@@ -16,8 +16,10 @@
             <input type="hidden" name="post" value="{{ $post->id }}">
         @endif
 
-        <div class="form-group">
-            <textarea name="content" class="form-control">{{ old('content') }}</textarea>
+        <div class="row">
+            <div class="col s12">
+                <textarea name="content" class="materialize-textarea" data-autofocus="true">{{ old('content') }}</textarea>
+            </div>
         </div>
 
         <button type="submit" class="waves-effect waves-light btn-large pull-right">

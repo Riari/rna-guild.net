@@ -25,7 +25,7 @@
 
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="name" name="name" type="text" value="{{ !empty(old('name')) ? old('name') : $user->name }}">
+                    <input id="name" name="name" type="text" value="{{ !empty(old('name')) ? old('name') : $user->name }}" autofocus="true">
                     <label for="name">Name</label>
                 </div>
             </div>

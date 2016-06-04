@@ -25,12 +25,12 @@
 
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="title" name="title" type="text" value="{{ !empty(old('title')) ? old('title') : $article->title }}">
+                    <input id="title" name="title" type="text" value="{{ !empty(old('title')) ? old('title') : $article->title }}" autofocus="true">
                     <label for="title">Title</label>
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s12">
+                <div class="col s12">
                     <label for="body">Body</label>
                     <textarea id="body" name="body" class="materialize-textarea">{{ !empty(old('body')) ? old('body') : $article->body }}</textarea>
                 </div>

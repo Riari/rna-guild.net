@@ -11,8 +11,8 @@
             {!! method_field('PATCH') !!}
 
             <div class="row">
-                <div class="input-field col s12">
-                    <textarea id="body" name="body" class="materialize-textarea">{{ !is_null(old('body')) ? old('body') : $comment->body }}</textarea>
+                <div class="col s12">
+                    <textarea id="body" name="body" class="materialize-textarea" data-autofocus="true">{{ !is_null(old('body')) ? old('body') : $comment->body }}</textarea>
                 </div>
             </div>
 

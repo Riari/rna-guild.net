@@ -15,13 +15,14 @@
 
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="title" name="title" type="text" value="{{ !empty(old('title')) ? old('title') : $album->title }}">
+                    <input id="title" name="title" type="text" value="{{ !empty(old('title')) ? old('title') : $album->title }}" autofocus="true">
                     <label for="title">Title</label>
                     <span class="red-text">Required</span>
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s12">
+                <div class="col s12">
+                    <label>Description</label>
                     <textarea id="description" name="description" class="materialize-textarea">{{ !is_null(old('description')) ? old('description') : $album->description }}</textarea>
                 </div>
             </div>

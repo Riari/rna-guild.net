@@ -10,7 +10,7 @@
 
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="name_or_email" name="name_or_email" type="text" value="{{ old('name_or_email') }}">
+                    <input id="name_or_email" name="name_or_email" type="text" value="{{ old('name_or_email') }}" autofocus="true">
                     <label for="name_or_email">Name or email address</label>
                 </div>
             </div>

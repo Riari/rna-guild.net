@@ -19,7 +19,6 @@ elixir(function(mix) {
             includePaths: [
                 path('font-awesome/scss'),
                 path('Materialize/sass'),
-                path('simplemde/src/css'),
                 path('sweetalert2/src'),
                 path('fullcalendar/dist'),
                 path('datetimepicker'),
@@ -32,16 +31,15 @@ elixir(function(mix) {
         .scripts([
             path('jquery/dist/jquery.js'),
             path('Materialize/dist/js/materialize.js'),
-            path('vue/dist/vue.js'),
             path('sweetalert2/dist/sweetalert2.min.js'),
             path('moment/min/moment-with-locales.js'),
             path('fullcalendar/dist/fullcalendar.js'),
             path('datetimepicker/build/jquery.datetimepicker.full.js'),
             path('unslider/dist/js/unslider-min.js'),
             path('jquery-sortable/source/js/jquery-sortable-min.js'),
+            path('marked/marked.min.js'),
+            path('bootstrap-markdown/js/bootstrap-markdown.js'),
             path('js/vendor/materialize-tags.js', 'assets'),
-            path('js/vendor/editor.js', 'assets'),
-            path('js/vendor/marked.js', 'assets'),
             path('js/rna.js', 'assets')
         ], 'public/js/rna.js', './')
 

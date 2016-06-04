@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s12">
+                <div class="col s12">
                     <label for="about">About</label>
                     <textarea id="about" name="about" class="materialize-textarea">{{ !empty(old('about')) ? old('about') : $user->profile->about }}</textarea>
                 </div>

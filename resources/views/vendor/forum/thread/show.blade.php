@@ -72,12 +72,16 @@
                 <form method="POST" action="{{ Forum::route('post.store', $thread) }}">
                     {!! csrf_field() !!}
 
-                    <div class="form-group">
-                        <textarea name="content" class="form-control">{{ old('content') }}</textarea>
+                    <div class="row">
+                        <div class="col s12">
+                            <textarea name="content" class="materialize-textarea">{{ old('content') }}</textarea>
+                        </div>
                     </div>
 
-                    <div class="right-align">
-                        <button type="submit" class="waves-effect waves-light btn btn-large">{{ trans('forum::general.reply') }}</button>
+                    <div class="row">
+                        <div class="col s12 right-align">
+                            <button type="submit" class="waves-effect waves-light btn btn-large">{{ trans('forum::general.reply') }}</button>
+                        </div>
                     </div>
                 </form>
             </div>

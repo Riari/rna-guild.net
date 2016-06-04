@@ -21,7 +21,7 @@
             @if (!$character->exists)
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="name" name="name" type="text" value="{{ !empty(old('name')) ? old('name') : $character->name }}">
+                        <input id="name" name="name" type="text" value="{{ !empty(old('name')) ? old('name') : $character->name }}" autofocus="true">
                         <label for="name">Name</label>
                     </div>
                 </div>
@@ -72,7 +72,8 @@
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s12">
+                <div class="col s12">
+                    <label>Description</label>
                     <textarea id="description" name="description" class="materialize-textarea">{{ !is_null(old('description')) ? old('description') : $character->description }}</textarea>
                 </div>
             </div>

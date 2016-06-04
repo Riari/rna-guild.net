@@ -15,7 +15,7 @@
 
     <div class="row">
         <div class="input-field col s12 m6">
-            <input type="text" name="title" value="{{ old('title') }}">
+            <input type="text" name="title" value="{{ old('title') }}" autofocus="true">
             <label for="title">Title</label>
         </div>
         <div class="input-field col s12 m6">

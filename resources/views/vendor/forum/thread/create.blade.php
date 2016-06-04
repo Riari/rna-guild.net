@@ -10,12 +10,16 @@
 
         <div class="row">
             <div class="input-field col s12">
-                <input type="text" name="title" value="{{ old('title') }}">
+                <input type="text" name="title" value="{{ old('title') }}" autofocus="true">
                 <label for="title">{{ trans('forum::general.title') }}</label>
             </div>
         </div>
 
-        <textarea name="content">{{ old('content') }}</textarea>
+        <div class="row">
+            <div class="col s12">
+                <textarea name="content" class="materialize-textarea">{{ old('content') }}</textarea>
+            </div>
+        </div>
 
         <button type="submit" class="btn-large pull-right">{{ trans('forum::general.create') }}</button>
         <a href="{{ URL::previous() }}" class="btn-large blue-grey lighten-1">{{ trans('forum::general.cancel') }}</a>

@@ -181,6 +181,61 @@ nav {
     }
 }
 
+.md-editor {
+    border: none;
+
+    &.active {
+        box-shadow: none;
+    }
+
+    > textarea {
+        padding-bottom: 15px;
+        border-top: none;
+        border-bottom: 1px solid color('grey', 'base');
+        background: none;
+
+        &:focus {
+            background: none;
+        }
+    }
+
+    > .md-preview {
+        height: auto;
+        min-height: 200px;
+        padding: 5px 15px;
+        border: none;
+        background: color('grey', 'lighten-4');
+    }
+
+    .md-header {
+        padding: 0;
+        margin: 0 0 15px 0;
+        background: 0;
+
+        .btn-group {
+            display: inline-block;
+
+            &:first-child button:first-child {
+                margin-left: 0;
+            }
+
+            &:last-child button:last-child {
+                margin-right: 0;
+            }
+
+            button {
+                padding: 1px 10px;
+                margin: 0 2px;
+                box-shadow: none;
+            }
+        }
+    }
+
+    .md-controls {
+        padding: 6px;
+    }
+}
+
 .btn-large {
     height: auto;
     min-height: 54px;
