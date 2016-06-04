@@ -30,7 +30,7 @@
 </form>
 
 @foreach ($categories as $category)
-    @if ($category->isEmpty)
+    @if ($category->children->isEmpty() && $category->threads->isEmpty())
         @include('admin.forum.category.partials.delete-modal')
     @endif
 @endforeach

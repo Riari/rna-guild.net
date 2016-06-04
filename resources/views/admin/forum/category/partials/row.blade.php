@@ -3,7 +3,7 @@
     <span class="pull-right">
         <span class="grey-text text-darken-1">{{ $category->threads->count() }} {{ str_plural('thread', $category->threads->count() )}}</span>
         &nbsp; <a href="{{ Forum::route('category.show', $category) }}#actions">Edit</a>
-        @if ($category->isEmpty)
+        @if ($category->children->isEmpty() && $category->threads->isEmpty())
             @include('partials.delete-link', ['id' => $category->id])
         @endif
     </span>
