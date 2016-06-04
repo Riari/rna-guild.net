@@ -42,6 +42,8 @@
 @stop
 
 @section('after_content')
-@include('comment.partials.add', ['model' => 'Character', 'id' => $character->id])
+@can('addComment', $character)
+    @include('comment.partials.add', ['model' => 'Character', 'id' => $character->id])
+@endcan
 @include('comment.partials.list')
 @stop
