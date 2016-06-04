@@ -148,15 +148,17 @@
         @if ($category->threadsEnabled)
             @can ('markNewThreadsAsRead')
                 <hr>
-                <div class="center-align">
-                    <form action="{{ Forum::route('mark-new') }}" method="POST" data-confirm>
-                        {!! csrf_field() !!}
-                        {!! method_field('patch') !!}
-                        <input type="hidden" name="category_id" value="{{ $category->id }}">
-                        <button class="waves-effect waves-light btn btn-large blue-grey lighten-1">
-                            {{ trans('forum::categories.mark_read') }}
-                        </button>
-                    </form>
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <form action="{{ Forum::route('mark-new') }}" method="POST" data-confirm>
+                            {!! csrf_field() !!}
+                            {!! method_field('patch') !!}
+                            <input type="hidden" name="category_id" value="{{ $category->id }}">
+                            <button class="waves-effect waves-light btn btn-large blue-grey lighten-1">
+                                {{ trans('forum::categories.mark_read') }}
+                            </button>
+                        </form>
+                    </div>
                 </div>
             @endcan
         @endif

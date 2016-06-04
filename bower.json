@@ -20,7 +20,6 @@
     "jquery-sortable": "^0.9.13",
     "marked": "~0.3.5",
     "Materialize": "materialize#~0.97.5",
-    "sweetalert2": "^3.0.1",
     "unslider": "~2.0.3"
   }
 }

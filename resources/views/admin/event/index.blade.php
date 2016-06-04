@@ -30,17 +30,21 @@
             <tr>
                 <td>{{ $event->id }}</td>
                 <td><a href="{{ $event->url }}">{{ $event->title }}</a></td>
-                <td>{{ $event->user->name }}</td>
+                <td><a href="{{ $event->user->profile->url }}">{{ $event->user->name }}</a></td>
                 <td>{{ $event->created_at }}</td>
                 <td>{{ $event->starts }}</td>
                 <td>{{ $event->ends }}</td>
                 <td class="right-align">
                     <a href="{{ route('admin.event.edit', $event->id) }}">Edit</a>
-                    @include('admin.partials.delete-link', ['model' => 'Event', 'id' => $event->id, 'text' => "Are you sure you want to delete {$event->title}?"])
+                    @include('partials.delete-link', ['id' => $event->id])
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
 @include('partials.pagination')
+
+@foreach ($paginator->items() as $event)
+    @include('admin.partials.delete-modal', ['id' => $event->id, 'model' => 'Event', 'model_id' => $event->id, 'text' => "Are you sure you want to delete {$event->title}?"])
+@endforeach
 @stop

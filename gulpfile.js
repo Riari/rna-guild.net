@@ -19,7 +19,6 @@ elixir(function(mix) {
             includePaths: [
                 path('font-awesome/scss'),
                 path('Materialize/sass'),
-                path('sweetalert2/src'),
                 path('fullcalendar/dist'),
                 path('datetimepicker'),
                 path('unslider/dist/css'),
@@ -31,7 +30,6 @@ elixir(function(mix) {
         .scripts([
             path('jquery/dist/jquery.js'),
             path('Materialize/dist/js/materialize.js'),
-            path('sweetalert2/dist/sweetalert2.min.js'),
             path('moment/min/moment-with-locales.js'),
             path('fullcalendar/dist/fullcalendar.js'),
             path('datetimepicker/build/jquery.datetimepicker.full.js'),

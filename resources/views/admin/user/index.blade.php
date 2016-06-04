@@ -44,11 +44,15 @@
                 <td class="right-align">
                     <a href="{{ $user->profile->url }}">View profile</a> &nbsp;
                     <a href="{{ route('admin.user.edit', $user->id) }}">Edit</a>
-                    @include('admin.partials.delete-link', ['model' => 'User', 'id' => $user->id, 'text' => "Are you sure you want to delete {$user->name}? All of their content on the site will be removed if you do this!"])
+                    @include('partials.delete-link', ['id' => $user->id])
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
 @include('partials.pagination')
+
+@foreach ($paginator->items() as $user)
+    @include('admin.partials.delete-modal', ['id' => $user->id, 'model' => 'User', 'model_id' => $user->id, 'text' => "Are you sure you want to delete {$user->name}? All of their content on the site will be removed if you do this!"])
+@endforeach
 @stop

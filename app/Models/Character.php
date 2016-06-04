@@ -1,13 +1,13 @@
 <?php namespace App\Models;
 
+use App\Models\Traits\Commentable;
 use App\Models\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
-use Slynova\Commentable\Traits\Commentable;
 use TeamTeaTime\Filer\HasAttachments;
 
 class Character extends Model
 {
-    use Commentable, HasAttachments, HasOwner;
+    use HasAttachments, Commentable, HasOwner;
 
     /**
      * The attributes that are mass assignable.

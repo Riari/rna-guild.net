@@ -12,3 +12,7 @@
         @endif
     </div>
 </div>
+
+@foreach ($commentPaginator->items() as $comment)
+    @include('partials.delete-modal', ['id' => $comment->id, 'action' => route('comment.delete', compact('comment')), 'text' => "Are you sure you want to delete {$comment->user->name}'s comment?"])
+@endforeach

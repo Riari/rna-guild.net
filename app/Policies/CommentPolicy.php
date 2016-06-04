@@ -1,8 +1,8 @@
 <?php namespace App\Policies;
 
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Slynova\Commentable\Models\Comment;
 
 class CommentPolicy
 {

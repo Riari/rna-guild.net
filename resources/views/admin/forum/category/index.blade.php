@@ -28,4 +28,10 @@
         <button type="submit" class="waves-effect waves-light btn-large disabled" disabled data-sortable-submit>Save order</button>
     </div>
 </form>
+
+@foreach ($categories as $category)
+    @if ($category->isEmpty)
+        @include('admin.forum.category.partials.delete-modal')
+    @endif
+@endforeach
 @stop

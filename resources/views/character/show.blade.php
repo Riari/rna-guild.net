@@ -15,7 +15,8 @@
             <a href="{{ route('character.edit', compact('character')) }}">Edit</a>
         @endcan
         @can('delete', $character)
-            @include('partials.delete-link', ['action' => route('character.delete', compact('character')), 'text' => 'Are you sure you want to delete this character?'])
+            @include('partials.delete-link', ['id' => $character->id])
+            @include('partials.delete-modal', ['id' => $character->id, 'action' => route('character.delete', compact('character')), 'text' => "Are you sure you want to delete this character?"])
         @endcan
     </div>
 </div>

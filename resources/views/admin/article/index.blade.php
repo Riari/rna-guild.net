@@ -28,17 +28,21 @@
         @foreach ($paginator->items() as $article)
             <tr>
                 <td>{{ $article->id }}</td>
-                <td>{{ $article->title }}</td>
-                <td>{{ $article->user->name }}</td>
+                <td><a href="{{ $article->url }}">{{ $article->title }}</a></td>
+                <td><a href="{{ $article->user->profile->url }}">{{ $article->user->name }}</a></td>
                 <td>{{ $article->created_at }}</td>
                 <td>{{ $article->published_at }}</td>
                 <td class="right-align">
                     <a href="{{ route('admin.article.edit', $article->id) }}">Edit</a>
-                    @include('admin.partials.delete-link', ['model' => 'Article', 'id' => $article->id, 'text' => "Are you sure you want to delete {$article->title}?"])
+                    @include('partials.delete-link', ['id' => $article->id])
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
 @include('partials.pagination')
+
+@foreach ($paginator->items() as $article)
+    @include('admin.partials.delete-modal', ['id' => $article->id, 'model' => 'Article', 'model_id' => $article->id, 'text' => "Are you sure you want to delete {$article->title}?"])
+@endforeach
 @stop

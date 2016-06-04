@@ -1,37 +1,3 @@
-// Functions
-function swalConfirmSubmit(button) {
-    var confirmed = false;
-    var text = button.data('text');
-
-    button.on('click', function (e) {
-        var target = e.target;
-
-        if (!confirmed) {
-            e.preventDefault();
-
-            swal({
-                title: 'Confirm Action',
-                text: text,
-                type: 'warning',
-                showCancelButton: true,
-                cancelButtonColor: '#90a4ae',
-                confirmButtonColor: '#5d6070',
-                reverseButtons: true
-            }).then(function (isConfirm) {
-                if (isConfirm === true) {
-                    confirmed = true;
-                    target.click();
-                }
-            });
-        }
-    });
-}
-
-// Action confirmation
-$('button[data-confirm]').each(function () {
-    swalConfirmSubmit($(this));
-});
-
 // Editors
 $('textarea').markdown({
     iconlibrary: 'fa'
@@ -63,6 +29,7 @@ if ($('.slider').find('img').length > 1) {
 
 // Sortable
 $('[data-sortable]').sortable({
+    delay: 50,
     onDrop: function ($item, container, _super) {
         $('[data-sortable] li').each(function () {
             var parentId = 0;

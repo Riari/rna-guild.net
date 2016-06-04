@@ -202,11 +202,3 @@ $r->group(['prefix' => 'admin', 'namespace' => 'Admin'], function ($r) {
         ['as' => 'admin.resource.delete', 'uses' => 'AdminController@postDeleteResource']
     );
 });
-
-// Model binding
-$r->model('album', \App\Models\ImageAlbum::class);
-$r->model('article', \App\Models\Article::class);
-$r->model('character', \App\Models\Character::class);
-$r->model('comment', \Slynova\Commentable\Models\Comment::class);
-$r->model('event', \App\Models\Event::class);
-$r->model('user', \App\Models\User::class);

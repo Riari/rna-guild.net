@@ -1,4 +1,4 @@
-<div class="row category-actions" data-actions>
+<div id="actions" class="row category-actions" data-actions>
     <div class="col s12 m12 l12">
         <div class="card">
             <div class="card-content">

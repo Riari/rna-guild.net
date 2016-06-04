@@ -1,10 +1,10 @@
 <?php namespace App\Models;
 
+use App\Models\Traits\Commentable;
 use App\Models\Traits\HasOwner;
 use Carbon\Carbon;
 use Conner\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
-use Slynova\Commentable\Traits\Commentable;
 
 class Event extends Model
 {

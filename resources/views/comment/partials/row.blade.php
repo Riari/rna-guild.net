@@ -10,7 +10,7 @@
                         <a href="{{ route('comment.edit', compact('comment')) }}">Edit</a>
                     @endcan
                     @can ('delete', $comment)
-                        @include('partials.delete-link', ['action' => route('comment.delete', compact('comment')), 'text' => "Are you sure you want to delete {$comment->user->name}'s comment?"])
+                        @include('partials.delete-link', ['id' => $comment->id])
                     @endcan
                 </div>
                 <a href="{{ $comment->user->profile->url }}">

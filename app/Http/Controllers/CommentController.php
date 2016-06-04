@@ -1,11 +1,12 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Support\Traits\ResolvesModels;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Notification;
 use Notifynder;
-use Slynova\Commentable\Models\Comment;
 
 class CommentController extends Controller
 {
@@ -77,6 +78,7 @@ class CommentController extends Controller
         ]);
 
         $comment->body = $request->input('body');
+        $comment->updated_at = Carbon::now();
         $comment->save();
 
         Notification::success("Comment updated.");

@@ -1,16 +1,16 @@
 <?php namespace App\Models;
 
+use App\Models\Traits\Commentable;
 use App\Models\Traits\HasOwner;
 use Carbon\Carbon;
 use Conner\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
 use Image;
-use Slynova\Commentable\Traits\Commentable;
 use TeamTeaTime\Filer\HasAttachments;
 
 class ImageAlbum extends Model
 {
-    use Commentable, HasAttachments, HasOwner, Taggable;
+    use HasAttachments, Commentable, HasOwner, Taggable;
 
     /**
      * The attributes that are mass assignable.
