@@ -10,7 +10,7 @@
 
 @section('content')
 <div class="alert info">
-    Tip: Click a category name to view the category and make changes to it, or drag a category to change its position in the list.
+    Tip: Drag a category to change its position in the list.
 </div>
 <form method="post" action="{{ route('admin.forum.category.reorder') }}">
     {!! csrf_field() !!}
