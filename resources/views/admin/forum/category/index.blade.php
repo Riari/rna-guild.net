@@ -29,9 +29,9 @@
     </div>
 </form>
 
-@foreach ($categories as $category)
+@foreach (\App\Models\Forum\Category::all() as $category)
     @if ($category->children->isEmpty() && $category->threads->isEmpty())
-        @include('admin.forum.category.partials.delete-modal')
+        @include('admin.partials.delete-modal', ['id' => $category->id, 'model' => 'Forum\Category', 'model_id' => $category->id, 'text' => "Are you sure you want to delete category {$category->title}?"])
     @endif
 @endforeach
 @stop
