@@ -30,8 +30,8 @@
                 <td>{{ $article->id }}</td>
                 <td><a href="{{ $article->url }}">{{ $article->title }}</a></td>
                 <td><a href="{{ $article->user->profile->url }}">{{ $article->user->name }}</a></td>
-                <td>{{ $article->created_at }}</td>
-                <td>{{ $article->published_at }}</td>
+                <td>{{ $article->created }}</td>
+                <td>{{ $article->published }}</td>
                 <td class="right-align">
                     <a href="{{ route('admin.article.edit', $article->id) }}">Edit</a>
                     @include('partials.delete-link', ['id' => $article->id])

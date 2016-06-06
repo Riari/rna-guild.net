@@ -23,7 +23,7 @@
             </a>
             <span class="grey-text">
                 by <a href="{{ $album->user->profile->url }}">{{ $album->user->displayName }}</a>
-                {{ $album->created_at->diffForHumans() }}
+                {{ $album->createdAgo }}
             </span>
         </div>
     @endforeach

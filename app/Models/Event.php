@@ -2,27 +2,28 @@
 
 use App\Models\Traits\Commentable;
 use App\Models\Traits\HasOwner;
+use App\Models\Traits\HasTimestamps;
 use Carbon\Carbon;
 use Conner\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    use Commentable, HasOwner, Taggable;
+    use Commentable, HasOwner, HasTimestamps, Taggable;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'title', 'description', 'location', 'all_day', 'public', 'starts', 'ends'];
+    protected $fillable = ['user_id', 'title', 'description', 'location', 'all_day', 'public', 'starts_at', 'ends_at'];
 
     /**
      * The attributes that should be mutated to dates.
      *
      * @var array
      */
-    protected $dates = ['starts', 'ends'];
+    protected $dates = ['starts_at', 'ends_at'];
 
     /**
      * User-friendly model name.
@@ -64,7 +65,7 @@ class Event extends Model
      */
     public function scopeUpcoming($query)
     {
-        return $query->where('ends', '>', Carbon::now());
+        return $query->where('ends_at', '>', Carbon::now());
     }
 
     /**
@@ -75,6 +76,26 @@ class Event extends Model
     public function getUrlAttribute()
     {
         return route('event.show', ['event' => $this->id, 'title' => str_slug($this->title, '-')]);
+    }
+
+    /**
+     * Attribute: start time.
+     *
+     * @return \Carbon\Carbon
+     */
+    public function getStartsAttribute()
+    {
+        return $this->starts_at->setTimezone($this->getUserTimezone());
+    }
+
+    /**
+     * Attribute: end time.
+     *
+     * @return \Carbon\Carbon
+     */
+    public function getEndsAttribute()
+    {
+        return $this->ends_at->setTimezone($this->getUserTimezone());
     }
 
     /**
@@ -94,7 +115,7 @@ class Event extends Model
      */
     public function endsOn()
     {
-        return $this->ends->formatLocalized($this->getFormat());
+        return $this->ends->setTimezone($this->getUserTimezone())->formatLocalized($this->getFormat());
     }
 
     /**

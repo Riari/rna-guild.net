@@ -1,12 +1,13 @@
 <?php namespace App\Models;
 
+use App\Models\Traits\HasTimestamps;
 use Fenos\Notifynder\Notifable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Redis;
 
 class User extends Authenticatable
 {
-    use Notifable;
+    use HasTimestamps, Notifable;
 
     /**
      * The attributes that are mass assignable.

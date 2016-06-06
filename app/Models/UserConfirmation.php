@@ -1,11 +1,12 @@
 <?php namespace App\Models;
 
 use App\Models\Traits\HasOwner;
+use App\Models\Traits\HasTimestamps;
 use Illuminate\Database\Eloquent\Model;
 
 class UserConfirmation extends Model
 {
-    use HasOwner;
+    use HasOwner, HasTimestamps;
 
     /**
      * The attributes that are mass assignable.

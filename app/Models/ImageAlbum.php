@@ -2,6 +2,7 @@
 
 use App\Models\Traits\Commentable;
 use App\Models\Traits\HasOwner;
+use App\Models\Traits\HasTimestamps;
 use Carbon\Carbon;
 use Conner\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +11,7 @@ use TeamTeaTime\Filer\HasAttachments;
 
 class ImageAlbum extends Model
 {
-    use HasAttachments, Commentable, HasOwner, Taggable;
+    use HasAttachments, Commentable, HasOwner, HasTimestamps, Taggable;
 
     /**
      * The attributes that are mass assignable.

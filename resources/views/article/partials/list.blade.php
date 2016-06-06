@@ -9,7 +9,7 @@
         <a href="{{ $article->user->profile->url }}">
             {{ $article->user->name }}
         </a>
-        {{ $article->published_at->diffForHumans() }}
+        {{ $article->publishedAgo }}
     </span>
     {!! Markdown::convertToHtml($article->body) !!}
     @include('partials.tag-list', ['model' => $article])

@@ -40,7 +40,7 @@
                     {{ $user->confirmed ? 'Confirmed' : 'Unconfirmed' }}
                 </td>
                 <td>{{ $user->roleList }}</td>
-                <td>{{ $user->created_at }}</td>
+                <td>{{ $user->created }}</td>
                 <td class="right-align">
                     <a href="{{ $user->profile->url }}">View profile</a> &nbsp;
                     <a href="{{ route('admin.user.edit', $user->id) }}">Edit</a>

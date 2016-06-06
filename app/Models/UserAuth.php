@@ -1,12 +1,13 @@
 <?php namespace App\Models;
 
 use App\Models\Traits\HasOwner;
+use App\Models\Traits\HasTimestamps;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Socialite\Contracts\User as SocialiteUser;
 
 class UserAuth extends Model
 {
-    use HasOwner;
+    use HasOwner, HasTimestamps;
 
     /**
      * The attributes that are mass assignable.

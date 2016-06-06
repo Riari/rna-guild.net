@@ -63,16 +63,26 @@
             </div>
         </div>
         <div class="col s12 m4 l4">
-            <h3>Notification preferences</h3>
-            <div class="input-field">
-                <input type="hidden" name="preferences[comment_notifications]" value="0">
-                <input type="checkbox" class="filled-in" id="comment_notifications" name="preferences[comment_notifications]" value="1" {{ (old('preferences.comment_notifications') || Auth::user()->preference('comment_notifications', 1)) ? 'checked' : '' }}>
-                <label for="comment_notifications">Notify me of comments added to my content</label>
+            <h3>Preferences</h3>
+            <div class="row">
+                <div class="col s12">
+                    <div class="input-field">
+                        <input type="hidden" name="preferences[comment_notifications]" value="0">
+                        <input type="checkbox" class="filled-in" id="comment_notifications" name="preferences[comment_notifications]" value="1" {{ (old('preferences.comment_notifications') || Auth::user()->preference('comment_notifications', 1)) ? 'checked' : '' }}>
+                        <label for="comment_notifications">Notify me of comments added to my content</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="hidden" name="preferences[email_notifications]" value="0">
+                        <input type="checkbox" class="filled-in" id="email_notifications" name="preferences[email_notifications]" value="1" {{ (old('preferences.email_notifications') || Auth::user()->preference('email_notifications')) ? 'checked' : '' }}>
+                        <label for="email_notifications">Enable notifications by email</label>
+                    </div>
+                </div>
             </div>
-            <div class="input-field">
-                <input type="hidden" name="preferences[email_notifications]" value="0">
-                <input type="checkbox" class="filled-in" id="email_notifications" name="preferences[email_notifications]" value="1" {{ (old('preferences.email_notifications') || Auth::user()->preference('email_notifications')) ? 'checked' : '' }}>
-                <label for="email_notifications">Enable notifications by email</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    {!! Timezone::selectForm(Auth::user()->preference('timezone', 'UTC'), 'Select a timezone', ['name' => 'preferences[timezone]']) !!}
+                    <label>Timezone</label>
+                </div>
             </div>
         </div>
         <div class="col s12 right-align">

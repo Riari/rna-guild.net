@@ -157,7 +157,11 @@
             <div id="footer">
                 <div class="container">
                     <div class="inner">
-                        All times are displayed in UTC.
+                        @if (Auth::check() && Auth::user()->preference('timezone', 'UTC') != 'UTC')
+                            All times are displayed in {{ Auth::user()->preference('timezone') }} time.
+                        @else
+                            All times are displayed in UTC.
+                        @endif
                     </div>
                 </div>
             </div>

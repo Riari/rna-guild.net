@@ -4,7 +4,7 @@
 @section('subtitle')
 Published by
 <a href="{{ $article->user->profile->url }}">{{ $article->user->name }}</a>
-{{ $article->published_at->diffForHumans() }}
+{{ $article->publishedAgo }}
 @stop
 
 @section('breadcrumbs')

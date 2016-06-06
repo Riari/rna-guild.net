@@ -2,13 +2,14 @@
 
 use App\Models\Traits\Commentable;
 use App\Models\Traits\HasOwner;
+use App\Models\Traits\HasTimestamps;
 use Carbon\Carbon;
 use Conner\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    use Commentable, HasOwner, Taggable;
+    use Commentable, HasOwner, HasTimestamps, Taggable;
 
     /**
      * The attributes that are mass assignable.
@@ -40,6 +41,16 @@ class Article extends Model
     public function scopePublished($query)
     {
         return $this->where('published_at', '<=', Carbon::now());
+    }
+
+    /**
+     * Attribute: get 'published' time in diffForHumans format.
+     *
+     * @return string
+     */
+    public function getPublishedAgoAttribute()
+    {
+        return $this->published_at->setTimezone($this->getUserTimezone())->diffForHumans();
     }
 
     /**

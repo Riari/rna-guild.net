@@ -21,8 +21,8 @@ class CreateEventsTable extends Migration
             $table->string('location')->nullable();
             $table->boolean('all_day');
             $table->boolean('public');
-            $table->timestamp('starts')->nullable();
-            $table->timestamp('ends')->nullable();
+            $table->timestamp('starts_at')->nullable();
+            $table->timestamp('ends_at')->nullable();
             $table->timestamps();
         });
     }

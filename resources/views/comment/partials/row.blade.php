@@ -17,9 +17,9 @@
                     @include('user.partials.avatar', ['user' => $comment->user, 'class' => 'tiny circular'])
                     {{ $comment->user->name }}
                 </a>
-                {{ $comment->created_at->diffForHumans() }}
+                {{ $comment->createdAgo }}
                 @if ($comment->created_at != $comment->updated_at)
-                    (edited {{ $comment->updated_at->diffForHumans() }})
+                    (edited {{ $comment->updatedAgo }})
                 @endif
             </div>
         </div>

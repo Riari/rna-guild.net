@@ -31,7 +31,7 @@
                 <td>{{ $event->id }}</td>
                 <td><a href="{{ $event->url }}">{{ $event->title }}</a></td>
                 <td><a href="{{ $event->user->profile->url }}">{{ $event->user->name }}</a></td>
-                <td>{{ $event->created_at }}</td>
+                <td>{{ $event->created }}</td>
                 <td>{{ $event->starts }}</td>
                 <td>{{ $event->ends }}</td>
                 <td class="right-align">

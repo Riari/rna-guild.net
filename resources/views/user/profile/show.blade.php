@@ -20,7 +20,7 @@
 
         <h3>Stats</h3>
 
-        <strong>Joined:</strong> {{ $user->created_at->diffForHumans() }}
+        <strong>Joined:</strong> {{ $user->createdAgo }}
     </div>
     <div class="col s12 m6 l9">
         @if ($user->profile->about)

@@ -49,8 +49,8 @@ class EventController extends Controller
 
         $event = Event::create([
             'user_id' => Auth::user()->id,
-            'starts' => Carbon::createFromFormat(DT_INPUT_FORMAT, $request->input('starts')),
-            'ends' => Carbon::createFromFormat(DT_INPUT_FORMAT, $request->input('ends'))
+            'starts_at' => Carbon::createFromFormat(DT_INPUT_FORMAT, $request->input('starts_at')),
+            'ends_at' => Carbon::createFromFormat(DT_INPUT_FORMAT, $request->input('ends_at'))
         ] + $request->only('title', 'description', 'location', 'all_day', 'public'));
 
         if ($request->has('tags')) {
@@ -70,11 +70,11 @@ class EventController extends Controller
     public function edit(Event $event)
     {
         $tags = implode(',',  $event->tagNames());
-        $starts = !empty($event->starts)
-            ? $event->starts->format(DT_INPUT_FORMAT)
+        $starts = !empty($event->starts_at)
+            ? $event->starts_at->format(DT_INPUT_FORMAT)
             : Carbon::now()->format(DT_INPUT_FORMAT);
-        $ends = !empty($event->ends)
-            ? $event->ends->format(DT_INPUT_FORMAT)
+        $ends = !empty($event->ends_at)
+            ? $event->ends_at->format(DT_INPUT_FORMAT)
             : Carbon::now()->format(DT_INPUT_FORMAT);
 
         return view('admin.event.edit', compact('event', 'tags', 'starts', 'ends'));
@@ -92,8 +92,8 @@ class EventController extends Controller
         $this->validate($request, $this->rules);
 
         $event->update([
-            'starts' => Carbon::createFromFormat(DT_INPUT_FORMAT, $request->input('starts')),
-            'ends' => Carbon::createFromFormat(DT_INPUT_FORMAT, $request->input('ends')),
+            'starts_at' => Carbon::createFromFormat(DT_INPUT_FORMAT, $request->input('starts_at')),
+            'ends_at' => Carbon::createFromFormat(DT_INPUT_FORMAT, $request->input('ends_at')),
         ] + $request->only('title', 'description', 'location', 'all_day', 'public'));
 
         if ($request->has('tags')) {

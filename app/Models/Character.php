@@ -2,12 +2,13 @@
 
 use App\Models\Traits\Commentable;
 use App\Models\Traits\HasOwner;
+use App\Models\Traits\HasTimestamps;
 use Illuminate\Database\Eloquent\Model;
 use TeamTeaTime\Filer\HasAttachments;
 
 class Character extends Model
 {
-    use HasAttachments, Commentable, HasOwner;
+    use HasAttachments, Commentable, HasOwner, HasTimestamps;
 
     /**
      * The attributes that are mass assignable.

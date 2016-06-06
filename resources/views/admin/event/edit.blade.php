@@ -57,12 +57,14 @@
             </div>
             <div class="row">
                 <div class="col s6">
-                    <label for="starts">Starts at</label>
-                    <input id="starts" name="starts" type="text" class="datetimepicker" value="{{ !empty(old('starts')) ? old('starts') : $starts }}">
+                    <label for="starts_at">Starts at</label>
+                    <input id="starts_at" name="starts_at" type="text" class="datetimepicker" value="{{ !empty(old('starts_at')) ? old('starts_at') : $starts }}">
+                    <em class="grey-text">Enter time in UTC.</em>
                 </div>
                 <div class="col s6">
-                    <label for="ends">Ends at</label>
-                    <input id="ends" name="ends" type="text" class="datetimepicker" value="{{ !empty(old('ends')) ? old('ends') : $ends }}">
+                    <label for="ends_at">Ends at</label>
+                    <input id="ends_at" name="ends_at" type="text" class="datetimepicker" value="{{ !empty(old('ends_at')) ? old('ends_at') : $ends }}">
+                    <em class="grey-text">Enter time in UTC.</em>
                 </div>
             </div>
             <div class="row">
