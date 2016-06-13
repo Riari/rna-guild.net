@@ -97,7 +97,7 @@ class CategoryPolicy extends \Riari\Forum\Policies\CategoryPolicy
      */
     public function view($user, Category $category)
     {
-        return $user->isActive;
+        return $user->can('admin');
     }
 
     /**
