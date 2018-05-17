@@ -9,7 +9,6 @@ use App\Models\UserProfile;
 use App\Support\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Support\Facades\Redis;
 use Mail;
 use Notification;
@@ -20,7 +19,7 @@ use Validator;
 
 class AuthController extends Controller
 {
-    use AuthenticatesUsers, ThrottlesLogins;
+    use AuthenticatesUsers;
 
     /**
      * Create a new authentication controller instance.
@@ -29,7 +28,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware($this->guestMiddleware(), [
+        $this->middleware('guest', [
             'except' => ['redirectToProvider', 'handleProviderCallback', 'getLogout']
         ]);
     }
@@ -93,6 +92,11 @@ class AuthController extends Controller
         }
     }
 
+    public function getLogin()
+    {
+        return view('auth.login');
+    }
+
     /**
      * Handle a login request to the application.
      *
@@ -134,7 +138,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getLogout()
+    public function getLogout(Request $request)
     {
         if (!empty(URL::previous()) && !str_contains(URL::previous(), 'auth/')) {
             $this->redirectAfterLogout = URL::previous();
@@ -142,7 +146,7 @@ class AuthController extends Controller
 
         Notification::success("You are now logged out.");
 
-        return $this->logout();
+        return $this->logout($request); 
     }
 
     /**
